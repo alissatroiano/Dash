@@ -39,19 +39,23 @@ The user story worksheet that was completed during the Strategy Plane portion of
 
 ## Features
 
-In this section, you should go over the different parts of your project, and describe each in a sentence or so.
-
 ### Existing Features
 
-- Feature 1 - allows users X to achieve Y, by having them fill out Z
+In order to properly develop this full-stack application, the following features were included:
 
-For some/all of your features, you may choose to reference the specific project files that implement them, although this is entirely optional.
+- Sign Up - allows users to create an account, by inputting an original username and a password.
 
-In addition, you may also use this section to discuss plans for additional features to be implemented in the future:
+- Log In - Allows users to login to their Dash account, by inputting the correct user and password keys.
+
+- Create Recipe - Permits users to share original content to the Dash community, by granting them write access to the database and having them fill out a form.
+
+- Edit Recipe - Allows users to edit any recipe, by including a functional, 'Edit' button with each recipe.
+
+- Search - Allows users to search for specific recipes, by providing them with a searchbar that fetches and displays relevant data.
 
 ### Features Left to Implement
 
-- Another feature idea
+- A 'Grocery List' page - Allows users to create grocery lists, by having them create a checklist and manage/update it accordingly.
 
 ## Technologies Used
 
