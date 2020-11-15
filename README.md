@@ -4,7 +4,7 @@ Dash is an online cookbook for men & women, (ages 24 - 39), who lead healthy lif
 
 ## UX
 
-As the Milestone 3 Project for [Code Institute's](https://codeinstitute.net/) Data Centric Development portion of the Full Stack Developer Program, this project was built with HTML, CSS, JavaScript, jQuery, Materialize, Python, Flask and MongoDB.
+As the Milestone 3 Project for [Code Institute's](https://codeinstitute.net/) Data Centric Development portion of the Full Stack Developer Program, this project was built with HTML, CSS, JavaScript, jQuery, Python, Flask and MongoDB.
 
 Dash's target market is health-minded adult men & women, ages 24 - 29, that wish to find and share recipes. The target market also seeks a place to manage their own recipes and ingredients.
 
@@ -71,9 +71,21 @@ In order to properly develop this full-stack application, the following features
 
 In this section, you should mention all of the languages, frameworks, libraries, and any other tools that you have used to construct this project. For each, provide its name, a link to its official site and a short sentence of why it was used.
 
-- [JQuery](https://jquery.com)
+- [Flask](https://flask.palletsprojects.com/en/1.1.x/)
 
-- The project uses **JQuery** to simplify DOM manipulation.
+- This project uses the **Flask** framework to reduce development time and build a more robust application.
+
+- [Jinja](https://jinja.palletsprojects.com/en/2.11.x/)
+
+- This project uses the **Jinja** templating functionality to create HTML that is returned to the user via HTTP requests.
+
+- [MongoDB](https://www.mongodb.com/)
+
+-  This project uses **MongoDB** to simplify data storage and manipulation.
+
+- [PyMongo](https://pypi.org/project/pymongo/)
+
+- This project uses **PyMongo** for interacting with MongoDB database from Python.
 
 ## Testing
 
