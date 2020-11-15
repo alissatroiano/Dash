@@ -12,18 +12,28 @@ User stories were created during the Strategy/Planning Phase of this project:
 
 User Story 1:
 
-> *"As a daily Dash user, I want to search for specific recipes, so that I can find the type of stuff I actually want to make! "*
->> -Jane Marino
+> *"As a daily Dash user, I want to search for specific recipes, so that I can find the type of stuff I actually want to make!"*
+>> -Jane Marino, Homemaker
 
 User Story 2:
 
-> *"As a new user, I want to be able to create an account easily so that I can find and share recipes right away"*
->> -Michael Corona
+> *"As a new user, I want to be able to create an account easily so I can be a member of the community"*
+>> -Michael Corona, Yoga Teacher
 
 User Story 3:
 
-> *"As a user, I want to be able to post recipes of my own, so I can share them with like-minded individuals."*
->> -Danielle Greenstein
+> *"As a user, I want to be able to post my own reipes, so I can share them with like-minded individuals."*
+>> -Danielle Greenstein, Health-food blogger
+
+User Story 4:
+
+> *"As a member, I want to be able to edit any of the reipes on the page, so I can use my expertise to contribute to the Dash community."*
+>> -Andy Fordane, Chef
+
+User Story 5:
+
+> *"As a Dash member, I want other members to edit my recipes, so I can learn what I was doing wrong and how I could have done it differently ."*
+>> -Danielle Greenstein, Health-food blogger
 
 The user story worksheet that was completed during the Strategy Plane portion of this project can be viewed here:
 
