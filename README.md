@@ -8,7 +8,7 @@ As the Milestone 3 Project for [Code Institute's](https://codeinstitute.net/) Da
 
 Dash's target market is health-minded adult men & women, ages 24 - 29, that wish to find and share recipes. The target market also seeks a place to manage their own recipes and ingredients.
 
-User stories were created during the Strategy/Planning Phase of this project:
+User stories were created  by the developer during the "Strategy Plane" portion of this project and referenced to guide the wireframing process:
 
 User Story 1:
 
@@ -32,12 +32,16 @@ User Story 4:
 
 User Story 5:
 
-> *"As a Dash member, I want other members to edit my recipes, so I can learn what I was doing wrong and how I could have done it differently ."*
->> -Danielle Greenstein, Health-food blogger
+> *"As a Dash member, I want other members to edit my recipes, so I can learn new ways to prepare my favorite dishes."*
+>> -Michelle Greene, Vegetarian Cafe Owner
 
 The user story worksheet that was completed during the Strategy Plane portion of this project can be viewed here:
 
 ![userstories](wireframes/userstories.jpg)
+
+To determine what features were the most important and most viable, the following Strategy Plane activity was completed during the planning phase of this project:
+
+![Trade Off Table](wireframes/tradeoffexercise.jpg)
 
  The following wireframes were created by the developer to guide the development proess:
 
