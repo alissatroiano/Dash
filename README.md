@@ -69,7 +69,21 @@ In order to properly develop this full-stack application, the following features
 
 ## Technologies Used
 
-In this section, you should mention all of the languages, frameworks, libraries, and any other tools that you have used to construct this project. For each, provide its name, a link to its official site and a short sentence of why it was used.
+- [HTML](https://html.com/)
+
+- This project uses HTML to display and format content on the front-end.
+
+- [CSS](https://www.w3.org/Style/CSS/Overview.en.html)
+
+- This project uses **CSS** to add styles and responsiveness to its' content.
+
+- [Python](https://www.python.org/)
+
+- This project uses **Python** to speed up development time and integrate systems.
+
+- [PIP](https://pypi.org)
+
+- This project uses **Pip** to install software dependencies for Python.
 
 - [Flask](https://flask.palletsprojects.com/en/1.1.x/)
 
@@ -81,11 +95,15 @@ In this section, you should mention all of the languages, frameworks, libraries,
 
 - [MongoDB](https://www.mongodb.com/)
 
--  This project uses **MongoDB** to simplify data storage and manipulation.
+- This project uses **MongoDB** to simplify data storage and manipulation.
 
 - [PyMongo](https://pypi.org/project/pymongo/)
 
-- This project uses **PyMongo** for interacting with MongoDB database from Python.
+- This project uses the driver **PyMongo** to interact with MongoDB from Python.
+
+- [Git](https://git-scm.com/)
+
+- This project uses **Git** for code storage and version control.
 
 ## Testing
 
