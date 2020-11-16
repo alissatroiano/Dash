@@ -147,9 +147,11 @@ In addition, if it is not obvious, you should also describe how to run your code
 
 ### Content
 
+- The 'Vegan Chili' recipe was copied from [delish](https://www.delish.com/cooking/recipe-ideas/g1428/fall-vegetarian-recipes/?slide=1) and [FromMyBowl](https://frommybowl.com/easy-vegan-chili/#tasty-recipes-4728)
+
 ### Media
 
-- The photos used in this site were obtained from ...
+- The photo used for the Vegan Chili recipe on the landing page was copied from [Wikimedia](https://commons.wikimedia.org/wiki/File:Vegan_Chili_(8078817046).jpg) and is licensed under Creative Commons.
 
 ### Acknowledgements
 
