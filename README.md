@@ -23,7 +23,7 @@ User Story 2:
 User Story 3:
 
 > *"As a user, I want to be able to post my own reipes, so I can share them with like-minded individuals."*
->> -Danielle Greenstein, Health-food blogger
+>> -Danielle Greenstein, Health-Food Blogger
 
 User Story 4:
 
