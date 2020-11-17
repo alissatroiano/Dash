@@ -4,6 +4,9 @@
    "python.linting.pep8Enabled": false,
    "python.linting.flake8Enabled": true,
    "python.terminal.activateEnvironment": false,
+   "emmet.includeLanguages": {
+       "html": true,
+       },
    "python.formatting.autopep8Path": "/home/gitpod/.pyenv/shims/autopep8",
    "python.linting.flake8Path": "/home/gitpod/.pyenv/shims/flake8",
    "cornflakes.linter.executablePath": "/home/gitpod/.pyenv/shims/flake8",
@@ -19,5 +22,5 @@
       "**/core.mongo*": true,
       "**/core.python*": true,
    },
-   "emmet.extensionsPath": ".theia"
+"emmet.extensionsPath": ".theia",
 }
