@@ -8,6 +8,7 @@
 <body>
     {% for recipe in recipes %}
         {{ recipe.recipe_name }}<br>
+        <img src="{{ recipe.image_source }}" style="max-width: 100%; height: auto;">
         {{ recipe.recipe_description }}<br>
         {{ recipe.tools_needed }}<br>
         {{ recipe.recipe_ingredients }}<br>
