@@ -17,3 +17,10 @@ header {
     font-family: 'Pacifico', cursive;
     text-shadow: 2px 0px 3px #022d0c
 }
+
+/* Forms */
+#btn {
+    font-family: 'Pacifico', cursive;
+    text-transform: none;
+    font-size: 1.3rem;
+}
