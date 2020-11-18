@@ -147,8 +147,6 @@ In addition, if it is not obvious, you should also describe how to run your code
 
 - The steps taken to properly configure Flask and MongoDB were learned by following Code Institute's 'Data Centric Development' module.
 
-- The steps taken to properly install node modules via npm were aquired from [Codeburst's](https://codeburst.io) article, ["Deploying a Flask App with NPM modules on Heroku"](https://codeburst.io/deploying-a-flask-app-with-npm-modules-on-heroku-203a73ec5654)
-
 ### Content
 
 - The 'Vegan Chili' recipe was copied from [delish](https://www.delish.com/cooking/recipe-ideas/g1428/fall-vegetarian-recipes/?slide=1) and [FromMyBowl](https://frommybowl.com/easy-vegan-chili/#tasty-recipes-4728)
@@ -164,5 +162,3 @@ In addition, if it is not obvious, you should also describe how to run your code
 - I received UX inspiration from [Awwwards](https://www.awwwards.com)
 
 - I received UX inspiration from [Behance](https://www.behance.net)
-
-- I took suggestions from [Prototypr's article, '7 Best UX Practices for Designing Long Online Forms'](https://blog.prototypr.io/seven-best-ux-practices-for-designing-long-online-forms-6a670e488bad)
