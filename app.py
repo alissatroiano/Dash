@@ -8,6 +8,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
 
+
 app = Flask(__name__)
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
@@ -26,28 +27,10 @@ def get_recipes():
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
-    if request.method == "POST":
-        # Ensure duplicate username isn't created here:
-        existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()})
-
-        if existing_user:
-            flash("Username already exists")
-            return redirect(url_for("signup"))
-
-        signup = {
-            "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password"))
-        }
-        mongo.db.users.insert_one(signup)
-
-        # Create 'Session' Cookie for user here:
-        session["user"] = request.form.get("username").lower()
-        flash("Success! Welcome to Dash!")
     return render_template("signup.html")
 
 
 if __name__ == "__main__":
-    app.run(host=os.environ.get("IP", "0.0.0.0"),
-            port=int(os.environ.get("PORT", "5000")),
+    app.run(host=os.environ.get("IP"),
+            port=int(os.environ.get("PORT")),
             debug=True)
