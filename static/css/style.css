@@ -42,3 +42,9 @@ input {
     font-family: 'Josefin Sans', sans-serif;
     color: #3e2723;
 }
+
+/*-------------------------------------------- Flashes */
+.flashes h4 {
+    line-height: 2;
+    font-family: 'Pacifico', cursive;
+}
