@@ -147,6 +147,10 @@ In addition, if it is not obvious, you should also describe how to run your code
 
 - The steps taken to properly configure Flask and MongoDB were learned by following Code Institute's 'Data Centric Development' module.
 
+### Syntax
+
+- The code used to override Materialize's default styles and apply custom colors to input fields on focus was copied from [Stack Overflow](https://stackoverflow.com/questions/44942347/change-the-default-color-of-materialize-css-input-fields-i-have-attached-screen)
+
 ### Content
 
 - The 'Vegan Chili' recipe was copied from [delish](https://www.delish.com/cooking/recipe-ideas/g1428/fall-vegetarian-recipes/?slide=1) and [FromMyBowl](https://frommybowl.com/easy-vegan-chili/#tasty-recipes-4728)
