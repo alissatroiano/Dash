@@ -51,6 +51,8 @@ To determine what features were the most important and most viable, the followin
 
 ![wireframes](wireframes/mobile.jpg)
 
+To make for a more organized development process, the developer used [GitHub Projects](https://github.com/users/alissatroiano/projects/4) to manage sprints and tasks. 
+
 ## Features
 
 ### Existing Features
