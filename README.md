@@ -41,7 +41,9 @@ The user story worksheet that was completed during the Strategy Plane portion of
 
 To determine what features were the most important and most viable, the following Strategy Plane activity was completed during the planning phase of this project:
 
-![Trade Off Table](wireframes/tradeoffexercise.jpg)
+![Trade Off Table](wireframes/tradeoff.jpg)
+
+To view a PDF version of this exercise, please refer to [this document](wireframes/tradeoff.pdf)
 
  The following wireframes were created by the developer to guide the development proess:
 
@@ -111,6 +113,10 @@ In order to properly develop this full-stack application, the following features
 
 - This project uses **Git** for code storage and version control.
 
+- [Materialize](https://materializecss.com/)
+
+- This project used **Materialize** to add styles and improve user experience.
+
 ## Testing
 
 In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that the site works well. Essentially, in this part you will want to go over all of your user stories from the UX section and ensure that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
@@ -150,6 +156,8 @@ In addition, if it is not obvious, you should also describe how to run your code
 - The steps taken to properly configure Flask and MongoDB were learned by following Code Institute's 'Data Centric Development' module.
 
 ### Content
+
+- The grid layout and responsive design were made possible by importing [Materialize](https://materializecss.com/) front-end framework and using the built-in classes.
 
 - The 'Vegan Chili' recipe was copied from [delish](https://www.delish.com/cooking/recipe-ideas/g1428/fall-vegetarian-recipes/?slide=1) and [FromMyBowl](https://frommybowl.com/easy-vegan-chili/#tasty-recipes-4728)
 
