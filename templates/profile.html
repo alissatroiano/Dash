@@ -9,35 +9,46 @@
     <div class="card-panel">
       <div class="card-image">
         <img
-          src="https://images.unsplash.com/photo-1506956191951-7a88da4435e5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80" alt="avatar" class="image" style="max-width: 100%" />
-      </div>
-      <div class="card-content">
-        <div class="row">
-          <form class="col s12">
-            <div class="input-field col s6">
-              <i class="fas fa-user-circle light-green-text prefix"></i>
-              <input id="icon_prefix" type="text" class="validate" />
-              <label for="icon_prefix">{{ username }}</label>
-            </div>
-            <div class="input-field col s6">
-              <i class="fas fa-lock light-green-text prefix"></i>
-              <input id="icon_telephone" type="tel" class="validate" />
-              <label for="icon_telephone">Password</label>
-            </div>
-          </form>
+          src="https://images.unsplash.com/photo-1506956191951-7a88da4435e5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80"
+          alt="avatar"
+          class="image"
+          style="max-width: 100%"
+        />
+        <div class="fixed-action-btn">
+          <a
+            class="btn-floating btn-large light-green"
+            href="{{ url_for('get_recipes') }}"
+            ><i class="fas fa-plus"></i
+          ></a>
         </div>
-        <div class="row">
-          <div class="col s12 center-align">
-            <a
-              class="btn-floating fab waves-effect waves-light"
-              href="{{ url_for('get_recipes') }}"
-              ><i class="fas fa-plus light-green text-shadow"></i>
-            </a>
+        <div class="card-content">
+          <div class="row">
+            <form class="col s12">
+              <div class="input-field col s6">
+                <i class="fas fa-user-circle light-green-text prefix"></i>
+                <input id="icon_prefix" type="text" class="validate" />
+                <label for="icon_prefix">{{ username }}</label>
+              </div>
+              <div class="input-field col s6">
+                <i class="fas fa-lock light-green-text prefix"></i>
+                <input id="edit-password" type="tel" class="validate" />
+                <label for="edit-password">Password</label>
+              </div>
+              <div class="col s12 center-align">
+                <button
+                  class="btn waves-effect waves-light light-green"
+                  type="submit"
+                  name="action"
+                >
+                  Submit
+                  <i class="fas fa-submit"></i>
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 {% endblock %}
