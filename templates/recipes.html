@@ -15,7 +15,7 @@
                 <p class="activator">{{ recipe.recipe_description }}</p>
             </div>
             <div class="card-reveal">
-                <span class="card-title light-green-text text-darken-1">
+                <span class="card-title light-green-text text-darken-1 center-align">
                     {{ recipe.recipe_name }}
                     <i class="fas fa-times right"></i>
                 </span>
@@ -41,12 +41,16 @@
                             Ingredients</h5>
                         <div class="collapsible-body">
                             <ul class="collection">
-                                <li class="collection-item">{{ recipe.ingredient1 }}</li>
-                                <li class="collection-item">{{ recipe.ingredient2 }}</li>
-                                <li class="collection-item">{{ recipe.ingredient3 }}</li>
-                                <li class="collection-item">{{ recipe.ingredient4 }}</li>
-                                <li class="collection-item">{{ recipe.ingredient5 }}</li>
-                                <li class="collection-item">{{ recipe.ingredient6 }}</li>
+                                <li class="collection-item">
+                                {{ recipe.ingredient1 }}</li>
+                                <li class="collection-item">
+                                {{ recipe.ingredient2 }}</li>
+                                <li class="collection-item">
+                                {{ recipe.ingredient3 }}</li>
+                                <li class="collection-item">
+                                {{ recipe.ingredient4 }}</li>
+                                <li class="collection-item">
+                                {{ recipe.ingredient5 }}</li>
                             </ul>
                         </div>
                     </li>
@@ -57,11 +61,18 @@
                             Instructions</h5>
                         <div class="collapsible-body">
                             <ul class="collection">
-                                <li class="collection-item">{{ recipe.step_one }}</li>
-                                <li class="collection-item">{{ recipe.step_two }}</li>
-                                <li class="collection-item">{{ recipe.step_three }}</li>
-                                <li class="collection-item">{{ recipe.step_four }}</li>
-                                <li class="collection-item">{{ recipe.step_five }}</li>
+                                <li class="collection-item">
+                                {{ recipe.step_one }}</li>
+                                <li class="collection-item">
+                                {{ recipe.step_two }}</li>
+                                <li class="collection-item">
+                                {{ recipe.step_three }}</li>
+                                <li class="collection-item">
+                                {{ recipe.step_four }}</li>
+                                <li class="collection-item">
+                                {{ recipe.step_five }}
+                                </li>
+                            {% endfor %}
                             </ul>
                         </div>
                     </li>
@@ -70,5 +81,4 @@
         </div>
     </div>
 </div>
-    {% endfor %}
 {% endblock %}
