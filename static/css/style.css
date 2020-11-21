@@ -1,7 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Pacifico&display=swap');
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4 {
     font-family: 'Pacifico', cursive;
+}
+
+h5, h6 {
+     font-family: 'Pacifico', cursive;
+     font-weight: 300;
+     font-size: 1.5rem;
 }
 
 p, body {
@@ -47,4 +53,20 @@ input {
 .flashes h4 {
     line-height: 2;
     font-family: 'Pacifico', cursive;
+}
+
+/*--------------------------------------------- Recipe Cards */
+.collapsible-header {
+        line-height: 1;
+}
+
+.collapsible-body {
+    padding: .5rem;
+}
+
+.collection-item {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #4e342e;
+    margin-top: 0px;
 }
