@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class="light-green-text text-darken-4 center-align" style="margin:40px 0px;">Add Recipe</h3>
+
+<div class="card-panel transparent text-shadow" style="margin-top:40px;">
+<div class="row">
+    <form class="col s12" style="padding: 10px; margin-top:20px;">
+      <div class="row">
+        <div class="input-field col s6">
+          <input placeholder="Recipe Name" id="username" type="text" class="validate">
+          <label for="recipe-name">Recipe Name</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="last_name" type="text" class="validate">
+          <label for="last_name">Tools Needed</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input placeholder="Description" id="disabled" type="text" class="validate">
+          <label for="disabled">Description</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="password" type="password" class="validate">
+          <label for="password">Ingredients</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="text" class="validate">
+          <label for="email">Instructions</label>
+        </div>
+      </div>
+    </form>
+    </div>
+</div>
+
+{% endblock %}
