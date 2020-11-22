@@ -4,8 +4,8 @@
 <div class="row">
     <div class="col s12 m6">
         <div class="card">
-        {% for recipe in recipes %}
             <div class="card-image waves-effect waves-block waves-light">
+                {% for recipe in recipes %}
                 <img class="activator" src="{{ recipe.image_source }}" style="max-width: 100%; height: auto" />
             </div>
 
@@ -28,9 +28,7 @@
                         <div class="collapsible-body">
                             <ul class="collection">
                                 <li class="collection-item">
-                                    {{ recipe.tool_one }}</li>
-                                <li class="collection-item">
-                                    {{ recipe.tool_two }}</li>
+                                    {{ recipe.tools_needed }}</li>
                             </ul>
                         </div>
                     </li>
@@ -72,7 +70,7 @@
                                 <li class="collection-item">
                                 {{ recipe.step_five }}
                                 </li>
-                            {% endfor %}
+                {% endfor %}
                             </ul>
                         </div>
                     </li>

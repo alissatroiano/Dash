@@ -49,6 +49,10 @@ input {
     color: #3e2723;
 }
 
+label {
+    color: #3e2723;
+}
+
 /*-------------------------------------------- Flashes */
 .flashes h4 {
     line-height: 2;
