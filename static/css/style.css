@@ -22,7 +22,7 @@ p, body {
 }
 
 /* Forms */
-#btn {
+button, #btn {
     font-family: 'Pacifico', cursive;
     text-transform: none;
     font-size: 1.3rem;
@@ -70,4 +70,13 @@ label {
     font-weight: 400;
     color: #4e342e;
     margin-top: 0px;
+}
+
+/*------------------------------------------- Add Recipe */
+
+button.light-green.darken-1.waves-effect.waves-light.btn {
+    text-transform: none;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    font-weight: 300;
 }
