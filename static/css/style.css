@@ -100,10 +100,11 @@ textarea {
 
 /*--------------------------------------- Edit Recipe */
 
-.btn#edit-recipe {
-      line-height: 2;
+.btn#edit-recipe, 
+.btn#delete-recipe {
       font-family: 'Pacifico', cursive;
       text-transform: none;
       font-size: 1.2rem;
       letter-spacing: 1px;
+      margin: 5px;
 }
