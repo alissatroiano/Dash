@@ -96,3 +96,14 @@ textarea {
     font-family: 'Josefin Sans', sans-serif;
     color: #3e2723;
 }
+
+
+/*--------------------------------------- Edit Recipe */
+
+.btn#edit-recipe {
+      line-height: 2;
+      font-family: 'Pacifico', cursive;
+      text-transform: none;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+}
