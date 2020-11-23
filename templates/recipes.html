@@ -1,22 +1,26 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3 class="light-green-text text-darken-4 center-align" style="margin:30px 0px;">Add Recipe</h3>
+<h3 class="light-green-text text-darken-4 center-align" style="margin:30px 0px;">Dash Recipes</h3>
 
 <div class="row">
   <ul class="collapsible popout">
         {% for recipe in recipes %}
         <li>
-            <div class="collapsible-header brown-text text-darken-3 light-green lighten-3 text-shadow">
-                <i class="fas fa-utensils"></i>
-                <strong>{{ recipe.recipe_name }}</strong> : 
-                {{ recipe.prep_time }}
+            <div class="collapsible-header light-green lighten-2 text-shadow"><h4>
+                <i class="fas fa-utensils prefix"></i>
+                {{ recipe.recipe_name }}</h4>
             </div>
             <div class="collapsible-body" style="margin: 10px 10px;">
+                <h6>What is it?: </h6>
                 <p>{{ recipe.recipe_description }}</p>
+                <h6><i class="fas fa-utensils light-green-text text-darken-2 prefix"></i> Tools Needed: </h6>
                 <p>{{ recipe.tools_needed }}</p>
-                <p>{{ recipe.recipe_description }}</p>
-                <p><em>by: {{ recipe.created_by }}</em></p>
+                <h6><i class="fas fa-blender light-green-text text-darken-2 prefix"> </i> Ingredients: </h6>
+                <p>{{ recipe.recipe_ingredients }}</p>
+                <h6><i class="fas fa-tasks light-green-text text-darken-1 "></i> Instructions: </h6>
+                <p>{{ recipe.recipe_instructions }}</p>
+                <h6>Recipe Author: </h6><p><em>{{ recipe.created_by }}</em></p>
             </div>
         </li>
         {% endfor %}

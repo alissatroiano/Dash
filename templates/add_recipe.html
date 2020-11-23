@@ -15,13 +15,16 @@
                 <label for="recipe_name">Recipe Name</label>
             </div>
         </div>
-        <!--/................. Prep Time and Tools Needed Row -->
+        <!--/................. Ingredients and Tools Needed Row -->
         <div class="row">
+                <!-- Ingredients Input Field -->
             <div class="input-field col s6">
-                <i class="fas fa-clock prefix light-green-text text-darken-1"></i>
-                <input id="prep_time" name="prep_time" type="text" class="validate" required>
-                <label for="prep_time">Prep Time</label>
+                <i class="fas fa-seedling prefix light-green-text text-darken-1"></i>
+                <textarea id="recipe_ingredients" name="recipe_ingredients" type="text" minlength="5" maxlength="50"
+                    class="materialize-textarea validate" required></textarea>
+                <label for="recipe_ingredients">Ingredients</label>
             </div>
+
             <!--Tools Needed Input Field-->
             <div class="input-field col s6">
                 <i class="fas fa-blender prefix light-green-text text-darken-1"></i>
@@ -37,15 +40,6 @@
                 <textarea id="recipe_description" name="recipe_description" type="text" minlength="5" maxlength="200"
                     class="materialize-textarea validate" required></textarea>
                 <label for="recipe_description">Description</label>
-            </div>
-        </div>
-        <!-- Ingredients Input Field -->
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="fas fa-seedling prefix light-green-text text-darken-1"></i>
-                <textarea id="recipe_ingredients" name="recipe_ingredients" type="text" minlength="5" maxlength="200"
-                    class="materialize-textarea validate" required></textarea>
-                <label for="recipe_ingredients">Ingredients</label>
             </div>
         </div>
         <!-- Instructions Input Field -->
