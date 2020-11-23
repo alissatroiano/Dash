@@ -24,8 +24,8 @@
                 <h6>Recipe Author: </h6><p><em>{{ recipe.created_by }}</em></p>
                  <div class="row">
                 <div class="col s12 center-align">
-                    <a href="" class="btn light-green lighten-1" id="edit-recipe"><i class="fas fa-pen-fancy white-text"></i> Edit</a>
-                     <a href="" class="btn red accent-2" id="delete-recipe"><i class="fas fa-trash-alt white-text"></i> Delete</a>
+                    <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn light-green lighten-1" id="edit-recipe"><i class="fas fa-pen-fancy white-text"></i> Edit</a>
+                     <a href="{" class="btn red accent-2" id="delete-recipe"><i class="fas fa-trash-alt white-text"></i> Delete</a>
                 </div>
             </div>
             </div>
