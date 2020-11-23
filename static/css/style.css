@@ -21,19 +21,21 @@ p, body {
     text-shadow: 2px 0px 3px #022d0c
 }
 
-/* Forms */
+/*----------------------------------- Forms */
 button, #btn {
     font-family: 'Pacifico', cursive;
     text-transform: none;
     font-size: 1.3rem;
 }
 
+input, input:focus,
 input#username:focus,
 input#password:focus {
   border-bottom: 1px solid #a1887f;
   box-shadow: 0 1px 0 0 #a1887f;
 }
 
+label, label:focus, label.active,
 label#user-label.active,
 label#user-label:focus,
 label#password-label:focus, label#password-label.active
@@ -79,4 +81,9 @@ button.light-green.darken-1.waves-effect.waves-light.btn {
     font-size: 1.3rem;
     letter-spacing: 1px;
     font-weight: 300;
+}
+
+textarea {
+    font-family: 'Josefin Sans', sans-serif;
+    color: #3e2723;
 }

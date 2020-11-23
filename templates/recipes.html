@@ -1,82 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
 
+<h3 class="light-green-text text-darken-4 center-align" style="margin:30px 0px;">Add Recipe</h3>
+
 <div class="row">
-    <div class="col s12 m6">
-        <div class="card">
-            <div class="card-image waves-effect waves-block waves-light">
-                {% for recipe in recipes %}
-                <img class="activator" src="{{ recipe.image_source }}" style="max-width: 100%; height: auto" />
+  <ul class="collapsible popout">
+        {% for recipe in recipes %}
+        <li>
+            <div class="collapsible-header brown-text text-darken-3 light-green lighten-3 text-shadow">
+                <i class="fas fa-utensils"></i>
+                <strong>{{ recipe.recipe_name }}</strong> : 
+                {{ recipe.prep_time }}
             </div>
-
-            <div class="card-content center-align">
-                <span class="card-title light-green-text text-darken-1 activator">
-                    {{ recipe.recipe_name }}</span>
-                <p class="activator">{{ recipe.recipe_description }}</p>
+            <div class="collapsible-body" style="margin: 10px 10px;">
+                <p>{{ recipe.recipe_description }}</p>
+                <p>{{ recipe.tools_needed }}</p>
+                <p>{{ recipe.recipe_description }}</p>
+                <p><em>by: {{ recipe.created_by }}</em></p>
             </div>
-            <div class="card-reveal">
-                <span class="card-title light-green-text text-darken-1 center-align">
-                    {{ recipe.recipe_name }}
-                    <i class="fas fa-times right"></i>
-                </span>
-                <ul class="collapsible popout">
-                    <li>
-                        <h5 class="collapsible-header brown-text darken-1">
-                            <i class="fas fa-utensils light-green-text text-darken-3 prefix"></i>
-                            Tools
-                        </h5>
-                        <div class="collapsible-body">
-                            <ul class="collection">
-                                <li class="collection-item">
-                                    {{ recipe.tools_needed }}</li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    <li>
-                        <h5 class="collapsible-header brown-text darken-1">
-                            <i class="fas fa-blender light-green-text text-darken-3 prefix"></i>
-                            Ingredients</h5>
-                        <div class="collapsible-body">
-                            <ul class="collection">
-                                <li class="collection-item">
-                                {{ recipe.ingredient1 }}</li>
-                                <li class="collection-item">
-                                {{ recipe.ingredient2 }}</li>
-                                <li class="collection-item">
-                                {{ recipe.ingredient3 }}</li>
-                                <li class="collection-item">
-                                {{ recipe.ingredient4 }}</li>
-                                <li class="collection-item">
-                                {{ recipe.ingredient5 }}</li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    <li>
-                        <h5 class="collapsible-header brown-text darken-3">
-                            <i class="fas fa-temperature-high light-green-text text-darken-1 "></i>
-                            Instructions</h5>
-                        <div class="collapsible-body">
-                            <ul class="collection">
-                                <li class="collection-item">
-                                {{ recipe.step_one }}</li>
-                                <li class="collection-item">
-                                {{ recipe.step_two }}</li>
-                                <li class="collection-item">
-                                {{ recipe.step_three }}</li>
-                                <li class="collection-item">
-                                {{ recipe.step_four }}</li>
-                                <li class="collection-item">
-                                {{ recipe.step_five }}
-                                </li>
-                {% endfor %}
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
+        </li>
+        {% endfor %}
+    </ul>
 </div>
 {% endblock %}
