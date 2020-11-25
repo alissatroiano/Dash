@@ -8,9 +8,8 @@ h1, h2, h3 {
 
 h4 {
     font-family: 'Pacifico', cursive;
-     font-size: 1.6rem;
-     letter-spacing: 1px;
-     color: #011408;
+    font-size: 1.4rem;
+    color: #011408;
 }
 
 h5, h6 {
@@ -110,10 +109,18 @@ textarea {
       margin: 5px;
 }
 
-a#cancel {
+a#cancel, .red.btn.accent-2.text-shadow {
     font-family: 'Pacifico', cursive;
       text-transform: none;
-      font-size: 1.2rem;
       letter-spacing: 1px;
       margin: 5px;
+      border: none;
+}
+
+/*--------------------------------------- Search Recipes */
+
+button.submit.btn.light-green.lighten-1 {
+    border: none;
+    text-transform: none;
+    letter-spacing: .5px;
 }
