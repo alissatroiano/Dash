@@ -100,6 +100,7 @@ def add_recipe():
     if request.method == "POST":
         recipe = {
             "recipe_name": request.form.get("recipe_name"),
+            "prep_time": request.form.get("prep_time"),
             "recipe_description": request.form.get("recipe_description"),
             "recipe_ingredients": request.form.get("recipe_ingredients"),
             "tools_needed": request.form.get("tools_needed"),
@@ -118,11 +119,12 @@ def edit_recipe(recipe_id):
     if request.method == "POST":
         submit = {
             "recipe_name": request.form.get("recipe_name"),
+            "prep_time": request.form.get("prep_time"),
             "recipe_description": request.form.get("recipe_description"),
             "recipe_ingredients": request.form.get("recipe_ingredients"),
             "tools_needed": request.form.get("tools_needed"),
             "recipe_instructions": request.form.get("recipe_instructions"),
-            "created_by": session["user"]
+            "edited_by": session["user"]
         }
         mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, submit)
         flash("Recipe edited!")

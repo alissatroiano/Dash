@@ -15,24 +15,8 @@
                 <label for="recipe_name">Recipe Name</label>
             </div>
         </div>
-        <!--/................. Ingredients and Tools Needed Row -->
-        <div class="row">
-                <!-- Ingredients Input Field -->
-            <div class="input-field col s6">
-                <i class="fas fa-seedling prefix light-green-text text-darken-1"></i>
-                <textarea id="recipe_ingredients" name="recipe_ingredients" type="text" minlength="5" maxlength="100"
-                    class="materialize-textarea validate" required></textarea>
-                <label for="recipe_ingredients">Ingredients</label>
-            </div>
 
-            <!--Tools Needed Input Field-->
-            <div class="input-field col s6">
-                <i class="fas fa-blender prefix light-green-text text-darken-1"></i>
-                <input id="tools_needed" name="tools_needed" type="text" class="validate" required>
-                <label for="tools_needed">Tools Needed</label>
-            </div>
-        </div>
-    <!--/....................... Recipe Description Row-->
+          <!--/....................... Recipe Description Row-->
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-edit prefix light-green-text text-darken-1"></i>
@@ -42,12 +26,40 @@
                 <label for="recipe_description">Description</label>
             </div>
         </div>
+
+        <!--/................. Prep Time and Tools Needed Row -->
+        <div class="row">
+        <!-- Prep Time Field -->
+            <div class="input-field col s6">
+                <i class="fas fa-clock prefix light-green-text text-darken-1"></i>
+                <input id="prep_time" name="prep_time" type="text" minlength="5" maxlength="100"
+                    class="materialize-textarea validate" required />
+                <label for="prep_time">Prep Time</label>
+            </div>
+
+            <!--Tools Needed Input Field-->
+            <div class="input-field col s6">
+                <i class="fas fa-blender prefix light-green-text text-darken-1"></i>
+                <input id="tools_needed" name="tools_needed" type="text" class="validate" required>
+                <label for="tools_needed">Tools Needed</label>
+            </div>
+        </div>
+    <!--/....................... Recipe Ingredients Row-->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-carrot prefix light-green-text text-darken-1"></i>
+                <!-- Recipe Ingredients Textarea -->
+                <textarea id="recipe_ingredients" name="recipe_ingredients" type="text" minlength="5" maxlength="200"
+                    class="materialize-textarea validate" required></textarea>
+                <label for="recipe_ingredients">Ingredients</label>
+            </div>
+        </div>
+
         <!-- Instructions Input Field -->
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-tasks prefix light-green-text text-darken-1"></i>
-                <textarea id="recipe_instructions" name="recipe_instructions" type="text" minlength="5" maxlength="300"
-                    class="materialize-textarea validate" required></textarea>
+                <textarea id="recipe_instructions" name="recipe_instructions" type="text" minlength="5" maxlength="500" class="materialize-textarea validate" required></textarea>
                 <label for="recipe_instructions">Instructions</label>
             </div>
         </div>
