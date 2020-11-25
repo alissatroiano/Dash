@@ -1,29 +1,29 @@
 # Dash
 
-Dash is an online cookbook for men & women, (ages 24 - 39), who lead healthy lifestyles and wish to find and share recipes with like-minded individuals.
+Dash is a recipe crowdsourcing application for men & women, (ages 24 - 39), who want to find and share recipes.
 
 ## UX
 
 As the Milestone 3 Project for [Code Institute's](https://codeinstitute.net/) Data Centric Development portion of the Full Stack Developer Program, this project was built with HTML, CSS, JavaScript, jQuery, Python, Flask and MongoDB.
 
-Dash's target market is health-minded adult men & women, ages 24 - 29, that wish to find and share recipes. The target market also seeks a place to manage their own recipes and ingredients.
+Dash's target market is comprised of men & women, ages 24 - 39, that wish to find and share recipes with eachother.
 
-User stories were created  by the developer during the "Strategy Plane" portion of this project and referenced to guide the wireframing process:
+User stories were created by the developer during the Strategy Plane phase of this milestone project to guide the wireframing process:
 
 User Story 1:
 
-> *"As a daily Dash user, I want to search for specific recipes, so that I can find the type of stuff I actually want to make!"*
+> *"As a daily Dash user, I want to search for recipes, so that I can find recipes quickly"*
 >> -Jane Marino, Homemaker
 
 User Story 2:
 
-> *"As a new user, I want to be able to create an account easily so I can be a member of the community"*
+> *"As a new user, I want to find the 'Sign Up' page right away, so I can create and update recipes."*
 >> -Michael Corona, Yoga Teacher
 
 User Story 3:
 
-> *"As a user, I want to be able to post my own reipes, so I can share them with like-minded individuals."*
->> -Danielle Greenstein, Health-Food Blogger
+> *"As a user, I want to be able to post my own recipes, so I can share them with like-minded individuals."*
+>> -Danielle Greenstein, Food Blogger
 
 User Story 4:
 
@@ -32,8 +32,8 @@ User Story 4:
 
 User Story 5:
 
-> *"As a Dash member, I want other members to edit my recipes, so I can learn new ways to prepare my favorite dishes."*
->> -Michelle Greene, Vegetarian Cafe Owner
+> *"As a Dash member, I want other members to edit my recipes, so I can learn new ways to prepare dishes."*
+>> -Danielle Greenstein, Food Blogger
 
 The user story worksheet that was completed during the Strategy Plane portion of this project can be viewed here:
 
