@@ -27,3 +27,25 @@ The following tests have been conducted by the developer. Each test described be
 - **Log Out** of the application.
 - Verify navbar links return to original state (Recipes', 'Signup' and 'Login') once user is logged out.
 - Declare test, 'passed'.
+
+## Search 
+
+### Create Index Test 1:
+- Visit GitPod worspace
+- Type `python3` to activate the Python interpreter
+- Type, `from app import mongo` to import mongoDB
+- Create the Search Index
+- Verify the following text printed after creating the index, `recipe_name_text_recipe_description_text_prep_time_text`
+- Declare Test, 'passed'.
+
+### Create Index Test 2:
+- Visit [MongoDB Cloud Atlas](https://cloud.mongodb.com/)
+- Visit the, 'Dash' database that was created for this application.
+- Click on the, 'recipes' collection.
+- Visit the, 'Indexes' tab.
+- Verify that the newly created index appears on the page.
+- Declare test, 'passed'.
+
+![index](wireframes/index.jpg)
+
+### Search Index Test 1:
