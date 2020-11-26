@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3 class="light-green-text text-darken-4 center-align" style="margin:30px 0px;">Dash Recipes</h3>
+<h3 class="brown-text text-darken-4 center-align">Dash Recipes</h3>
 
-<div class="row card-panel grey lighten-5">
+<div class="row">
     <form action="{{ url_for('search') }}" method="POST" class="col s12 center-align">
         <div class="row align-wrapper center-align">
             <div class="input-field col s12">
@@ -11,7 +11,7 @@
                     <input type="text" name="query" id="query" class="validate" minlength="3" required>
                     <label for="query">Search Recipes</label>
             </div>
-            <div class="col s12 m4">
+            <div class="col s12">
                 <a href="{{ url_for('get_recipes') }}" class="red btn accent-2 text-shadow">Reset</a>
                 <button type="submit" class="submit btn light-green lighten-1">Search
                 </button>

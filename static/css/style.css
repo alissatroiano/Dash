@@ -124,3 +124,12 @@ button.submit.btn.light-green.lighten-1 {
     text-transform: none;
     letter-spacing: .5px;
 }
+
+i.fas.fa-user-circle.light-green-text.text-shadow.center-align:hover {
+    color: #4e342e;
+}
+
+i.fas.fa-user-circle.light-green-text.text-shadow.center-align {
+    font-size: 10rem; 
+    margin-top: 30px;
+}
