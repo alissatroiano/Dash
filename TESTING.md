@@ -18,14 +18,53 @@ The following tests have been conducted by the developer. Each test described be
 - Verify sidenav opens properly.
 - Declare test 'passed'.
 
-### Navbar Changing State Test:
+### Navbar State Change Browser Test:
 - Visit app in web browser.
 - Oberserve navbar links read, 'Recipes', 'Signup' and 'Login'.
-- **Sign In** to the database.
-- Observe changes in navbar links once user is signed in.
+- **[Login](https://dash-ms3.herokuapp.com/login)**.
+- Observe change in navbar once user is signed in.
 - Verify navbar links read, 'Recipes', 'Add Recipe', 'Profile', and, 'Logout' while user is logged in.
 - **Log Out** of the application.
 - Verify navbar links return to original state (Recipes', 'Signup' and 'Login') once user is logged out.
+- Declare test, 'passed'.
+
+### Navbar State Change Mobile Test:
+- Visit app on mobile web browser.
+- Oberserve navbar links ('Recipes', 'Signup' and 'Login').
+- **[Login](https://dash-ms3.herokuapp.com/login)**.
+- Observe changes in navbar links once user is signed in.
+- Verify navbar reads, 'Recipes', 'Add Recipe', 'Profile', and, 'Logout' while user is logged in.
+- **Log Out** of the application.
+- Verify navbar links return to original state (Recipes', 'Signup' and 'Login') once user is logged out.
+- Declare test, 'passed'.
+
+## Signup
+
+
+## Login
+
+### Login Browser Test:
+- Visit app in web browser.
+- Click, [Login](https://dash-ms3.herokuapp.com/login).
+- Enter previously created username.
+- Enter previously created password. 
+- Ensure existing user is able to login successfully. 
+- Declare test, 'passed'.
+
+### Login Test 2:
+- Visit app in web browser.
+- Click, [Login](https://dash-ms3.herokuapp.com/login).
+- Enter previously created username.
+- Enter incorrect password. 
+- Ensure existing user is unable to login with invalid credentials. 
+- Declare test, 'passed'.
+
+### Login Test 3:
+- Visit app in web browser.
+- Click, [Login](https://dash-ms3.herokuapp.com/login).
+- Enter username.
+- Enter correct password with incorrect cases. 
+- Ensure password is case-sensitive.
 - Declare test, 'passed'.
 
 ## Search 
@@ -33,9 +72,9 @@ The following tests have been conducted by the developer. Each test described be
 ### Create Index Test 1:
 - Visit GitPod worspace
 - Type `python3` to activate the Python interpreter
-- Type, `from app import mongo` to import mongoDB
+- Type, `from app import mongo` to connect to MongoDB
 - Create the Search Index
-- Verify the following text printed after creating the index, `recipe_name_text_recipe_description_text_prep_time_text`
+- Verify the following text printed after creating the index, `recipe_name_text_recipe_description_text`
 - Declare Test, 'passed'.
 
 ### Create Index Test 2:
@@ -46,6 +85,41 @@ The following tests have been conducted by the developer. Each test described be
 - Verify that the newly created index appears on the page.
 - Declare test, 'passed'.
 
-![index](wireframes/index.jpg)
+![index](wireframes/index.png)
 
-### Search Index Test 1:
+### Searchbar Not Case-Sensitive Test 1:
+- Open deployed project in web browser.
+- Visit the searchbar.
+- Enter the word, 'tomato' in all lowercase letters in searchbar.
+- Ensure that all recipes including the word, 'tomato' in the name and/or description are displayed.
+- Repeat the above steps, but with all capital letters.
+- Repeat the above steps, using a mixture of lowercase and uppercase letters.
+- Verify that all relevant recipes display in search results regardless of letter case.
+- Declare test, 'passed'.
+
+### Searchbar Not Case-Sensitive Test 2:
+- Open deployed project in mobile web browser.
+- Visit the search-bar.
+- Enter the word, 'chicken' in all lowercase letters in searchbar.
+- Ensure that all recipes including the word, 'chicken' in the name and/or description are displayed.
+- Repeat the above steps, but with all capital letters.
+- Repeat the above steps, using a mixture of lowercase and uppercase letters.
+- Verify that all relevant recipes display in search results.
+- Declare test, 'passed'.
+
+### 'Reset' Search Button Test #1:
+- Open deployed project in web browser.
+- Visit the searchbar.
+- Enter the word, "GitHub" to ensure no results are generated.
+- Click on the, 'Reset' button.
+- Verify that search resets.
+- Declare test, 'passed'.
+
+### 'Reset' Search Button Test #2:
+- Open deployed project in mobile browser.
+- Visit the searchbar.
+- Enter the word, "GitHub" to ensure no results are generated.
+- Click on the, 'Reset' button.
+- Verify that search resets.
+- Declare test, 'passed'.
+
