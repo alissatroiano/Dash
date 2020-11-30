@@ -5,15 +5,20 @@ from flask import (
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.utils import secure_filename
 if os.path.exists("env.py"):
     import env
 
+
+UPLOAD_FOLDER = '/static/images'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 app = Flask(__name__)
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 mongo = PyMongo(app)
 
@@ -119,6 +124,34 @@ def add_recipe():
         return redirect(url_for("get_recipes"))
 
     return render_template("add_recipe.html")
+
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+@app.route('/', methods=['GET', 'POST'])
+def upload_file():
+    if request.method == 'POST':
+        # check if the post request has the image_source part
+        if 'image_source' not in request.files:
+            flash('No file part')
+            return render_template("add_recipe.html")
+
+        image_source = request.files['image_source']
+        # if user does not select file, browser also
+        # submit an empty part without filename
+        if image_source.filename == '':
+            flash('No selected file')
+            return redirect(request.url)
+        if image_source and allowed_file(image_source.filename):
+            filename = secure_filename(image_source.filename)
+            image_source.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            return redirect(url_for('uploaded_file',
+                                    filename=filename))
+
+    return render_template("recipes.html")
 
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])

@@ -30,6 +30,9 @@
                 {{ recipe.recipe_name }}</h4>
             </div>
             <div class="collapsible-body" style="margin: 10px 10px;">
+            <div class="row">
+                <img src="{{ recipe.image_source }}" id="image_source" style="max-width: 100%; height:auto;" /> {{ recipe.image_source }}
+            </div>
                 <h6><i class="fas fa-info-circle light-green-text text-darken-2 prefix"></i> What is it?: </h6>
                 <p>{{ recipe.recipe_description }}</p>
                 <div class="row">

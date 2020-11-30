@@ -6,7 +6,7 @@
 <!-- Row and card-panel for Add Recipe Form -->
     <div class="row card-panel transparent text-shadow" style="margin-top:20px;">
     <!-- Add Recipe Form -->
-    <form class="col s12" method="POST" action="{{ url_for('add_recipe') }}" style="padding: 10px; margin-top:20px;">
+    <form class="col s12" method="POST" action="{{ url_for('add_recipe') }}" enctype="multipart/form-data" style="padding: 10px; margin-top:20px;">
         <!-- Recipe Name Input Field -->
         <div class="row">
             <div class="input-field col s12">
@@ -20,7 +20,7 @@
     <div class="row">
         <div class="input-field col s12">
             <i class="fas fa-file-upload prefix light-green-text text-darken-1"></i>
-              <input type="file" name="image_source" />
+              <input type="file" name="image_source" id="image_source"/>
         </div>
 
     </div>
