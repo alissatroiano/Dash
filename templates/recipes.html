@@ -5,6 +5,8 @@
 
 <div class="row">
     <div class="col s12">
+    <!--Search bar starts here-->
+        <!-- Use GET method for searchbar form -->
         <form action="{{ url_for('search') }}" method="GET" class="col s12 center-align">
             <div class="row align-wrapper center-align">
                 <div class="input-field col s12">
@@ -21,61 +23,50 @@
             </div>
         </form>
     </div>
+    <!--./end-searchbar-->
 </div>
 
-<div class="row col s12">
-    {% if recipes|length > 0 %}
-    <ul class="collapsible popout">
-        {% for recipe in recipes %}
-        <li>
-            <div class="collapsible-header light-green lighten-1 text-shadow">
-                <img src="{{ recipe.file }}" style="max-width: 50px; height: auto;">
-
-                <h4>
+<!-- All Recipes Section Starts Here-->
+<div class="row">
+    <div class="col s12">
+{% if recipes|length > 0 %}
+    {% for recipe in recipes %}
+    <div class="card">
+        <!-- Card Image Header -->
+            <div class="card-image">
+                <img src="{{ recipe.file }}" style="max-width: 100%; height: auto;">
+                <span class="card-title">
                     <i class="fas fa-utensils prefix"></i>
-                    {{ recipe.recipe_name }}</h4>
+                    {{ recipe.recipe_name }}</span>
             </div>
-            <div class="collapsible-body" style="margin: 10px 10px;">
-                <div class="row">
-                    <img src="{{ recipe.image_source }}" id="image_source" style="max-width: 100%; height:auto;" />
-                    {{ recipe.image_source }}
-                </div>
+            <div class="card-content">
                 <h6><i class="fas fa-info-circle light-green-text text-darken-2 prefix"></i> What is it?: </h6>
                 <p>{{ recipe.recipe_description }}</p>
-                <div class="row">
-                    <div class="col s6">
-                        <h6><i class="fas fa-clock light-green-text text-darken-2 prefix"></i> Prep Time: </h6>
-                        <p>{{ recipe.prep_time }}</p>
-                    </div>
-                    <div class="col s6">
-                        <h6><i class="fas fa-utensils light-green-text text-darken-2 prefix"></i> Tools Needed: </h6>
-                        <p>{{ recipe.tools_needed }}</p>
-                    </div>
-                </div>
+                <h6><i class="fas fa-clock light-green-text text-darken-2 prefix"></i> Prep Time: </h6>
+                <p>{{ recipe.prep_time }}</p>
+                <h6><i class="fas fa-utensils light-green-text text-darken-2 prefix"></i> Tools Needed: </h6>
+                <p>{{ recipe.tools_needed }}</p>
                 <h6><i class="fas fa-blender light-green-text text-darken-2 prefix"> </i> Ingredients: </h6>
                 <p>{{ recipe.recipe_ingredients }}</p>
                 <h6><i class="fas fa-tasks light-green-text text-darken-1 "></i> Instructions: </h6>
                 <p>{{ recipe.recipe_instructions }}</p>
-                <div class="row">
-                    <!-- Any user may edit a recipe as long as they are logged in-->
-                    {% if session["user"] %}
-                    <div class="col s12 center-align">
-                        <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn light-green lighten-1"
-                            id="edit-recipe"><i class="fas fa-pen-fancy white-text"></i> Edit</a>
-                        {% endif %}
-                        <!-- Provide 'Delete' option for recipe authors -->
-                        {% if session["user"] == recipe.created_by|lower %}
-                        <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="btn red accent-2"
-                            id="delete-recipe"><i class="fas fa-trash-alt white-text"></i> Delete</a>
-                    </div>
-                    {% endif %}
+                <div class="card-action center-align">
+                <!-- Any user may edit a recipe as long as they are logged in-->
+                {% if session["user"] %}
+                <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn light-green lighten-1" id="edit-recipe"><i class="fas fa-pen-fancy white-text"></i> Edit</a>
+                {% endif %}
+                <!-- Provide 'Delete' option for recipe authors -->
+                {% if session["user"] == recipe.created_by|lower %}
+                <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="btn red accent-2" id="delete-recipe"><i class="fas fa-trash-alt white-text"></i> Delete</a>
+                {% endif %}
                 </div>
             </div>
-        </li>
-        {% endfor %}
-    </ul>
-    {% else %}
+    </div>
+    {% endfor %}
+</div>
+{% else %}
     <h4 class="deep-orange-text text-accent-3 center-align">No Recipes Found</h4>
-    {% endif %}
+{% endif %}
+
 </div>
 {% endblock %}

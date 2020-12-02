@@ -12,9 +12,6 @@ if os.path.exists("env.py"):
 UPLOAD_FOLDER = './static/uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
-UPLOAD_FOLDER = '/static/images'
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
-
 app = Flask(__name__)
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
