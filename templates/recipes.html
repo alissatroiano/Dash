@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3 class="brown-text text-darken-4 center-align">Dash Recipes</h3>
+<h3 class="brown-text text-darken-4 center-align">All Recipes</h3>
 
 <div class="row">
+<div class="col s12">
     <form action="{{ url_for('search') }}" method="GET" class="col s12 center-align">
         <div class="row align-wrapper center-align">
             <div class="input-field col s12">
@@ -18,6 +19,7 @@
             </div>
         </div>
     </form>
+</div>
 </div>
 
 <div class="row col s12">
