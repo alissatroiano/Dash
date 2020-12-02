@@ -33,11 +33,12 @@
     {% for recipe in recipes %}
     <div class="card">
         <!-- Card Image Header -->
-            <div class="card-image">
+            <div class="card-title">
                 <img src="{{ recipe.file }}" style="max-width: 100%; height: auto;">
-                <span class="card-title">
+                    <h6>
                     <i class="fas fa-utensils prefix"></i>
-                    {{ recipe.recipe_name }}</span>
+                    {{ recipe.recipe_name }}
+                    </h6>
             </div>
             <div class="card-content">
                 <h6><i class="fas fa-info-circle light-green-text text-darken-2 prefix"></i> What is it?: </h6>
