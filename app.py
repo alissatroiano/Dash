@@ -5,15 +5,19 @@ from flask import (
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.utils import secure_filename
 if os.path.exists("env.py"):
     import env
 
+UPLOAD_FOLDER = './static/uploads'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
 app = Flask(__name__)
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 mongo = PyMongo(app)
 
@@ -87,7 +91,7 @@ def profile(username):
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
     return render_template("profile.html", username=username)
-    
+
     if session["user"]:
         return render_template("profile.html", username=username)
 
@@ -105,11 +109,13 @@ def logout():
 @app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():
     if request.method == "POST":
+        image_path = upload_file()
         recipe = {
             "recipe_name": request.form.get("recipe_name"),
             "prep_time": request.form.get("prep_time"),
             "recipe_description": request.form.get("recipe_description"),
             "recipe_ingredients": request.form.get("recipe_ingredients"),
+            "file": image_path,
             "tools_needed": request.form.get("tools_needed"),
             "recipe_instructions": request.form.get("recipe_instructions"),
             "created_by": session["user"]
@@ -119,6 +125,26 @@ def add_recipe():
         return redirect(url_for("get_recipes"))
 
     return render_template("add_recipe.html")
+
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+def upload_file():
+    path = url_for('static', filename='uploads/dash.jpg')
+    if 'file' not in request.files:
+        return path
+    file = request.files['file']
+    # if user does not select file, stock photo will be used
+    if file.filename == '':
+        return path
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        path = url_for('static', filename='uploads/'+filename)
+    return path
 
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])

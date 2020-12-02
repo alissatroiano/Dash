@@ -25,7 +25,9 @@
   <ul class="collapsible popout">
         {% for recipe in recipes %}
         <li>
-            <div class="collapsible-header light-green lighten-1 text-shadow"><h4>
+            <div class="collapsible-header light-green lighten-1 text-shadow">
+            <img src="{{ recipe.file }}" style="max-width: 50px; height: auto;" />
+            <h4>
                 <i class="fas fa-utensils prefix"></i>
                 {{ recipe.recipe_name }}</h4>
             </div>
