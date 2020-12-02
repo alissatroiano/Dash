@@ -113,6 +113,10 @@ In order to properly develop this full-stack application, the following features
 
 - This project uses **Git** for code storage and version control.
 
+- [GitHub](https://github.com/)
+
+- This project uses **GitHub** for version control and project management.
+
 - [Materialize](https://materializecss.com/)
 
 - This project used **Materialize** to add styles and improve user experience.
@@ -155,7 +159,9 @@ In addition, if it is not obvious, you should also describe how to run your code
 
 - The steps taken to properly configure Flask and MongoDB were learned by following [Code Institute's](https://codeinstitute.net/) 'Data Centric Development: Flask Mini Project' lesson.
 
-- The steps taken to import the favicon into the head element of the base html page were copied from (Stack Overflow)(https://stackoverflow.com/questions/11893478/add-favicon-to-website)
+- The steps taken to import the favicon into the head element of the base html page were copied from (Stack Overflow)(https://stackoverflow.com/questions/11893478/add-favicon-to-website).
+
+- The developer made use of [GitHub Projects](https://github.com/users/alissatroiano/projects/4) to manage development and set sprints in an efficient manner.
 
 ### Content
 
