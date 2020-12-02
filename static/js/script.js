@@ -3,5 +3,5 @@
 $(document).ready(function() {
     $('.sidenav').sidenav({edge: "right"});
     $('.fixed-action-btn').floatingActionButton();
-     $('.collapsible.popout').collapsible();
+    $('.collapsible.popout').collapsible();
 });
