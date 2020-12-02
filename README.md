@@ -153,7 +153,9 @@ In addition, if it is not obvious, you should also describe how to run your code
 
 ### Development Process
 
-- The steps taken to properly configure Flask and MongoDB were learned by following Code Institute's 'Data Centric Development' module.
+- The steps taken to properly configure Flask and MongoDB were learned by following [Code Institute's](https://codeinstitute.net/) 'Data Centric Development: Flask Mini Project' lesson.
+
+- The steps taken to import the favicon into the head element of the base html page were copied from (Stack Overflow)(https://stackoverflow.com/questions/11893478/add-favicon-to-website)
 
 ### Content
 
@@ -163,7 +165,11 @@ In addition, if it is not obvious, you should also describe how to run your code
 
 ### Media
 
-- The photo used for the Vegan Chili recipe on the landing page was copied from [Wikimedia](https://commons.wikimedia.org/wiki/File:Vegan_Chili_(8078817046).jpg) and is licensed under Creative Commons.
+- Dash's favicon was copied from [Openclipart.org](https://openclipart.org/detail/321362/kitchen-utensils) and is licensed under Creative Commons.
+
+- The default photo that is selected when a user does not upload an image was copied from [unsplash](https://unsplash.com/photos/fnztlIb52gU).
+
+- The icon in the branded navigation menu, responsive sidebar and footer was copied from [Font Awesome](http://fontawesome.com/)
 
 ### Acknowledgements
 
