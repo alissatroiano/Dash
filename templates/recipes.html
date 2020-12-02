@@ -4,11 +4,11 @@
 <h3 class="brown-text text-darken-4 center-align">Dash Recipes</h3>
 
 <div class="row">
-    <form action="{{ url_for('search') }}" method="POST" class="col s12 center-align">
+    <form action="{{ url_for('search') }}" method="GET" class="col s12 center-align">
         <div class="row align-wrapper center-align">
             <div class="input-field col s12">
                 <i class="fas fa-search prefix light-green-text text-darken-1"> </i>
-                    <input type="text" name="query" id="query" class="validate" minlength="3" required>
+                    <input type="text" name="query" id="query" class="validate" minlength="3" value="{{ request.args['query'] }}" required>
                     <label for="query">Search Recipes</label>
             </div>
             <div class="col s12">
@@ -26,7 +26,8 @@
         {% for recipe in recipes %}
         <li>
             <div class="collapsible-header light-green lighten-1 text-shadow">
-            <img src="{{ recipe.file }}" style="max-width: 50px; height: auto;" />
+            <img src="{{ recipe.file }}" style="max-width: 50px; height: auto;">
+            
             <h4>
                 <i class="fas fa-utensils prefix"></i>
                 {{ recipe.recipe_name }}</h4>
