@@ -12,6 +12,8 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 	<!--Custom Stylesheet-->
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+    <!--Favicon -->
+    <link rel="shortcut icon" href="static/images/favicon.ico" type="image/x-icon">
 	{% block styles %}
 	{% endblock %}
 	<title>Dash</title>
@@ -22,7 +24,7 @@
 		<!--Top Navbar-->
 		<nav class="nav-extended text-shadow light-green lighten-1">
 			<div class="nav-wrapper">
-				<a href="{{ url_for('get_recipes') }}" class="brand-logo center">Dash</a>
+				<a href="{{ url_for('get_recipes') }}" class="brand-logo center"><i class="fas fa-utensils prefix"></i>Dash</a>
 				<a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
                 <ul class="right hide-on-med-and-down">
 					<li><a href="{{ url_for('get_recipes') }}">Home</a></li>
@@ -75,7 +77,7 @@
     <div class="container">
         <div class="row">
             <div class="col s12 center">
-                <h5 class="white-text">Dash</h5>
+                <h4 class="white-text"><i class="fas fa-utensils prefix"></i> Dash</h4>
                 <p class="white-text">Recipe crowdsourcing</p>
             </div>
             <div class="col s12 center">

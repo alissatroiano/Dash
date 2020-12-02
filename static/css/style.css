@@ -10,6 +10,8 @@ h4 {
     font-family: 'Pacifico', cursive;
     font-size: 1.4rem;
     color: #011408;
+    font-weight: 300;
+    text-shadow: 1px 1px 2px #4444447a;
 }
 
 h5, h6 {
