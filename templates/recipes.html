@@ -29,12 +29,13 @@
 <!-- All Recipes Section Starts Here-->
 <div class="row">
 {% if recipes|length > 0 %}
-    <div class="col">
     {% for recipe in recipes %}
-    <div class="card s12 m6 l3" id="card-reveal">
+    <div class="{{ loop.cycle('odd', 'even') }}">{{ col }}
+     <div class="col s12 m6">
+    <div class="card" id="card-reveal">
         <!-- Card Image Header -->
-    <div class="card-image waves-effect waves-block waves-light" style="max-width: 100%;">
-        <img src="{{ recipe.file }}" class="activator" id="card-image">
+    <div class="card-image  valign-wrapper waves-effect waves-block waves-light" style="max-width: 100%;">
+        <img src="{{ recipe.file }}" class="responsive-img activator" id="card-image">
     </div>
     <div class="card-content">
         <span class="card-title activator">
@@ -65,6 +66,8 @@
                 </div>
                 </div>
             </div>
+    </div>
+     </div>
     </div>
     {% endfor %}
 </div>

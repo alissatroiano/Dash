@@ -144,3 +144,29 @@ i.fas.fa-user-circle.light-green-text.text-shadow.center-align {
     font-size: 10rem; 
     margin-top: 30px;
 }
+
+img {
+    max-width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.card-image, #card-image {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+#card-reveal {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/*--------------------------------------- Footer */
+
+footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+}
