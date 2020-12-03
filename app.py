@@ -155,6 +155,7 @@ def edit_recipe(recipe_id):
             "prep_time": request.form.get("prep_time"),
             "recipe_description": request.form.get("recipe_description"),
             "recipe_ingredients": request.form.get("recipe_ingredients"),
+            "file": path,
             "tools_needed": request.form.get("tools_needed"),
             "recipe_instructions": request.form.get("recipe_instructions"),
             "edited_by": session["user"]
