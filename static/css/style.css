@@ -24,7 +24,7 @@ h5, h6 {
 
 p, body {
      font-family: 'Josefin Sans', sans-serif;
-     font-size: 1.2rem;
+     font-size: 1rem;
 }
 
 /*----------------------------------- Navbar */
@@ -71,31 +71,13 @@ label {
 }
 
 /*--------------------------------------------- Recipe Page */
-.collapsible-header {
-    line-height: 1;
-}
-
-.collapsible-body {
-    padding: .5rem;
-}
-
-.collection-item {
-    font-size: 1rem;
-    font-weight: 400;
-    color: #4e342e;
-    margin: 0px auto;
-}
-
-.card-reveal {
-    padding: 5px;
-}
-
-#cards {
-}
-
 #card-image {
     max-width: 100%;
     height: auto;
+}
+
+hr#divider {
+    border-top: 1px solid #7ec46a;
 }
 
 /*------------------------------------------- Add Recipe */
@@ -117,9 +99,9 @@ textarea {
 .btn#delete-recipe, button, #edit {
       font-family: 'Pacifico', cursive;
       text-transform: none;
-      font-size: 1.2rem;
+      font-size: 1rem;
       letter-spacing: 1px;
-      margin: 5px 5px;
+      margin: 2px 0px;
 }
 
 a#cancel, .red.btn.accent-2.text-shadow {
@@ -147,11 +129,7 @@ i.fas.fa-user-circle.light-green-text.text-shadow.center-align {
 
 #card-image {
     max-width: 100%;
-        height: auto;
-    overflow: hidden;
-}
-
-div.card, #card {
+    height: auto;
     overflow: hidden;
 }
 
@@ -168,8 +146,7 @@ footer {
 /*------------------------------------- Media Queries */
 @media (min-width: 768px) and (max-width: 1024px) {
     #cards {
-    overflow: hidden;
-    min-height: 30vh;
+    min-height: 40vh;
     }
 }
 

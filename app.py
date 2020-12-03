@@ -150,12 +150,13 @@ def upload_file():
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
     if request.method == "POST":
+        edit_image = upload_file()
         submit = {
             "recipe_name": request.form.get("recipe_name"),
             "prep_time": request.form.get("prep_time"),
             "recipe_description": request.form.get("recipe_description"),
             "recipe_ingredients": request.form.get("recipe_ingredients"),
-            "file": path,
+            "file": edit_image,
             "tools_needed": request.form.get("tools_needed"),
             "recipe_instructions": request.form.get("recipe_instructions"),
             "edited_by": session["user"]

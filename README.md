@@ -165,6 +165,8 @@ In addition, if it is not obvious, you should also describe how to run your code
 
 - The **cycle method** used to create different columns and rows on the recipes landing page was learned by reading the Tips and Tricks portion of [Jinja's documentaton](https://jinja.palletsprojects.com/en/2.11.x/tricks/).
 
+- The media queries used to style the recipe cards were learned from this [GitHub](https://gist.github.com/gokulkrishh/242e68d1ee94ad05f488) repository.
+
 ### Content
 
 - The grid layout and responsive design were made possible by importing [Materialize](https://materializecss.com/) front-end framework and using the built-in classes.
