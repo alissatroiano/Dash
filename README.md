@@ -163,11 +163,13 @@ In addition, if it is not obvious, you should also describe how to run your code
 
 - The developer made use of [GitHub Projects](https://github.com/users/alissatroiano/projects/4) to manage development and set sprints in an efficient manner.
 
+- The **cycle method** used to create different columns and rows on the recipes landing page was learned by reading the Tips and Tricks portion of [Jinja's documentaton](https://jinja.palletsprojects.com/en/2.11.x/tricks/).
+
 ### Content
 
 - The grid layout and responsive design were made possible by importing [Materialize](https://materializecss.com/) front-end framework and using the built-in classes.
 
-- The 'Vegan Chili' recipe was copied from [delish](https://www.delish.com/cooking/recipe-ideas/g1428/fall-vegetarian-recipes/?slide=1) and [FromMyBowl](https://frommybowl.com/easy-vegan-chili/#tasty-recipes-4728)
+- The 'Cauliflower Grilled Cheese' recipe was copied from [delish](https://www.delish.com/cooking/recipe-ideas/g3733/healthy-dinner-recipes/).
 
 ### Media
 
@@ -176,6 +178,8 @@ In addition, if it is not obvious, you should also describe how to run your code
 - The default photo that is selected when a user does not upload an image was copied from [unsplash](https://unsplash.com/photos/fnztlIb52gU).
 
 - The icon in the branded navigation menu, responsive sidebar and footer was copied from [Font Awesome](http://fontawesome.com/)
+
+- The footer styles were copied from [Materialize]() and altered via copying [W3 Schools](https://www.w3schools.com/howto/howto_css_fixed_footer.asp).
 
 ### Acknowledgements
 
