@@ -83,7 +83,16 @@ label {
     font-size: 1rem;
     font-weight: 400;
     color: #4e342e;
-    margin-top: 0px;
+    margin: 0px auto;
+}
+
+.card-reveal {
+    padding: 5px;
+}
+
+#card-image {
+    max-width: 100%;
+    height: auto;
 }
 
 /*------------------------------------------- Add Recipe */
@@ -109,7 +118,7 @@ textarea {
       text-transform: none;
       font-size: 1.2rem;
       letter-spacing: 1px;
-      margin: 5px;
+      margin: 5px 5px;
 }
 
 a#cancel, .red.btn.accent-2.text-shadow {
