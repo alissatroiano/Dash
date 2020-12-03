@@ -90,6 +90,10 @@ label {
     padding: 5px;
 }
 
+#cards {
+    min-height: 50vh;
+}
+
 #card-image {
     max-width: 100%;
     height: auto;
@@ -145,19 +149,14 @@ i.fas.fa-user-circle.light-green-text.text-shadow.center-align {
     margin-top: 30px;
 }
 
-img {
+#card-image {
     max-width: 100%;
-    height: auto;
+        height: auto;
     overflow: hidden;
 }
 
-.card-image, #card-image {
-    max-width: 100%;
-    overflow: hidden;
-}
-
-#card-reveal {
-    max-width: 100%;
+#card {
+    min-height: 50vh;
     overflow: hidden;
 }
 
