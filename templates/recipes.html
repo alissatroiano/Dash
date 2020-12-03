@@ -40,12 +40,13 @@
         <span class="card-title activator">
             {{ recipe.recipe_name }}</span>
                 <p>{{ recipe.recipe_description }}</p>
+                <p class="collection-item" style="margin-top: 10px;"><i class="fas fa-clock light-green-text text-darken-2 prefix"></i> Prep Time:
+                {{ recipe.prep_time }}
+            </p>
             </div>
             <div class="card-reveal">
-            <span class="card-title"> {{ recipe.recipe_name }}</span>
-            <div class="collection-item" style="margin-bottom: 20px;"><i class="fas fa-clock light-green-text text-darken-2 prefix"></i> Prep Time:
-                {{ recipe.prep_time }}
-            </div>
+            <div class="activator">
+                <span class="card-title"><i class="fas fa-times prefix right"></i> {{ recipe.recipe_name }}</span>
                 <h6><i class="fas fa-utensils light-green-text text-darken-2 prefix"></i> Tools Needed: </h6>
                 <p>{{ recipe.tools_needed }}</p>
                 <h6><i class="fas fa-blender light-green-text text-darken-2 prefix"> </i> Ingredients: </h6>
@@ -61,6 +62,7 @@
                 {% if session["user"] == recipe.created_by|lower %}
                 <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="btn red accent-2" id="delete-recipe"><i class="fas fa-trash-alt white-text"></i> Delete</a>
                 {% endif %}
+                </div>
                 </div>
             </div>
     </div>
