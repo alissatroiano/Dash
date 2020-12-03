@@ -181,6 +181,12 @@ In addition, if it is not obvious, you should also describe how to run your code
 
 - The footer styles were copied from [Materialize]() and altered via copying [W3 Schools](https://www.w3schools.com/howto/howto_css_fixed_footer.asp).
 
+- The stock images used to create the recipes were copied from:
+
+    - Cauliflower Grilled Cheese; [Unsplash](https://unsplash.com/photos/SqYmTDQYMjo)
+
+    - Tomato Chicken Garlic [Unsplash](https://unsplash.com/photos/9WfO94SjhmE)
+
 ### Acknowledgements
 
 - I received markdown instructions from this [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#blockquotes)

@@ -30,11 +30,11 @@
 <div class="row">
 {% if recipes|length > 0 %}
     {% for recipe in recipes %}
-    <div class="{{ loop.cycle('odd', 'even') }}">{{ col }}
-     <div class="col s12 m6">
+    <div class="{{ loop.cycle('odd', 'even') }}">{{ row }}
+     <div class="col s12 m6 l2">
     <div class="card" id="card-reveal">
         <!-- Card Image Header -->
-    <div class="card-image  valign-wrapper waves-effect waves-block waves-light" style="max-width: 100%;">
+    <div class="card-image valign-wrapper waves-effect waves-block waves-light">
         <img src="{{ recipe.file }}" class="responsive-img activator" id="card-image">
     </div>
     <div class="card-content">
