@@ -40,30 +40,6 @@ button, #btn {
     font-size: 1.3rem;
 }
 
-input, input:focus,
-input#username:focus,
-input#password:focus {
-  border-bottom: 1px solid #a1887f;
-  box-shadow: 0 1px 0 0 #a1887f;
-}
-
-label, label:focus, label.active,
-label#user-label.active,
-label#user-label:focus,
-label#password-label:focus, label#password-label.active
- {
-  color:#a1887f;
-}
-
-input {
-    font-family: 'Josefin Sans', sans-serif;
-    color: #3e2723;
-}
-
-label {
-    color: #3e2723;
-}
-
 /*-------------------------------------------- Flashes */
 .flashes h4 {
     line-height: 2;
