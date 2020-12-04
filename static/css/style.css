@@ -71,9 +71,11 @@ label {
 }
 
 /*--------------------------------------------- Recipe Page */
-#card-image {
-    max-width: 100%;
-    height: auto;
+.card .card-content .card-title {
+    font-size: 1.3rem;
+    color: #24380e;
+    letter-spacing: .5px;
+    font-family: 'Pacifico', cursive;
 }
 
 hr#divider {
@@ -148,11 +150,21 @@ footer {
     #cards {
     min-height: 40vh;
     }
+    #card-image {
+    max-width: 100%;
+    min-height: 200px;
+    overflow: hidden;
+    }
 }
 
 @media (min-width: 1025px) and (max-width: 1280px) {
     #cards {
-        min-height: 60vh;
+        min-height: 50vh;
         overflow: hidden;
+    }
+    #card-image {
+    max-width: 100%;
+    min-height: 250px;
+    overflow: hidden;
     }
 }

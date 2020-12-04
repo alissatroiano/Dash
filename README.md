@@ -173,6 +173,8 @@ In addition, if it is not obvious, you should also describe how to run your code
 
 - The 'Cauliflower Grilled Cheese' recipe was copied from [delish](https://www.delish.com/cooking/recipe-ideas/g3733/healthy-dinner-recipes/).
 
+- Text shadow styles were copied from [CSS Tricks](https://css-tricks.com/almanac/properties/t/text-shadow/).
+
 ### Media
 
 - Dash's favicon was copied from [Openclipart.org](https://openclipart.org/detail/321362/kitchen-utensils) and is licensed under Creative Commons.
@@ -196,3 +198,5 @@ In addition, if it is not obvious, you should also describe how to run your code
 - I received UX inspiration from [Awwwards](https://www.awwwards.com)
 
 - I received UX inspiration from [Behance](https://www.behance.net)
+
+- 
