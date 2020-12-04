@@ -3,48 +3,40 @@
 
 <h3 class="brown-text text-darken-4 center-align" style="margin:30px 0px;">Add Recipe</h3>
 
-<!-- Row and card-panel for Add Recipe Form -->
-    <div class="row card-panel transparent text-shadow" style="margin-top:20px;">
-    <!-- Add Recipe Form -->
-    <form class="col s12" method="POST" action="{{ url_for('add_recipe') }}" enctype="multipart/form-data" style="padding: 10px; margin-top:20px;">
-        <!-- Recipe Name Input Field -->
+<!-- Row and Card-Panel Start Here -->
+<div class="row card-panel transparent text-shadow" style="margin-top:20px;">
+    <!-- Add Recipes Form with enctype for file upload functionality -->
+    <form class="col s12" method="POST" action="{{ url_for('add_recipe') }}" enctype="multipart/form-data"
+        style="padding: 10px; margin-top:20px;">
+        <!-- Recipe Name Row -->
         <div class="row">
+            <!-- Recipe Name Input Field -->
             <div class="input-field col s12">
                 <i class="fas fa-pen prefix light-green-text text-darken-1"></i>
-                <input id="recipe_name" name="recipe_name" type="text" class="validate" required>
+                <input id="recipe_name" name="recipe_name" type="text" class="validate" required />
                 <label for="recipe_name">Recipe Name</label>
             </div>
         </div>
-
-    <!-- Upload an Image -->
-    <div class="row">
-        <div class="input-field col s12">
-            <i class="fas fa-file-upload prefix light-green-text text-darken-1"></i>
-              <input type="file" name="file" id="file" />
-        </div>
-    </div>
-
-          <!--/....................... Recipe Description Row-->
+        <!--/ Recipe Description Row-->
         <div class="row">
             <div class="input-field col s12">
-                <i class="fas fa-edit prefix light-green-text text-darken-1"></i>
+                <i class="fas fa-edit prefix light-green-text text-darken-1">
+                </i>
                 <!-- Recipe Description Textarea -->
-                <textarea id="recipe_description" name="recipe_description" type="text" minlength="5" maxlength="200"
+                <textarea id="recipe_description" name="recipe_description" minlength="5" maxlength="200"
                     class="materialize-textarea validate" required></textarea>
                 <label for="recipe_description">Description</label>
             </div>
         </div>
-
-        <!--/................. Prep Time and Tools Needed Row -->
+        <!--/ Prep Time and Tools Needed Row -->
         <div class="row">
-        <!-- Prep Time Field -->
+            <!-- Prep Time Input Field -->
             <div class="input-field col s6">
                 <i class="fas fa-clock prefix light-green-text text-darken-1"></i>
-                <input id="prep_time" name="prep_time" type="text" minlength="5" maxlength="100"
-                    class="validate" required />
+                <input id="prep_time" name="prep_time" type="text" minlength="5" maxlength="100" class="validate"
+                    required />
                 <label for="prep_time">Prep Time</label>
             </div>
-
             <!--Tools Needed Input Field-->
             <div class="input-field col s6">
                 <i class="fas fa-blender prefix light-green-text text-darken-1"></i>
@@ -52,27 +44,42 @@
                 <label for="tools_needed">Tools Needed</label>
             </div>
         </div>
-    <!--/....................... Recipe Ingredients Row-->
+        <!--/ Recipe Ingredients Row-->
         <div class="row">
+            <!-- ingredients input -->
             <div class="input-field col s12">
                 <i class="fas fa-carrot prefix light-green-text text-darken-1"></i>
                 <!-- Recipe Ingredients Textarea -->
-                <textarea id="recipe_ingredients" name="recipe_ingredients" type="text" minlength="5" maxlength="200"
+                <textarea id="recipe_ingredients" name="recipe_ingredients" minlength="5" maxlength="500"
                     class="materialize-textarea validate" required></textarea>
                 <label for="recipe_ingredients">Ingredients</label>
             </div>
         </div>
-
-        <!-- Instructions Input Field -->
+        <!-- Recipe Instructions Row -->
         <div class="row">
+            <!-- recipe instructions textarea -->
             <div class="input-field col s12">
                 <i class="fas fa-tasks prefix light-green-text text-darken-1"></i>
-                <textarea id="recipe_instructions" name="recipe_instructions" type="text" minlength="5" maxlength="500" class="materialize-textarea validate" required></textarea>
+                <textarea id="recipe_instructions" name="recipe_instructions" minlength="5" maxlength="500"
+                    class="materialize-textarea validate" required></textarea>
                 <label for="recipe_instructions">Instructions</label>
             </div>
         </div>
-        <!--Submit Button-->
+        <!-- File Upload Row-->
         <div class="row">
+            <!-- File Input -->
+            <div class="file-field input-field col s12">
+                <i class="fas fa-file-upload prefix light-green-text text-darken-1"></i>
+                <label for="file">Upload</label>
+                <input type="file" name="file" id="file" />
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+            </div>
+        </div>
+        <!--Form Action Row-->
+        <div class="row">
+            <!-- submit button -->
             <div class="col s12 center-align">
                 <button class="light-green darken-1 waves-effect waves-light btn" type="submit" name="action">Submit<i
                         class="fas fa-share right"></i>

@@ -10,7 +10,7 @@ if os.path.exists("env.py"):
     import env
 
 UPLOAD_FOLDER = './static/uploads'
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'heic'}
 
 app = Flask(__name__)
 
