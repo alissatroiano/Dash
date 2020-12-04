@@ -123,3 +123,14 @@ The following tests have been conducted by the developer. Each test described be
 - Verify that search resets.
 - Declare test, 'passed'.
 
+## CREATE (C.R.U.D Testing)
+
+### Add Recipe W3C Test 1:
+- Copy all of `add_recipe.html`
+- Paste code in [W3C HTML Validator](https://validator.w3.org/)
+- Observe **textarea** errors, `Attribute type not allowed on element textarea at this point.`.
+- Open workspace.
+- Delete `type="text"` from all textareas.
+- Copy contents of `add_recipe.html` and paste in W3C html validator.
+- Ensure all textarea related errors are no longer present.
+- Declare test, 'passed'.
