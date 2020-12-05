@@ -10,7 +10,7 @@ if os.path.exists("env.py"):
     import env
 
 UPLOAD_FOLDER = './static/uploads'
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'heic'}
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
 app = Flask(__name__)
 
@@ -106,26 +106,6 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/add_recipe", methods=["GET", "POST"])
-def add_recipe():
-    if request.method == "POST":
-        image_path = upload_file()
-        recipe = {
-            "recipe_name": request.form.get("recipe_name"),
-            "prep_time": request.form.get("prep_time"),
-            "recipe_description": request.form.get("recipe_description"),
-            "recipe_ingredients": request.form.get("recipe_ingredients"),
-            "file": image_path,
-            "tools_needed": request.form.get("tools_needed"),
-            "recipe_instructions": request.form.get("recipe_instructions")
-        }
-        mongo.db.recipes.insert_one(recipe)
-        flash("Recipe successfully added")
-        return redirect(url_for("get_recipes"))
-
-    return render_template("add_recipe.html")
-
-
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -144,6 +124,26 @@ def upload_file():
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         path = url_for('static', filename='uploads/'+filename)
     return path
+
+
+@app.route("/add_recipe", methods=["GET", "POST"])
+def add_recipe():
+    if request.method == "POST":
+        image_path = upload_file()
+        recipe = {
+            "recipe_name": request.form.get("recipe_name"),
+            "prep_time": request.form.get("prep_time"),
+            "recipe_description": request.form.get("recipe_description"),
+            "recipe_ingredients": request.form.get("recipe_ingredients"),
+            "file": image_path,
+            "tools_needed": request.form.get("tools_needed"),
+            "recipe_instructions": request.form.get("recipe_instructions")
+        }
+        mongo.db.recipes.insert_one(recipe)
+        flash("Recipe successfully added")
+        return redirect(url_for("get_recipes"))
+
+    return render_template("add_recipe.html")
 
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
