@@ -134,3 +134,46 @@ The following tests have been conducted by the developer. Each test described be
 - Copy contents of `add_recipe.html` and paste in W3C html validator.
 - Ensure all textarea related errors are no longer present.
 - Declare test, 'passed'.
+
+### Add Recipe Mobile Test:
+- Open deployed project in mobile web browser.
+- Login to the application.
+- Visit the, 'Add Recipe' page.
+- Fill out the input form with an image uploaded from iPhone photo library.
+- Submit the form.
+- Observe that a Jinja, error log renders after clicking, `submit.`
+- Review the contents of error report. 
+- Diagnose problem: Line 125, `app.py`: `"created_by": ["user"]`.
+- Visit the workspace and scroll down to line 125.
+- Remove conflicting keyvalue pairs from `recipes` dictionary.
+- Remove conflicting keyvalue from `submit` dictionary.
+- Repeat test steps.
+- Observe the flash notification, `Recipe successfully added.`
+- Declare test, `passed`.
+
+
+## File Upload Tests
+
+### Mobile File Upload Test #1:
+- Open deployed project in mobile web browser.
+- Login to the application.
+- Visit, 'Add Recipe' page.
+- Fill out the input form with an image uploaded from iPhone photo library.
+- Submit the form.
+- Visit `Recipes` landing page.
+- Observe images uploaded from mobile do not render after submission.
+
+
+- Observe that a Jinja, error log renders after clicking, `submit.`
+- Review the contents of error report. 
+- Diagnose problem: Line 125, `app.py`: `"created_by": ["user"]`.
+- Visit the workspace and scroll down to line 125.
+- Remove conflicting keyvalue pairs from `recipes` dictionary.
+- Remove conflicting keyvalue from `submit` dictionary.
+- Repeat test steps.
+- Observe the flash notification, `Recipe successfully added.`
+- Declare test, `passed`.
+
+
+- Reload the page and visit main recipes page.
+
