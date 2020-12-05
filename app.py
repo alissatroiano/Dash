@@ -117,8 +117,7 @@ def add_recipe():
             "recipe_ingredients": request.form.get("recipe_ingredients"),
             "file": image_path,
             "tools_needed": request.form.get("tools_needed"),
-            "recipe_instructions": request.form.get("recipe_instructions"),
-            "created_by": session["user"]
+            "recipe_instructions": request.form.get("recipe_instructions")
         }
         mongo.db.recipes.insert_one(recipe)
         flash("Recipe successfully added")
@@ -158,8 +157,7 @@ def edit_recipe(recipe_id):
             "recipe_ingredients": request.form.get("recipe_ingredients"),
             "file": edit_image,
             "tools_needed": request.form.get("tools_needed"),
-            "recipe_instructions": request.form.get("recipe_instructions"),
-            "edited_by": session["user"]
+            "recipe_instructions": request.form.get("recipe_instructions")
         }
         mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, submit)
         flash("Recipe edited!")
