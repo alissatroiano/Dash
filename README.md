@@ -186,3 +186,5 @@ In addition, if it is not obvious, you should also describe how to run your code
 - I received UX inspiration from [Awwwards](https://www.awwwards.com)
 
 - I received UX inspiration from [Behance](https://www.behance.net)
+
+- I learned about Flask file upload configurations from [Flask's Documentation](https://flask-uploads.readthedocs.io/en/latest/).
