@@ -144,11 +144,10 @@ footer {
   text-align: center;
 }
 
-
 /*------------------------------------- Media Queries */
 @media (min-width: 768px) and (max-width: 1024px) {
     #cards {
-    min-height: 40vh;
+    min-height: 30vh;
     }
     #card-image {
     max-width: 100%;
