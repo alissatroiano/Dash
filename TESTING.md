@@ -40,7 +40,6 @@ The following tests have been conducted by the developer. Each test described be
 
 ## Signup
 
-
 ## Login
 
 ### Login Browser Test:
@@ -151,7 +150,6 @@ The following tests have been conducted by the developer. Each test described be
 - Observe the flash notification, `Recipe successfully added.`
 - Declare test, `passed`.
 
-
 ## File Upload Tests
 
 ### Mobile File Upload Test #1:
@@ -162,18 +160,23 @@ The following tests have been conducted by the developer. Each test described be
 - Submit the form.
 - Visit `Recipes` landing page.
 - Observe images uploaded from mobile do not render after submission.
+- Open Chrome Developer Tools and inspect the failed image uploads.
+- Notice the request type reads, `text/html`. 
+- Add the `accept` attribute with value `image/*` to file input.
+- Reload the page to see if problem persists.
+- Open Dev Tools.
+- Observe all mobile uploaded images are now rendering as, `image/jpeg`, `image/png`, etc.
+- Declare test, 'passed'.
 
+## W3C Testing
 
-- Observe that a Jinja, error log renders after clicking, `submit.`
-- Review the contents of error report. 
-- Diagnose problem: Line 125, `app.py`: `"created_by": ["user"]`.
-- Visit the workspace and scroll down to line 125.
-- Remove conflicting keyvalue pairs from `recipes` dictionary.
-- Remove conflicting keyvalue from `submit` dictionary.
-- Repeat test steps.
-- Observe the flash notification, `Recipe successfully added.`
-- Declare test, `passed`.
-
-
-- Reload the page and visit main recipes page.
-
+### Jigsaw Test One:
+- Visit W3C Jigsaw Validator.
+- Copy `style.css` and paste via 'direct upload'.
+- Observe one `Parse Error`
+- Open the stylesheet and scroll to the line of code where the error is.
+- Notice the second closing `}` is not present in media query.
+- Add the closing bracket.
+- Test CSS again via direct upload.
+- Observe that there are zero errors remaining.
+- Declare test, 'passed'.
