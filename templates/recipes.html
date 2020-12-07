@@ -46,11 +46,13 @@
                 <!--Card Content Starts Here-->
                 <div class="card-content">
                     <span class="card-title activator">
-                        {{ recipe.recipe_name }}</span>
+                        {{ recipe.recipe_name }}
+                        <i class="fas fa-ellipsis-v prefix right activator"></i></span>
                     <p>{{ recipe.recipe_description }}</p>
-                    <p class="collection-item" style="margin-top: 10px;"><i
-                            class="fas fa-clock light-green-text text-darken-2 prefix"></i> Prep Time:
-                        {{ recipe.prep_time }} </p>
+                    <p class="activator" style="margin-top: 10px;">
+                        <i class="fas fa-clock light-green-text text-darken-2 prefix"></i> 
+                        Prep Time: {{ recipe.prep_time }} </p>
+                    
                 </div>
                 <!--./end-card-content-->
                 <!--Card Reveal Starts Here-->
