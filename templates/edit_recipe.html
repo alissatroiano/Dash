@@ -3,20 +3,21 @@
 
 <h3 class="brown-text text-darken-4 center-align" style="margin:30px 0px;">Edit Recipe</h3>
 
-<!--/.................  Row for Edit Recipe Form -->
-    <div class="row card-panel transparent text-shadow" style="margin-top:20px;">
+<!--/ Row for Edit Recipe Form -->
+<div class="row card-panel transparent text-shadow" style="margin-top:20px;">
     <!-- Add Recipe Form -->
-    <form class="col s12" method="POST" action="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" enctype="multipart/form-data" style="padding: 10px; margin-top:20px;">
+    <form class="col s12" method="POST" action="{{ url_for('edit_recipe', recipe_id=recipe._id) }}"
+        enctype="multipart/form-data" style="padding: 10px; margin-top:20px;">
         <!-- Recipe Name Input Field -->
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-pen prefix light-green-text text-darken-1"></i>
-                <input id="recipe_name" name="recipe_name" type="text" class="validate" value="{{ recipe.recipe_name}}" required>
+                <input id="recipe_name" name="recipe_name" type="text" class="validate" value="{{ recipe.recipe_name}}"
+                    required>
                 <label for="recipe_name">Recipe Name</label>
             </div>
         </div>
-
-            <!--/....................... Recipe Description Row-->
+        <!--/ Recipe Description Row-->
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-edit prefix light-green-text text-darken-1"></i>
@@ -26,61 +27,62 @@
                 <label for="recipe_description">Description</label>
             </div>
         </div>
- <!--/................. Image Upload -->
-    <div class="row">
-        <div class="input-field col s12">
-            <i class="fas fa-file-upload prefix light-green-text text-darken-1"></i>
-              <input type="file" name="file" id="file" 
-                value="{{ recipe.file }}" accept="image/*" />
+        <!--/ Image Upload Row-->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-file-upload prefix light-green-text text-darken-1"></i>
+                <!--/ File Input-->
+                <input type="file" name="file" id="file" value="{{ recipe.file }}" accept="image/*" />
+            </div>
         </div>
-    </div>
-<!--/................. prep time and tools needed row -->
-    <div class="row">
-        <div class="input-field col s6">
-            <i class="fas fa-clock prefix light-green-text text-darken-1"></i>
-                <input id="prep_time" name="prep_time" type="text" class="validate" value="{{ recipe.prep_time }}" required>
+        <!--/ Prep time and Tools Needed Row -->
+        <div class="row">
+            <!--Prep Time Input -->
+            <div class="input-field col s6">
+                <i class="fas fa-clock prefix light-green-text text-darken-1"></i>
+                <input id="prep_time" name="prep_time" type="text" class="validate" value="{{ recipe.prep_time }}"
+                    required>
                 <label for="prep_time">Prep Time</label>
             </div>
-
-            <!--Tools Needed Input Field-->
+            <!--Tools Needed Input -->
             <div class="input-field col s6">
                 <i class="fas fa-blender prefix light-green-text text-darken-1"></i>
-                <input id="tools_needed" name="tools_needed" type="text" class="validate" value="{{ recipe.tools_needed }}" required>
+                <input id="tools_needed" name="tools_needed" type="text" class="validate"
+                    value="{{ recipe.tools_needed }}" required>
                 <label for="tools_needed">Tools Needed</label>
             </div>
         </div>
-
+        <!-- Ingredients Row -->
         <div class="row">
-         <!-- Ingredients Input Field -->
             <div class="input-field col s12">
                 <i class="fas fa-seedling prefix light-green-text text-darken-1"></i>
-                <textarea id="recipe_ingredients" name="recipe_ingredients" type="text" minlength="5" maxlength="350" class="materialize-textarea validate" required>{{ recipe.recipe_ingredients }}</textarea>
+                <!-- Ingredients Textarea -->
+                <textarea id="recipe_ingredients" name="recipe_ingredients" type="text" minlength="5" maxlength="350"
+                    class="materialize-textarea validate" required>{{ recipe.recipe_ingredients }}</textarea>
                 <label for="recipe_ingredients">Ingredients</label>
             </div>
         </div>
-
-        <!-- Instructions Input Field -->
+        <!-- Instructions Row -->
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-tasks prefix light-green-text text-darken-1"></i>
+                <!-- Instructions Textarea -->
                 <textarea id="recipe_instructions" name="recipe_instructions" type="text" minlength="5" maxlength="500"
                     class="materialize-textarea validate" required>{{ recipe.recipe_instructions }}</textarea>
                 <label for="recipe_instructions">Instructions </label>
             </div>
         </div>
-
-        <!-- Buttons -->
+        <!-- Button Row-->
         <div class="row">
             <div class="col s12 center-align">
-           
-             <a href="{{ url_for('get_recipes') }}" class="btn light-green text-shadow" id="cancel" style="font-size:1.2rem;">
-                        Cancel <i class="fas fa-times-circle right"></i>
-                    </a>
-
+                <a href="{{ url_for('get_recipes') }}" class="btn light-green text-shadow" id="cancel"
+                    style="font-size:1.2rem;">
+                    Cancel <i class="fas fa-times-circle right"></i>
+                </a>
+                <!-- Submit Button -->
                 <button class="red accent-2 waves-effect waves-light btn" type="submit" name="submit" id="edit">Edit<i
                         class="fas fa-edit right"></i>
                 </button>
-
             </div>
         </div>
     </form>
