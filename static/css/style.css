@@ -19,7 +19,8 @@ h5, h6 {
      font-weight: 300;
      font-size: 1.35rem;
      text-shadow: 1px 1px 2px #4444447a;
-     color: #011408
+     color: #011408;
+    line-height: inherit;
 }
 
 p, body {
@@ -85,10 +86,17 @@ label {
     color: #24380e;
     letter-spacing: .5px;
     font-family: 'Pacifico', cursive;
+    line-height: inherit;
+    margin-bottom: 10px;
 }
 
 hr#divider {
     border-top: 1px solid #7ec46a;
+    margin: 15px 0px;
+}
+
+.card .card-title {
+    font-size: 1.4rem;
 }
 
 /*------------------------------------------- Add Recipe */
@@ -103,7 +111,6 @@ textarea {
     font-family: 'Josefin Sans', sans-serif;
     color: #3e2723;
 }
-
 
 /*--------------------------------------- Edit Recipe */
 .btn#edit-recipe, 
