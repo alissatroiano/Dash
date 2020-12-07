@@ -1,42 +1,53 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h3 class="center-align brown-text text-darken-4 text-shadow">Sign Up!</h3>
-
-    <div class="row">
-        <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('signup') }}">
-            <div class="card-panel text-shadow">
-                <!-- username -->
-                <div class="row">
-					<div class="input-field col s12">
-						<i class="fas fa-user-plus prefix light-green-text text-lighten-1"></i>
-						<input id="username" name="username" type="text" class="validate">
-						<label for="username" id="user-label">Username</label>
-					</div>
-                </div>
-                <!-- passowrd -->
-                <div class="row">
-                    <div class="input-field col s12">
-						<i class="fas fa-user-lock prefix light-green-text text-lighten-1"></i>
-                        <input id="password" name="password" type="password" class="validate">
-                        <label for="password" id="password-label">Password</label>
-                    </div>
-                </div>
-                <!-- Sign Up -->
-                <div class="row">
-                    <button type="submit" class="col s12 light-green lighten-1 waves-effect waves-light btn" id="btn">Sign Up! <i class="fas fa-sign-in-alt"></i></button>
+<h3 class="center-align brown-text text-darken-4 text-shadow">Sign Up!</h3>
+<!--Row for Signup Form-->
+<div class="row">
+    <!--Signup Form Starts Here-->
+    <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('signup') }}">
+        <div class="card-panel text-shadow">
+            <!-- Username Row-->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-user-plus prefix light-green-text text-lighten-1"></i>
+                    <!--Username Input -->
+                    <input id="username" name="username" type="text" class="validate">
+                    <label for="username" id="user-label">Username</label>
                 </div>
             </div>
-        </form>
-    </div>
-
-        <div class="row">
-        <div class="col s12">
-            <p class="center-align">
-               Already a Dash Member?
-                <a href="{{ url_for('login') }}" class="light-green-text text-darken-4">Log In</a>
-            </p>
+            <!--./end-username-row-->
+            <!-- Passowrd Row -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-user-lock prefix light-green-text text-lighten-1"></i>
+                    <!-- Passowrd Input -->
+                    <input id="password" name="password" type="password" class="validate">
+                    <label for="password" id="password-label">Password</label>
+                </div>
+            </div>
+            <!--./end-password-row-->
+            <!-- Button Row -->
+            <div class="row">
+                <!--Sign Up Button-->
+                <button type="submit" class="col s12 light-green lighten-1 waves-effect waves-light btn" id="btn">Sign
+                    Up! <i class="fas fa-sign-in-alt"></i></button>
+            </div>
+            <!--./end-button-row -->
         </div>
+    </form>
+    <!--./end-signup-form-->
+</div>
+<!--./end-signup-row-->
+
+<!-- Link to the login page for existing users-->
+<div class="row">
+    <div class="col s12">
+        <p class="center-align">
+            Already a Dash Member?
+            <a href="{{ url_for('login') }}" class="light-green-text text-darken-4">Log In</a>
+        </p>
     </div>
+</div>
 
 {% endblock %}
