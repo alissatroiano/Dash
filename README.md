@@ -181,6 +181,8 @@ In addition, if it is not obvious, you should also describe how to run your code
 
     - [ifoodreal.com](https://ifoodreal.com/clean-eating-recipes-dinners/)
 
+- The responsive view image at the top of this documentation was created with [AmIResposnive](http://ami.responsivedesign.is/).
+
 ### Acknowledgements
 
 - I received markdown instructions from this [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#blockquotes)
@@ -190,3 +192,5 @@ In addition, if it is not obvious, you should also describe how to run your code
 - I received UX inspiration from [Behance](https://www.behance.net)
 
 - I learned about Flask file upload configurations from [Flask's Documentation](https://flask-uploads.readthedocs.io/en/latest/).
+
+- I utilized the free web-tool provided by [Amiresponsive](http://ami.responsivedesign.is/) to get an idea of how my project looks on different screens.
