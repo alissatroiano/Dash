@@ -33,6 +33,15 @@ p, body {
     text-shadow: 2px 0px 3px #022d0c;
 }
 
+.brand-logo i {
+    float: none;
+    line-height: inherit;
+    font-size: inherit;
+}
+
+i.fas.fa-utensils.prefix {
+    margin-right: 5px;
+}
 /*----------------------------------- Forms */
 button, #btn {
     font-family: 'Pacifico', cursive;
@@ -137,33 +146,46 @@ i.fas.fa-user-circle.light-green-text.text-shadow.center-align {
 
 /*--------------------------------------- Footer */
 footer {
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  color: white;
-  text-align: center;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
 }
 
 /*------------------------------------- Media Queries */
-@media (min-width: 768px) and (max-width: 1024px) {
+@media only screen and (min-width: 600px) {
     #cards {
-    min-height: 30vh;
+        min-height: 40vh;
     }
     #card-image {
-    max-width: 100%;
-    min-height: 200px;
-    overflow: hidden;
+        max-width: 100%;
+        min-height: 200px;
+        overflow: hidden;
+    }
+    main.container {
+        margin-top: 60px;
+    }
+    footer {
+        margin-top: 60px;
+    }
+    body {
+        min-height: 100vh;
     }
 }
 
-@media (min-width: 1025px) and (max-width: 1280px) {
+@media only screen and (min-width: 1200px) {
     #cards {
         min-height: 50vh;
         overflow: hidden;
     }
     #card-image {
-    max-width: 100%;
-    min-height: 250px;
-    overflow: hidden;
+        max-width: 100%;
+        min-height: 200px;
+        overflow: hidden;
+    }
+    footer {
+        margin-top: 200px;
     }
 }

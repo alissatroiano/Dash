@@ -143,13 +143,13 @@ In addition, if it is not obvious, you should also describe how to run your code
 
 - The steps taken to properly configure Flask and MongoDB were learned by following [Code Institute's](https://codeinstitute.net/) 'Data Centric Development: Flask Mini Project' lesson.
 
-- The steps taken to import the favicon into the head element of the base html page were copied from (Stack Overflow)(https://stackoverflow.com/questions/11893478/add-favicon-to-website).
+- The steps taken to import the favicon into the head element of the base html page were copied from (Stack Overflow)(https://stackoverflow.com/questions/11893478/add-favicon-to-website) and [Hostinger](https://www.hostinger.com/tutorials/how-to-add-favicon-to-website).
 
 - The developer made use of [GitHub Projects](https://github.com/users/alissatroiano/projects/4) to manage development and set sprints in an efficient manner.
 
 - The **cycle method** used to create different columns and rows on the recipes landing page was learned by reading the Tips and Tricks portion of [Jinja's documentaton](https://jinja.palletsprojects.com/en/2.11.x/tricks/).
 
-- The media queries used to style the recipe cards were learned from this [GitHub](https://gist.github.com/gokulkrishh/242e68d1ee94ad05f488) repository.
+- The media queries defined in the stylesheet for tablets and large devices were copied/learned from [W3 Schools](https://www.w3schools.com/css/css_rwd_mediaqueries.asp).
 
 ### Content
 
