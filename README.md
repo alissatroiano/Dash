@@ -1,5 +1,7 @@
 # Dash
 
+![responsive-view](static/images/responsive.png)
+
 Dash is a recipe crowdsourcing application for men & women, (ages 24 - 39), who want to find and share recipes.
 
 ## UX
