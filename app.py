@@ -1,12 +1,11 @@
 import os
 from flask import (
     Flask, flash, render_template,
-    redirect, request, session, url_for)
+    redirect, request, session, url_for, send_from_directory)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
-import uuid
 if os.path.exists("env.py"):
     import env
 
@@ -139,7 +138,7 @@ def upload(filename):
     return mongo.send_file(filename)
 
 
-@app.route("/upload-image", methods=["GET", "POST"])
+@app.route("/", methods=["GET", "POST"])
 def upload_file():
     path = url_for('static', filename='uploads/dash.jpg')
     if request.method == 'POST':
@@ -153,11 +152,13 @@ def upload_file():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             path = url_for('static', filename='uploads/'+filename)
-        if request.files:
-            file = request.files["file"]
             return path
 
-    return redirect(url_for('get_recipes'))
+
+@app.route('/static/uploads/<filename>')
+def uploaded_file(filename):
+    return send_from_directory(app.config['UPLOAD_FOLDER'],
+                               filename)
 
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
@@ -191,4 +192,4 @@ def delete_recipe(recipe_id):
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=False)
+            debug=True)
