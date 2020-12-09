@@ -138,10 +138,10 @@ def upload(filename):
     return mongo.send_file(filename)
 
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/upload_file")
 def upload_file():
     path = url_for('static', filename='uploads/dash.jpg')
-    if request.method == 'POST':
+    if request.method == 'GET':
         # if user does not select file, stock photo will be used
         if 'file' not in request.files:
             return path
@@ -155,9 +155,10 @@ def upload_file():
             return image
         else:
             return path
+    return redirect(url_for('upload_file'))
 
 
-@app.route('/static/uploads/<filename>')
+@app.route('/uploads/<filename>', methods=["GET", "POST"])
 def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'],
                                filename)
