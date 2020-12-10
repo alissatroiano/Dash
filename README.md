@@ -91,13 +91,30 @@ In order to properly develop this full-stack application, the following features
 
 - This project uses **Python** to speed up development time and integrate systems.
 
-- [PIP](https://pypi.org)
+- [PyPy](https://doc.pypy.org/en/latest/)
+- This project uses **PyPy** to improve processing perfomance.
 
-- This project uses **Pip** to install software dependencies for Python.
+- [Pip3](https://pip.pypa.io/en/stable/)
+
+- This project uses **Pip3** to install software dependencies for Python.
 
 - [Flask](https://flask.palletsprojects.com/en/1.1.x/)
 
 - This project uses the **Flask** framework to reduce development time and build a more robust application.
+
+    **Flask Dependencies:**
+
+    - [Werkzeug](https://werkzeug.palletsprojects.com/en/1.0.x/serving/)
+
+    - This project uses Flask's dependencies, including WSGI web application library, **Werkzeug** to serve the WSGI application with powerful structure and patterns.
+
+    - [It's Dangerous](https://itsdangerous.palletsprojects.com/en/1.1.x/#)
+
+    - This project uses **itsdangerous** to serialize and sign data.
+
+    - [JMESPath](https://pypi.org/project/jmespath/)
+
+    - This project uses **JMESPath** to specify how to extract elements from a JSON document.
 
 - [Jinja](https://jinja.palletsprojects.com/en/2.11.x/)
 
@@ -109,7 +126,15 @@ In order to properly develop this full-stack application, the following features
 
 - [PyMongo](https://pypi.org/project/pymongo/)
 
-- This project uses the driver **PyMongo** to interact with MongoDB from Python.
+- This project uses the driver **PyMongo** to fetch and insert data to MongoDB from Python.
+
+- [DNSPython](https://www.dnspython.org/)
+
+- This application uses **dnspython**  to handle queries and data manipulation.
+
+- [request]()
+
+- This project uses **request** to get the json out of the response body on new inserts.
 
 - [Git](https://git-scm.com/)
 
@@ -122,6 +147,22 @@ In order to properly develop this full-stack application, the following features
 - [Materialize](https://materializecss.com/)
 
 - This project used **Materialize** to add styles and improve user experience.
+
+- [Boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)
+
+- This project uses **Boto3** to create, configure, and manage the AWS S3 service.
+
+- [Botocore](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)
+
+- This project uses **Botocore** to manage AWS S3 service from the CLI.
+
+- [Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/Welcome.html)
+
+- This application uses Amazon S3 to streamline file storage and transfer.
+
+- [Werkzeug.security](https://werkzeug.palletsprojects.com/en/1.0.x/utils/)
+
+- This application uses **Werkzeug.security** to create secure, reliable user authentication.
 
 ## Testing
 
@@ -152,6 +193,8 @@ In addition, if it is not obvious, you should also describe how to run your code
 - The **cycle method** used to create different columns and rows on the recipes landing page was learned by reading the Tips and Tricks portion of [Jinja's documentaton](https://jinja.palletsprojects.com/en/2.11.x/tricks/).
 
 - The media queries defined in the stylesheet for tablets and large devices were copied/learned from [W3 Schools](https://www.w3schools.com/css/css_rwd_mediaqueries.asp).
+
+- I followed the steps provided by this article, [How to use Flask to upload files to Amazon s3](https://www.zabana.me/notes/flask-tutorial-upload-files-amazon-s3) to understand and implement uploading files to an Amazon S3 bucket using the Flask web framework for Python.
 
 ### Content
 
@@ -194,3 +237,5 @@ In addition, if it is not obvious, you should also describe how to run your code
 - I learned about Flask file upload configurations from [Flask's Documentation](https://flask-uploads.readthedocs.io/en/latest/).
 
 - I utilized the free web-tool provided by [Amiresponsive](http://ami.responsivedesign.is/) to get an idea of how my project looks on different screens.
+
+- I obtained information about project dependencies and what they actually do from, [Inserting and Reading MongoDB Documents from a Python Flask API](https://medium.com/swlh/inserting-and-reading-mongodb-documents-from-a-python-flask-api-4fa7be61e45).
