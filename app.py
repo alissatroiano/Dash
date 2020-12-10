@@ -1,4 +1,5 @@
 import os
+import boto3, botocore
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for, send_from_directory)
@@ -9,8 +10,13 @@ from werkzeug.utils import secure_filename
 if os.path.exists("env.py"):
     import env
 
+
 UPLOAD_FOLDER = './static/uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+S3_BUCKET_NAME = os.environ.get("S3_BUCKET_NAME")
+S3_KEY = os.environ.get("S3_KEY")
+S3_SECRET = os.environ.get("S3_SECRET")
+S3_LOCATION = os.environ.get("S3_LOCATION")
 
 app = Flask(__name__)
 
@@ -18,6 +24,10 @@ app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+
+s3 = boto3.client("s3", aws_access_key_id=S3_KEY,
+                  aws_secret_access_key=S3_SECRET)
 
 mongo = PyMongo(app)
 
@@ -68,12 +78,12 @@ def login():
 
         if existing_user:
             if check_password_hash(
-                existing_user["password"], request.form.get("password")):
-                    session["user"] = request.form.get("username").lower()
-                    flash("Welcome, {}".format(
-                        request.form.get("username")))
-                    return redirect(url_for(
-                        "profile", username=session["user"]))
+                    existing_user["password"], request.form.get("password")):
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome, {}".format(
+                    request.form.get("username")))
+                return redirect(url_for(
+                    "profile", username=session["user"]))
             else:
                 flash("Incorrect username and/or password")
                 return redirect(url_for("login"))
@@ -117,8 +127,7 @@ def add_recipe():
             "recipe_ingredients": request.form.get("recipe_ingredients"),
             "file": image_path,
             "tools_needed": request.form.get("tools_needed"),
-            "recipe_instructions": request.form.get("recipe_instructions"),
-            "created_by": session["user"]
+            "recipe_instructions": request.form.get("recipe_instructions")
         }
         mongo.db.recipes.insert_one(recipe)
         flash("Recipe successfully added")
@@ -132,36 +141,33 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-@app.route('/uploads/<filename>')
-def upload(filename):
-    # Helper Function
-    return mongo.send_file(filename)
-
-
-@app.route("/upload_file")
 def upload_file():
     path = url_for('static', filename='uploads/dash.jpg')
-    if request.method == 'GET':
-        # if user does not select file, stock photo will be used
-        if 'file' not in request.files:
-            return path
-        file = request.files['file']
-        if file.filename == '':
-            return path
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            image = url_for('static', filename='uploads/'+filename)
-            return image
-        else:
-            return path
-    return redirect(url_for('upload_file'))
+    # if user does not select file, stock photo will be used
+    if 'file' not in request.files:
+        return path
+    file = request.files['file']
+    if file.filename == '':
+        return path
+    if file and allowed_file(file.filename):
+        file.filename = secure_filename(file.filename)
+        path = upload_file_to_s3(file)
+    return path
 
 
-@app.route('/uploads/<filename>', methods=["GET", "POST"])
-def uploaded_file(filename):
-    return send_from_directory(app.config['UPLOAD_FOLDER'],
-                               filename)
+def upload_file_to_s3(file):
+    """
+    Docs: http://boto3.readthedocs.io/en/latest/guide/s3.html
+    """
+    try:
+        s3.upload_fileobj(file, S3_BUCKET_NAME, file.filename, ExtraArgs={
+                          "ACL": "public-read", "ContentType":
+                          file.content_type})
+    except Exception as e:
+        print("Something Happened: ", e)
+        return e
+
+    return "{}{}".format(S3_LOCATION, file.filename)
 
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
@@ -175,8 +181,7 @@ def edit_recipe(recipe_id):
             "recipe_ingredients": request.form.get("recipe_ingredients"),
             "file": edit_path,
             "tools_needed": request.form.get("tools_needed"),
-            "recipe_instructions": request.form.get("recipe_instructions"),
-            "edited_by": session["user"]
+            "recipe_instructions": request.form.get("recipe_instructions")
         }
         mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, submit)
         flash("Recipe edited!")

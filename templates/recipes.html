@@ -29,68 +29,67 @@
 <!-- All Recipes Section Starts Here-->
     <!--If Statement for Search function starts here-->
 {% if recipes|length > 0 %}
+<div class="row">
 <!--Use jina for loop to iterate through recipes -->
 {% for recipe in recipes %}
-<div class="row">
-    <!--loop.cycle method copied from Stack Overflow-->
-    <div class="{{ loop.cycle('odd', 'even') }}">{{ row }}
-        <!--Card Col Starts Here-->
-        <div class="col s12 m6">
-            <!--Card Starts Here-->
-            <div class="card" id="cards">
-                <!-- Card Image with Waves Effect-->
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img src="{{ recipe.file }}" class="responsive-img activator" id="card-image">
-                </div>
-                <!--./end-card-image-->
-                <!--Card Content Starts Here-->
-                <div class="card-content">
-                    <span class="card-title activator">
-                        {{ recipe.recipe_name }}
-                        <i class="fas fa-ellipsis-v prefix right activator"></i></span>
-                    <p>{{ recipe.recipe_description }}</p>
-                    <p class="activator" style="margin-top: 10px;">
-                        <i class="fas fa-clock light-green-text text-darken-2 prefix"></i> 
-                        Prep Time: {{ recipe.prep_time }} </p>
-                    
-                </div>
-                <!--./end-card-content-->
-                <!--Card Reveal Starts Here-->
-                <div class="card-reveal">
-                    <span class="card-title activator"> <i class="fas fa-times prefix right"></i>
-                        {{ recipe.recipe_name }}</span>
-                    <!-- Divider-->
-                    <hr id="divider">
-                    <h6><i class="fas fa-utensils light-green-text text-darken-2 prefix"></i> Tools Needed: </h6>
-                    <p>
-                        {{ recipe.tools_needed }}
-                    </p>
-                    <h6><i class="fas fa-blender light-green-text text-darken-2 prefix"> </i> Ingredients: </h6>
-                    <p>{{ recipe.recipe_ingredients }}</p>
-                    <h6><i class="fas fa-tasks light-green-text text-darken-1 "></i> Instructions: </h6>
-                    <p>{{ recipe.recipe_instructions }}</p>
-                    <!-- Submit and Edit Buttons go here-->
-                    <div class="card-action center-align">
-                        <!-- Any user may edit a recipe as long as they are logged in-->
-                        {% if session["user"] %}
-                        <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn light-green lighten-1"
-                            id="edit-recipe"><i class="fas fa-pen-fancy white-text"></i> Edit</a>
-                        {% endif %}
-                        <!-- Provide 'Delete' option for recipe authors -->
-                        {% if session["user"] == recipe.created_by|lower %}
-                        <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="btn red accent-2"
-                            id="delete-recipe"><i class="fas fa-trash-alt white-text"></i> Delete</a>
-                        {% endif %}
-                    </div>
-                </div>
-                <!--./end-card-reveal-->
+    <!--Card Col Starts Here-->
+    <div class="col s12 m6 l4">
+    <!--Card Starts Here-->
+        <div class="card" id="cards">
+            <!-- Card Image with Waves Effect-->
+            <div class="card-image waves-effect waves-block waves-light">
+                <img src="{{ recipe.file }}" class="responsive-img activator" id="card-image">
             </div>
-            <!--./end-card-->
+            <!--./end-card-image-->
+            <!--Card Content Starts Here-->
+            <div class="card-content">
+                <span class="card-title activator">
+                    {{ recipe.recipe_name }}
+                    <i class="fas fa-ellipsis-v prefix right activator"></i></span>
+                <p>{{ recipe.recipe_description }}</p>
+                <p class="activator" style="margin-top: 10px;">
+                    <i class="fas fa-clock light-green-text text-darken-2 prefix"></i> 
+                    Prep Time: {{ recipe.prep_time }} </p>
+                
+            </div>
+            <!--./end-card-content-->
+            <!--Card Reveal Starts Here-->
+            <div class="card-reveal">
+                <span class="card-title activator"> <i class="fas fa-times prefix right"></i>
+                    {{ recipe.recipe_name }}</span>
+                <!-- Divider-->
+                <hr id="divider">
+                <h6><i class="fas fa-utensils light-green-text text-darken-2 prefix"></i> Tools Needed: </h6>
+                <p>
+                    {{ recipe.tools_needed }}
+                </p>
+                <h6><i class="fas fa-blender light-green-text text-darken-2 prefix"> </i> Ingredients: </h6>
+                <p>{{ recipe.recipe_ingredients }}</p>
+                <h6><i class="fas fa-tasks light-green-text text-darken-1 "></i> Instructions: </h6>
+                <p>{{ recipe.recipe_instructions }}</p>
+                <!-- Submit and Edit Buttons go here-->
+                <div class="card-action center-align">
+                    <!-- Any user may edit a recipe as long as they are logged in-->
+                    {% if session["user"] %}
+                    <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn light-green lighten-1"
+                        id="edit-recipe"><i class="fas fa-pen-fancy white-text"></i> Edit</a>
+                    {% endif %}
+                    <!-- Provide 'Delete' option for recipe authors -->
+                    {% if session["user"] == recipe.created_by|lower %}
+                    <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="btn red accent-2"
+                        id="delete-recipe"><i class="fas fa-trash-alt white-text"></i> Delete</a>
+                    {% endif %}
+                </div>
+            </div>
+            <!--./end-card-reveal-->
         </div>
-        <!--./end-card-col--->
+        <!--./end-card-->
     </div>
+    <!--./end-card-col--->
     {% endfor %}
 </div>
+<!--./end-row-->
+
 <!--Else statement for search-->
 {% else %}
 <h4 class="deep-orange-text text-accent-3 center-align">No Recipes Found
