@@ -2,7 +2,7 @@
 
 ![responsive-view](static/images/responsive.png)
 
-Dash is a recipe crowdsourcing application for men & women, (ages 24 - 39), who want to find and share recipes.
+Dash is a recipe sharing application for men & women, (ages 24 - 39), who want to find and share recipes.
 
 ## UX
 
@@ -10,7 +10,14 @@ As the Milestone 3 Project for [Code Institute's](https://codeinstitute.net/) Da
 
 Dash's target market is comprised of men & women, ages 24 - 39, that wish to find and share recipes with eachother.
 
-User stories were created by the developer during the Strategy Plane phase of this milestone project to guide the wireframing process:
+### Development Process
+
+To make for a more organized development process, the developer used [GitHub Projects](https://github.com/users/alissatroiano/projects/4) to manage sprints and tasks. 
+
+
+### User Stories
+
+User stories were created first during the Strategy Plane phase of this milestone project to guide the wireframing process:
 
 User Story 1:
 
@@ -41,21 +48,25 @@ The user story worksheet that was completed during the Strategy Plane portion of
 
 ![userstories](wireframes/userstories.jpg)
 
+### Trade Off Exercise
+
 To determine what features were the most important and most viable, the following Strategy Plane activity was completed during the planning phase of this project:
 
 ![Trade Off Table](wireframes/tradeoff.jpg)
 
 To view a PDF version of this exercise, please refer to [this document](wireframes/tradeoff.pdf)
 
+### Wireframes
+
  The following wireframes were created by the developer to guide the development proess:
 
-![wireframes](wireframes/desktop.jpg)
+![wireframes](wireframes/desktop.png)
 
 ![wireframes](wireframes/tablet.jpg)
 
 ![wireframes](wireframes/mobile.jpg)
 
-To make for a more organized development process, the developer used [GitHub Projects](https://github.com/users/alissatroiano/projects/4) to manage sprints and tasks. 
+These [wireframes](wireframes/dash.pdf) can also be viewed in the attached PDF. 
 
 ## Features
 
@@ -67,7 +78,7 @@ In order to properly develop this full-stack application, the following features
 
 - Log In - Allows users to login to their Dash account, by inputting the correct user and password keys.
 
-- Create Recipe - Permits users to share original content to the Dash community, by granting them write access to the database and having them fill out a form.
+- Create Recipe - Allows **existing** users to share original content with the Dash community, by granting them write access to the database and having them fill out a form.
 
 - Edit Recipe - Allows users to edit any recipe, by including a functional, 'Edit' button with each recipe.
 
@@ -76,6 +87,46 @@ In order to properly develop this full-stack application, the following features
 ### Features Left to Implement
 
 - A 'Grocery List' page - Allows users to create grocery lists, by having them create a checklist and manage/update it accordingly.
+
+### Database Design
+
+In order to create a functional CRUD application, I took the following steps when creating my datastore:
+
+1. Choose a database: **MongoDB**.
+
+I chose to use MongoDB to store Dash's data. Dash is a crowdsourcing app, so it involves obtaining information, or data, from a large group of people. Because of this, it was determined crucial that Dash be connected to a database that can handle a lot of data and send/receive data requests to and from the application.
+
+2. Design the Datastore:
+
+    - Though my initial plans were a bit more complex, I decided to make the database as simple and efficient as possible. To do this, I took the following steps:
+        - Create a new database named, 'Dash'.
+
+        - Create 2 collections:
+            1. recipes - Contains the contents for each recipe.
+            2. users - Contains identifying information that is essential to user authentication.
+
+        ![database](wireframes/dashdatabase.png)
+        
+    - Include the following documents in each collection:
+
+        1. recipes:
+            - recipe_name: The name of the recipe (string).
+            - recipe_description - A brief description of the recipe (a string).
+            - prep_time - How long the recipe takes to make (I contemplated using an integer, but decided to use a string so users can write minutes, etc.).
+            - tools_needed - What tools are required to make the recipe (string)
+            - recipe_ingredients - The ingredients of the recipe (string)
+            - file - An image of the given recipe/dish to be displayed to the front user (if the user does not upload an imnage, a default image will be stored here by default).
+            - recipe_instructions - The steps taken to create the recipe (string)
+
+        ![recipesdb](wireframes/recipesdb.png)
+
+        2. users:
+            - username: The username that the user creates at signup and logins in with to perform any write actions on the database. ***(Note: a user can read any of the recipes without an account, but must be signed in to create or edit a recipe)***
+            - password: The password will be used by the user to login and perform C.R.U.D operations on the database.
+
+3. Add some data:
+
+    - When building a C.R.U.D application, it makes it easier for the developer to build out the backend when there is already some data in place. Because of this, I created a few documents in each of my collections. Once I had some data to work with, I created the Flask App, deployed it to **Heroku** and constructed the frontend.
 
 ## Technologies Used
 
@@ -146,7 +197,7 @@ In order to properly develop this full-stack application, the following features
 
 - [Materialize](https://materializecss.com/)
 
-- This project used **Materialize** to add styles and improve user experience.
+- This project used **Materialize** to add frontend styles and improve user experience.
 
 - [Boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)
 
