@@ -6,9 +6,9 @@ Dash is a recipe sharing application for men & women, (ages 24 - 39), who want t
 
 ## UX
 
-As the Milestone 3 Project for [Code Institute's](https://codeinstitute.net/) Data Centric Development portion of the Full Stack Developer Program, this project was built with HTML, CSS, JavaScript, jQuery, Python, Flask and MongoDB.
+As the Milestone 3 Project for [Code Institute's](https://codeinstitute.net/) Data-Centric Development portion of the Full Stack Developer Program, this project was built with HTML, CSS, JavaScript, jQuery, Python, Flask, and MongoDB.
 
-Dash's target market is comprised of men & women, ages 24 - 39, that wish to find and share recipes with eachother.
+Dash's target market is comprised of men & women, ages 24 - 39, that wish to find and share recipes.
 
 ### Development Process
 
@@ -36,7 +36,7 @@ User Story 3:
 
 User Story 4:
 
-> *"As a member, I want to be able to edit any of the reipes on the page, so I can use my expertise to contribute to the Dash community."*
+> *"As a member, I want to be able to edit any of the recipes on the page, so I can use my expertise to contribute to the Dash community."*
 >> -Andy Fordane, Chef
 
 User Story 5:
@@ -48,7 +48,7 @@ The user story worksheet that was completed during the Strategy Plane portion of
 
 ![userstories](wireframes/userstories.jpg)
 
-### Trade Off Exercise
+### Trade-Off Exercise
 
 To determine what features were the most important and most viable, the following Strategy Plane activity was completed during the planning phase of this project:
 
@@ -58,7 +58,7 @@ To view a PDF version of this exercise, please refer to [this document](wirefram
 
 ### Wireframes
 
- The following wireframes were created by the developer to guide the development proess:
+ The following wireframes were created by the developer to guide the development process:
 
 ![wireframes](wireframes/desktop.png)
 
@@ -72,17 +72,17 @@ These [wireframes](wireframes/dash.pdf) can also be viewed in the attached PDF.
 
 ### Existing Features
 
-In order to properly develop this full-stack application, the following features were included:
+To properly develop this full-stack application, the following features were included:
 
 - Sign Up - allows users to create an account, by inputting an original username and a password.
 
-- Log In - Allows users to login to their Dash account, by inputting the correct user and password keys.
+- Login - Allows users to log in to their Dash account, by inputting the correct user and password keys.
 
 - Create Recipe - Allows **existing** users to share original content with the Dash community, by granting them write access to the database and having them fill out a form.
 
 - Edit Recipe - Allows users to edit any recipe, by including a functional, 'Edit' button with each recipe.
 
-- Search - Allows users to search for specific recipes, by providing them with a searchbar that fetches and displays relevant data.
+- Search - Allows users to search for specific recipes, by providing them with a search bar that fetches and displays relevant data.
 
 ### Features Left to Implement
 
@@ -90,7 +90,7 @@ In order to properly develop this full-stack application, the following features
 
 ### Database Design
 
-In order to create a functional CRUD application, I took the following steps when creating my datastore:
+To create a functional CRUD application, I took the following steps when creating my datastore:
 
 1. Choose a database: **MongoDB**.
 
@@ -115,7 +115,7 @@ I chose to use MongoDB to store Dash's data. Dash is a crowdsourcing app, so it 
             - prep_time - How long the recipe takes to make (I contemplated using an integer, but decided to use a string so users can write minutes, etc.).
             - tools_needed - What tools are required to make the recipe (string)
             - recipe_ingredients - The ingredients of the recipe (string)
-            - file - An image of the given recipe/dish to be displayed to the front user (if the user does not upload an imnage, a default image will be stored here by default).
+            - file - An image of the given recipe/dish to be displayed to the front user (if the user does not upload an image, a default image will be stored here by default).
             - recipe_instructions - The steps taken to create the recipe (string)
 
         ![recipesdb](wireframes/recipesdb.png)
@@ -126,7 +126,9 @@ I chose to use MongoDB to store Dash's data. Dash is a crowdsourcing app, so it 
 
 3. Add some data:
 
-    - When building a C.R.U.D application, it makes it easier for the developer to build out the backend when there is already some data in place. Because of this, I created a few documents in each of my collections. Once I had some data to work with, I created the Flask App, deployed it to **Heroku** and constructed the frontend.
+    - When building a C.R.U.D application, it makes it easier for the developer to build out the backend when there is already some data in place. Because of this, I added some data to each of the collections in my datastore. Once I had some data to work with, I created the Flask App, deployed it to **Heroku**, connected it to my database, and constructed the frontend.
+
+To read more about my process, visit the Deployment section of this documentation.
 
 ## Technologies Used
 
@@ -143,7 +145,7 @@ I chose to use MongoDB to store Dash's data. Dash is a crowdsourcing app, so it 
 - This project uses **Python** to speed up development time and integrate systems.
 
 - [PyPy](https://doc.pypy.org/en/latest/)
-- This project uses **PyPy** to improve processing perfomance.
+- This project uses **PyPy** to improve processing performance.
 
 - [Pip3](https://pip.pypa.io/en/stable/)
 
@@ -157,7 +159,7 @@ I chose to use MongoDB to store Dash's data. Dash is a crowdsourcing app, so it 
 
     - [Werkzeug](https://werkzeug.palletsprojects.com/en/1.0.x/serving/)
 
-    - This project uses Flask's dependencies, including WSGI web application library, **Werkzeug** to serve the WSGI application with powerful structure and patterns.
+    - This project uses Flask's dependencies, including the WSGI web application library, **Werkzeug** to serve the WSGI application with powerful structure and patterns.
 
     - [It's Dangerous](https://itsdangerous.palletsprojects.com/en/1.1.x/#)
 
@@ -185,7 +187,7 @@ I chose to use MongoDB to store Dash's data. Dash is a crowdsourcing app, so it 
 
 - [request]()
 
-- This project uses **request** to get the json out of the response body on new inserts.
+- This project uses **request** to get the JSON out of the response body on new inserts.
 
 - [Git](https://git-scm.com/)
 
@@ -235,13 +237,11 @@ In addition, if it is not obvious, you should also describe how to run your code
 
 ### Development Process
 
-- The steps taken to properly configure Flask and MongoDB were learned by following [Code Institute's](https://codeinstitute.net/) 'Data Centric Development: Flask Mini Project' lesson.
+- The steps taken to properly configure Flask and MongoDB were learned by following [Code Institute's](https://codeinstitute.net/) 'Data-Centric Development: Flask Mini Project' lesson.
 
-- The steps taken to import the favicon into the head element of the base html page were copied from (Stack Overflow)(https://stackoverflow.com/questions/11893478/add-favicon-to-website) and [Hostinger](https://www.hostinger.com/tutorials/how-to-add-favicon-to-website).
+- The steps taken to import the favicon into the head element of the base HTML page were copied from (Stack Overflow)(https://stackoverflow.com/questions/11893478/add-favicon-to-website) and [Hostinger](https://www.hostinger.com/tutorials/how-to-add-favicon-to-website).
 
-- The developer made use of [GitHub Projects](https://github.com/users/alissatroiano/projects/4) to manage development and set sprints in an efficient manner.
-
-- The **cycle method** used to create different columns and rows on the recipes landing page was learned by reading the Tips and Tricks portion of [Jinja's documentaton](https://jinja.palletsprojects.com/en/2.11.x/tricks/).
+- The developer made use of [GitHub Projects](https://github.com/users/alissatroiano/projects/4) to manage development and efficiently set sprints.
 
 - The media queries defined in the stylesheet for tablets and large devices were copied/learned from [W3 Schools](https://www.w3schools.com/css/css_rwd_mediaqueries.asp).
 
@@ -261,7 +261,7 @@ In addition, if it is not obvious, you should also describe how to run your code
 
 - The default photo that is selected when a user does not upload an image was copied from [unsplash](https://unsplash.com/photos/fnztlIb52gU).
 
-- The icon in the branded navigation menu, responsive sidebar and footer was copied from [Font Awesome](http://fontawesome.com/)
+- The icon in the branded navigation menu, responsive sidebar, and footer was copied from [Font Awesome](http://fontawesome.com/)
 
 - The footer styles were copied from [Materialize]() and altered via copying [W3 Schools](https://www.w3schools.com/howto/howto_css_fixed_footer.asp).
 
