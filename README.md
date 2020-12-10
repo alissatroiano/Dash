@@ -6,14 +6,12 @@ Dash is a recipe sharing application for men & women, (ages 24 - 39), who want t
 
 ## UX
 
-As the Milestone 3 Project for [Code Institute's](https://codeinstitute.net/) Data-Centric Development portion of the Full Stack Developer Program, this project was built with HTML, CSS, JavaScript, jQuery, Python, Flask, and MongoDB.
-
-Dash's target market is comprised of men & women, ages 24 - 39, that wish to find and share recipes.
-
-### Development Process
 
 To make for a more organized development process, the developer used [GitHub Projects](https://github.com/users/alissatroiano/projects/4) to manage sprints and tasks. 
 
+As the Milestone 3 Project for [Code Institute's](https://codeinstitute.net/) Data-Centric Development portion of the Full Stack Developer Program, this project was built with HTML, CSS, JavaScript, jQuery, Python, Flask, and MongoDB.
+
+Dash's target market is comprised of men & women, ages 24 - 39, that wish to find and share recipes. To become a contributor on Dash, a user must create an account. Creating an account is quick, easy and free. Once an account has been created, a user may login to create new recipes or edit any of the recipes on Dash.
 
 ### User Stories
 
@@ -42,7 +40,7 @@ User Story 4:
 User Story 5:
 
 > *"As a Dash member, I want other members to edit my recipes, so I can learn new ways to prepare dishes."*
->> -Danielle Greenstein, Food Blogger
+>> -Michelle Greene, Cafe Owner
 
 The user story worksheet that was completed during the Strategy Plane portion of this project can be viewed here:
 
@@ -86,7 +84,7 @@ To properly develop this full-stack application, the following features were inc
 
 ### Features Left to Implement
 
-- A 'Grocery List' page - Allows users to create grocery lists, by having them create a checklist and manage/update it accordingly.
+- A 'Profile' page - Allows users to upload an imnage, view content they have created and change their username and/or password.
 
 ### Database Design
 
@@ -115,7 +113,7 @@ I chose to use MongoDB to store Dash's data. Dash is a crowdsourcing app, so it 
             - prep_time - How long the recipe takes to make (I contemplated using an integer, but decided to use a string so users can write minutes, etc.).
             - tools_needed - What tools are required to make the recipe (string)
             - recipe_ingredients - The ingredients of the recipe (string)
-            - file - An image of the given recipe/dish to be displayed to the front user (if the user does not upload an image, a default image will be stored here by default).
+            - file - An image file that users can upload when creating or editing a recipe. (string).
             - recipe_instructions - The steps taken to create the recipe (string)
 
         ![recipesdb](wireframes/recipesdb.png)
@@ -205,10 +203,6 @@ To read more about my process, visit the Deployment section of this documentatio
 
 - This project uses **Boto3** to create, configure, and manage the AWS S3 service.
 
-- [Botocore](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)
-
-- This project uses **Botocore** to manage AWS S3 service from the CLI.
-
 - [Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/Welcome.html)
 
 - This application uses Amazon S3 to streamline file storage and transfer.
@@ -290,3 +284,5 @@ In addition, if it is not obvious, you should also describe how to run your code
 - I utilized the free web-tool provided by [Amiresponsive](http://ami.responsivedesign.is/) to get an idea of how my project looks on different screens.
 
 - I obtained information about project dependencies and what they actually do from, [Inserting and Reading MongoDB Documents from a Python Flask API](https://medium.com/swlh/inserting-and-reading-mongodb-documents-from-a-python-flask-api-4fa7be61e45).
+
+- I proofread and corrected this documentation with [Grammarly]([grammarly](https://app.grammarly.com/).
