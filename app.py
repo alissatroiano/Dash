@@ -1,8 +1,8 @@
 import os
-import boto3, botocore
+import boto3
 from flask import (
     Flask, flash, render_template,
-    redirect, request, session, url_for, send_from_directory)
+    redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -127,7 +127,8 @@ def add_recipe():
             "recipe_ingredients": request.form.get("recipe_ingredients"),
             "file": image_path,
             "tools_needed": request.form.get("tools_needed"),
-            "recipe_instructions": request.form.get("recipe_instructions")
+            "recipe_instructions": request.form.get("recipe_instructions"),
+            "created_by": request.form.get("created_by")
         }
         mongo.db.recipes.insert_one(recipe)
         flash("Recipe successfully added")
