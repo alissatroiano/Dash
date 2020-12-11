@@ -1,198 +1,198 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Pacifico&display=swap');
 
 h1, h2, h3 {
-    font-family: 'Pacifico', cursive;
-    color: #33691e;
-    padding: 10px 0px;
+font-family: 'Pacifico', cursive;
+color: #33691e;
+padding: 10px 0px;
 }
 
 h4 {
-    font-family: 'Pacifico', cursive;
-    font-size: 1.4rem;
-    color: #011408;
-    font-weight: 300;
-    text-shadow: 1px 1px 2px #4444447a;
+font-family: 'Pacifico', cursive;
+font-size: 1.4rem;
+color: #011408;
+font-weight: 300;
+text-shadow: 1px 1px 2px #4444447a;
 }
 
 h5, h6 {
-     font-family: 'Pacifico', cursive;
-     font-weight: 300;
-     font-size: 1.35rem;
-     text-shadow: 1px 1px 2px #4444447a;
-     color: #011408;
-    line-height: inherit;
+font-family: 'Pacifico', cursive;
+font-weight: 300;
+font-size: 1.35rem;
+text-shadow: 1px 1px 2px #4444447a;
+color: #011408;
+line-height: inherit;
 }
 
 p, body {
-     font-family: 'Josefin Sans', sans-serif;
-     font-size: 1rem;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1rem;
 }
 
 /*----------------------------------- Navbar */
 .brand-logo.center {
-    font-family: 'Pacifico', cursive;
-    text-shadow: 2px 0px 3px #022d0c;
+font-family: 'Pacifico', cursive;
+text-shadow: 2px 0px 3px #022d0c;
 }
 
 .brand-logo i {
-    float: none;
-    line-height: inherit;
-    font-size: inherit;
+float: none;
+line-height: inherit;
+font-size: inherit;
 }
 
 i.fas.fa-utensils.prefix {
-    margin-right: 5px;
+margin-right: 5px;
 }
 /*----------------------------------- Forms */
 button, #btn {
-    font-family: 'Pacifico', cursive;
-    text-transform: none;
-    font-size: 1.3rem;
+font-family: 'Pacifico', cursive;
+text-transform: none;
+font-size: 1.3rem;
 }
 
 input:focus,
 input#username:focus,
 input#password:focus {
-  border-bottom: 1px solid #a1887f;
-  box-shadow: 0 1px 0 0 #a1887f;
+border-bottom: 1px solid #a1887f;
+box-shadow: 0 1px 0 0 #a1887f;
 }
 
 label:focus, label.active,
 label#user-label.active,
 label#user-label:focus,
 label#password-label:focus, label#password-label.active
- {
-  color: #a1887f;
+{
+color: #a1887f;
 }
 
 input {
-    font-family: 'Josefin Sans', sans-serif;
-    color: #3e2723;
+font-family: 'Josefin Sans', sans-serif;
+color: #3e2723;
 }
 
 label {
-    color: #3e2723;
+color: #3e2723;
 }
 
 /*-------------------------------------------- Flashes */
 .flashes h4 {
-    line-height: 2;
-    font-family: 'Pacifico', cursive;
+line-height: 2;
+font-family: 'Pacifico', cursive;
 }
 
 /*--------------------------------------------- Recipe Page */
 .card .card-content .card-title {
-    font-size: 1.3rem;
-    color: #24380e;
-    letter-spacing: .5px;
-    font-family: 'Pacifico', cursive;
-    line-height: inherit;
-    margin-bottom: 10px;
+font-size: 1.3rem;
+color: #24380e;
+letter-spacing: .5px;
+font-family: 'Pacifico', cursive;
+line-height: inherit;
+margin-bottom: 10px;
 }
 
 hr#divider {
-    border-top: 1px solid #7ec46a;
-    margin: 15px 0px;
+border-top: 1px solid #7ec46a;
+margin: 15px 0px;
 }
 
 .card .card-title {
-    font-size: 1.4rem;
+font-size: 1.4rem;
 }
 
 /*------------------------------------------- Add Recipe */
 button.light-green.darken-1.waves-effect.waves-light.btn {
-    text-transform: none;
-    font-size: 1.3rem;
-    letter-spacing: 1px;
-    font-weight: 300;
+text-transform: none;
+font-size: 1.3rem;
+letter-spacing: 1px;
+font-weight: 300;
 }
 
 textarea {
-    font-family: 'Josefin Sans', sans-serif;
-    color: #3e2723;
+font-family: 'Josefin Sans', sans-serif;
+color: #3e2723;
 }
 
 /*--------------------------------------- Edit Recipe */
 .btn#edit-recipe, 
 .btn#delete-recipe, button, #edit {
-      font-family: 'Pacifico', cursive;
-      text-transform: none;
-      font-size: 1rem;
-      letter-spacing: 1px;
-      margin: 2px 0px;
+    font-family: 'Pacifico', cursive;
+    text-transform: none;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    margin: 2px 0px;
 }
 
 a#cancel, .red.btn.accent-2.text-shadow {
-    font-family: 'Pacifico', cursive;
-      text-transform: none;
-      letter-spacing: 1px;
-      border: none;
+font-family: 'Pacifico', cursive;
+    text-transform: none;
+    letter-spacing: 1px;
+    border: none;
 }
 
 /*--------------------------------------- Search Recipes */
 button.submit.btn.light-green.lighten-1 {
-    border: none;
-    text-transform: none;
-    letter-spacing: .5px;
+border: none;
+text-transform: none;
+letter-spacing: .5px;
 }
 
 i.fas.fa-user-circle.light-green-text.text-shadow.center-align:hover {
-    color: #4e342e;
+color: #4e342e;
 }
 
 i.fas.fa-user-circle.light-green-text.text-shadow.center-align {
-    font-size: 10rem; 
-    margin-top: 30px;
+font-size: 10rem; 
+margin-top: 30px;
 }
 
 #card-image {
-    max-width: 100%;
-    height: auto;
-    overflow: hidden;
+max-width: 100%;
+height: auto;
+overflow: hidden;
 }
 
 /*--------------------------------------- Footer */
 footer {
-    position: relative;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    color: white;
-    text-align: center;
+position: relative;
+left: 0;
+bottom: 0;
+width: 100%;
+color: white;
+text-align: center;
 }
 
 /*------------------------------------- Media Queries */
 @media only screen and (min-width: 600px) {
-    #cards {
-        min-height: 40vh;
-    }
-    #card-image {
-        max-width: 100%;
-        min-height: 200px;
-        overflow: hidden;
-    }
-    main.container {
-        margin-top: 60px;
-    }
-    footer {
-        margin-top: 60px;
-    }
-    body {
-        min-height: 100vh;
-    }
+#cards {
+    min-height: 40vh;
+}
+#card-image {
+    max-width: 100%;
+    min-height: 200px;
+    overflow: hidden;
+}
+main.container {
+    margin-top: 60px;
+}
+footer {
+    margin-top: 60px;
+}
+body {
+    min-height: 100vh;
+}
 }
 
 @media only screen and (min-width: 1200px) {
-    #cards {
-        min-height: 50vh;
-        overflow: hidden;
-    }
-    #card-image {
-        max-width: 100%;
-        min-height: 200px;
-        overflow: hidden;
-    }
-    footer {
-        margin-top: 200px;
-    }
+#cards {
+    min-height: 50vh;
+    overflow: hidden;
+}
+#card-image {
+    max-width: 100%;
+    min-height: 200px;
+    overflow: hidden;
+}
+footer {
+    margin-top: 200px;
+}
 }

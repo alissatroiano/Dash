@@ -26,41 +26,43 @@
 </div>
 <!--./end-row-for-search-->
 <!-- All Recipes Section Starts Here-->
-    <!--If Statement for Search function starts here-->
+<!--If Statement for Search function starts here-->
 {% if recipes|length > 0 %}
 <div class="row">
-<!--Use jina for loop to iterate through recipes -->
-{% for recipe in recipes %}
+    <!--Use jina for loop to iterate through recipes -->
+    {% for recipe in recipes %}
     <!--Card Col Starts Here-->
     <div class="col s12 m6 l4">
-    <!--Card Starts Here-->
+        <!--Card Starts Here-->
         <div class="card" id="cards">
             <!-- Card Image with Waves Effect-->
             <div class="card-image waves-effect waves-block waves-light">
-                <img src="{{ recipe.file }}" class="responsive-img activator" id="card-image">
+                <img src="{{ recipe.file }}" class="responsive-img activator" id="card-image"
+                    alt="{{ recipe.recipe_name }}" />
             </div>
             <!--./end-card-image-->
             <!--Card Content Starts Here-->
-            <div class="card-content">
+            <div class="card-content activator">
                 <span class="card-title activator">
                     {{ recipe.recipe_name }}
                     <i class="fas fa-ellipsis-v prefix right activator"></i></span>
                 <p>{{ recipe.recipe_description }}</p>
                 <p class="activator" style="margin-top: 10px;">
-                    <i class="fas fa-clock light-green-text text-darken-2 prefix"></i> 
-                    Prep Time: {{ recipe.prep_time }} </p>          
+                    <i class="fas fa-clock light-green-text text-darken-2 prefix"></i>
+                    Prep Time: {{ recipe.prep_time }} </p>
             </div>
             <!--./end-card-content-->
-             <!--Floating Action Button with Link to Add Recipe Page (initialized in `script.js`) - copied from <https://materializecss.com/floating-action-button.html>  -->
-                <div class="fixed-action-btn">
-                 {% if session["user"] %}
-                    <a class="btn-floating btn-large light-green darken-4 waves-effect waves-light pulse text-shadow"
-                        href="{{ url_for('add_recipe') }}"><i class="fas fa-plus"></i></a>
-                        {% else %}
-                         <a class="btn-floating btn-large light-green darken-4 waves-effect waves-light pulse text-shadow tooltipped"
-                        href="{{ url_for('signup') }}" data-position="left" data-tooltip="Add a recipe"><i class="fas fa-plus"></i></a>
+            <!--Floating Action Button with Link to Add Recipe Page (initialized in `script.js`) - copied from <https://materializecss.com/floating-action-button.html>  -->
+            <div class="fixed-action-btn">
+                {% if session["user"] %}
+                <a class="btn-floating btn-large light-green darken-4 waves-effect waves-light pulse text-shadow"
+                    href="{{ url_for('add_recipe') }}"><i class="fas fa-plus"></i></a>
+                {% else %}
+                <a class="btn-floating btn-large light-green darken-4 waves-effect waves-light pulse text-shadow tooltipped"
+                    href="{{ url_for('login') }}" data-position="left" data-tooltip="Add a recipe"><i
+                        class="fas fa-plus"></i></a>
                 {% endif %}
-                </div>
+            </div>
             <!--Card Reveal Starts Here-->
             <div class="card-reveal">
                 <span class="card-title activator"> <i class="fas fa-times prefix right"></i>
@@ -102,5 +104,5 @@
 <h4 class="deep-orange-text text-accent-3 center-align">No Recipes Found
 </h4>
 {% endif %}
-    <!--./end-if-statement-for-search-->
+<!--./end-if-statement-for-search-->
 {% endblock %}
