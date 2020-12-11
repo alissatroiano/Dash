@@ -274,6 +274,12 @@ To run the project from your local machine, follow these steps:
 
 - I followed the steps provided by this article, [How to use Flask to upload files to Amazon s3](https://www.zabana.me/notes/flask-tutorial-upload-files-amazon-s3) to understand and implement uploading files to an Amazon S3 bucket using the Flask web framework for Python.
 
+- I used [JSHint](https://jshint.com/) to validate, `static/js/script.js`.
+
+- I used [W3C HTML Validator](https://validator.w3.org/) to validate every file in `/templates`.
+
+- I used [W3C Jigsaw](https://jigsaw.w3.org/css-validator/) to validate my stylesheet, `static/css/style.css`.
+
 ### Content
 
 - The grid layout and responsive design were made possible by importing [Materialize](https://materializecss.com/) front-end framework and using the built-in classes.
