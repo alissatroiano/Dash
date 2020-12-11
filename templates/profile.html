@@ -1,15 +1,14 @@
-{% extends "base.html" %} 
+{% extends "base.html" %}
 {% block content %}
 
-<h3 class="center-align text-shadow">{{ username }}'s Profile</h3>
+<h3 class="brown-text text-darken-4 center-align text-shadow">{{ username }}'s Profile</h3>
 <!--Card Row-->
 <div class="row">
     <div class="col s12 m8 offset-m2">
         <div class="card large">
             <div class="card-image">
                 <div class="row center-align">
-                    <i class="fas fa-user-circle light-green-text text-shadow"
-                        style="font-size: 10rem; padding: 10px 10px; margin-top: 30px;">
+                    <i class="fas fa-user-circle light-green-text text-shadow" style="font-size: 10rem; padding: 10px 10px; margin-top: 30px;">
                     </i>
                 </div>
                 <!--Floating Action Button with Link to Add Recipe Page (initialized in `script.js`) - copied from <https://materializecss.com/floating-action-button.html>  -->
@@ -33,8 +32,7 @@
                             <label for="edit-password">Password</label>
                         </div>
                         <div class="col s12 center-align">
-                            <button class="light-green darken-1 waves-effect waves-light btn" type="submit"
-                                name="action">
+                            <button class="light-green darken-1 waves-effect waves-light btn" type="submit" name="action">
                                 Submit
                                 <i class="fas fa-share"></i>
                             </button>
