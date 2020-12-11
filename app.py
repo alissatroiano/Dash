@@ -83,7 +83,7 @@ def login():
                 flash("Welcome, {}".format(
                     request.form.get("username")))
                 return redirect(url_for(
-                    "profile", username=session["user"]))
+                    "get_recipes"))
             else:
                 flash("Incorrect username and/or password")
                 return redirect(url_for("login"))
