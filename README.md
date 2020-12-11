@@ -19,7 +19,7 @@ User stories were created first during the Strategy Plane phase of this mileston
 
 User Story 1:
 
-> *"As a daily Dash user, I want to search for recipes, so that I can find recipes quickly"*
+> *"As a daily Dash user, I want to be able to search, so that I can find the recipes I actually want to use!"*
 >> -Jane Marino, Homemaker
 
 User Story 2:
@@ -35,7 +35,7 @@ User Story 3:
 User Story 4:
 
 > *"As a member, I want to be able to edit any of the recipes on the page, so I can use my expertise to contribute to the Dash community."*
->> -Andy Fordane, Chef
+>> -Andy Fjordane, Chef
 
 User Story 5:
 
@@ -158,14 +158,6 @@ To read more about my process, visit the Deployment section of this documentatio
     - [Werkzeug](https://werkzeug.palletsprojects.com/en/1.0.x/serving/)
 
     - This project uses Flask's dependencies, including the WSGI web application library, **Werkzeug** to serve the WSGI application with powerful structure and patterns.
-
-    - [It's Dangerous](https://itsdangerous.palletsprojects.com/en/1.1.x/#)
-
-    - This project uses **itsdangerous** to serialize and sign data.
-
-    - [JMESPath](https://pypi.org/project/jmespath/)
-
-    - This project uses **JMESPath** to specify how to extract elements from a JSON document.
 
 - [Jinja](https://jinja.palletsprojects.com/en/2.11.x/)
 
