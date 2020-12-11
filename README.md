@@ -6,7 +6,6 @@ Dash is a recipe sharing application for men & women, (ages 24 - 39), who want t
 
 ## UX
 
-
 To make for a more organized development process, the developer used [GitHub Projects](https://github.com/users/alissatroiano/projects/4) to manage sprints and tasks. 
 
 As the Milestone 3 Project for [Code Institute's](https://codeinstitute.net/) Data-Centric Development portion of the Full Stack Developer Program, this project was built with HTML, CSS, JavaScript, jQuery, Python, Flask, and MongoDB.
@@ -208,8 +207,6 @@ To read more about my process, visit the Deployment section of this documentatio
 Thorough testing was conducted by the developer for this project and can be viewed in [TESTING.md](TESTING.md)
 
 ## Deployment
-
-This section should describe the process you went through to deploy the project to a hosting platform (e.g. GitHub Pages or Heroku).
 
 In particular, you should provide all details of the differences between the deployed version and the development version, if any, including:
 
