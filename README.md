@@ -1,6 +1,6 @@
 # Dash
 
-![responsive-view](static/images/responsive.png)
+![responsive](wireframes/amiresponsive.jpg)
 
 Dash is a recipe sharing application for men & women, (ages 24 - 39), who want to find and share recipes.
 
@@ -208,13 +208,41 @@ Thorough testing was conducted by the developer for this project and can be view
 
 ## Deployment
 
-In particular, you should provide all details of the differences between the deployed version and the development version, if any, including:
+### Heroku
 
-- Different values for environment variables (Heroku Config Vars)?
-- Different configuration files?
-- Separate git branch?
+This project was deployed by Heroku. 
 
-In addition, if it is not obvious, you should also describe how to run your code locally.
+In order to successfully deploy the app, the following steps were taken:
+
+- Visit GitPod workspace.
+- Create the Flask App.
+- Use the CLI to tell Heroku which applications and dependencies are rquired to run the application via the, `pip3 freeze --local > requirements.txt` command.
+- Create the Procfile via `echo web: python app.py > Procfile`.
+- Visit [Heroku](https://www.heroku.com).
+- Click, 'Create a New App'.
+- Create an application on Heroku with a unique name **('dash-ms3')** to satisfy Heroku requirements.
+- Create the Heroku application.
+- Add the following configuration vars to Heroku application:
+    - `IP`
+    - `PORT`
+    - `MONGO_URI`
+    - `SECRET_KEY`
+    - `MONGO_DBNAME`
+- Visit workspace/IDE.
+- Push newly created `requirements.txt` and `Procfile` to Git.
+- Navigate back to Heroku and enable automatic deployment.
+- Connect Heroku to deploy from the **master** branch of Dash's repository.
+- Successfully deploy the application.
+
+Once the application was deployed, I navigated back to my workspace and began to build out templating with Jinja. Upon testing my application, I discovered an issue regarding file storage and decided to use Amazon S3 Photo Bucket, a third party service, to store file uploads.
+
+I then had to add the following configuration vars to my Heroku app;
+    - `S3_BUCKET_NAME`
+    - `S3_KEY`
+    - `S3_SECRET`
+    - `S3_LOCATION`
+
+To view this project on Heroku, visit https://git.heroku.com/dash-ms3.git.
 
 ## Credits
 
