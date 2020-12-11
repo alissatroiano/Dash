@@ -127,8 +127,7 @@ def add_recipe():
             "recipe_ingredients": request.form.get("recipe_ingredients"),
             "file": image_path,
             "tools_needed": request.form.get("tools_needed"),
-            "recipe_instructions": request.form.get("recipe_instructions"),
-            "created_by": request.form.get("created_by")
+            "recipe_instructions": request.form.get("recipe_instructions")
         }
         mongo.db.recipes.insert_one(recipe)
         flash("Recipe successfully added")
@@ -158,6 +157,7 @@ def upload_file():
 
 def upload_file_to_s3(file):
     """
+    Amazon S3 Photo Bucket Configuration:
     Docs: http://boto3.readthedocs.io/en/latest/guide/s3.html
     """
     try:
