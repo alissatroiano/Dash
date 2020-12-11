@@ -1,6 +1,6 @@
 # Dash
 
-![responsive](wireframes/amiresponsive.jpg)
+![responsive](/wireframes/amiresponsive.jpg)
 
 Dash is a recipe sharing application for men & women, (ages 24 - 39), who want to find and share recipes.
 
@@ -43,7 +43,7 @@ User Story 5:
 
 The user story worksheet that was completed during the Strategy Plane portion of this project can be viewed here:
 
-![userstories](wireframes/userstories.jpg)
+![userstories](/wireframes/userstories.jpg)
 
 ### Trade-Off Exercise
 
@@ -243,6 +243,22 @@ I then had to add the following configuration vars to my Heroku app;
     - `S3_LOCATION`
 
 To view this project on Heroku, visit https://git.heroku.com/dash-ms3.git.
+
+## Local Machine
+
+To run the project from your local machine, follow these steps:
+
+- Make sure git is installed `git --version`.
+- If Git isn't already configured, configure Git:
+    - `git config --global user.name "your_username"`
+    - `git config --global user.email "your_email_address@example.com"`
+- Check the configuration:
+    - `git config --global --list`
+
+- **Clone** the application in your local environment via command:
+
+    - `gh repo clone alissatroiano/Dash`
+
 
 ## Credits
 
