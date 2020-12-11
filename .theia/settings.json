@@ -25,7 +25,7 @@
     "emmet.extensionsPath": ".theia",
     "yaml.format.enable": false,
     "editor.formatOnPaste": true,
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": false,
     "pretty-formatter.braces": true,
     "pretty-formatter.commentLine": true,
     "pretty-formatter.cssInsertLines": true,
