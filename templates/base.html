@@ -1,132 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
-<!--Head Starts Here-->
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% block styles %}
-    <!--Font Awesome CDN-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
-        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
-        crossorigin="anonymous" />
-    <!--Materialize CDN-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <!--Custom Stylesheet-->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
-    <!--Favicon -->
-    <link rel="shortcut icon" href="static/images/favicon.ico" type="image/x-icon">
-    {% endblock %}
-    <title>Dash</title>
-</head>
-<!--./end-head-->
-
-<body>
-    <!--Header Starts Here-->
-    <header>
-        <!--Top Navbar-->
-        <nav class="nav-extended text-shadow light-green lighten-1">
-            <div class="nav-wrapper">
-                <a href="{{ url_for('get_recipes') }}" class="brand-logo center">
-                    <i class="fas fa-utensils prefix" style="float: none;">
-                    </i> Dash </a>
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
-                <ul class="right hide-on-med-and-down">
-                    <li><a href="{{ url_for('get_recipes') }}">Home</a></li>
-                    {% if session.user %}
-                    <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-                    <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
-                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
-                    {% else %}
-                    <li><a href="{{ url_for('login') }}">Login</a></li>
-                    <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
-                    {% endif %}
-                </ul>
-            </div>
-        </nav>
-        <!--Mobile Sidenav-->
-        <ul class="sidenav" id="mobile-demo">
-            <h3 class="light-green-text darken-2 text-shadow center-align">Dash</h3>
-            <li><a href="{{ url_for('get_recipes') }}">Home</a></li>
-            {% if session.user %}
-            <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-            <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
-            <li><a href="{{ url_for('logout') }}">Logout</a></li>
-            {% else %}
-            <li><a href="{{ url_for('login') }}">Login</a></li>
-            <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
-            {% endif %}
-        </ul>
-    </header>
-    <!--./end-header-->
-    <section>
-        <!-- Flash messages -->
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        {% for message in messages %}
-        <div class="row flashes">
-            <h4 class="light-green lighten-4 center-align">{{ message }}</h4>
-        </div>
-        {% endfor %}
-        {% endif %}
-        {% endwith %}
-    </section>
-    <!--Main Content-->
-    <main class="container">
-        {% block content %}
+<html
+    lang="en">
+    <!--Head Starts Here-->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% block styles %}
+            <!--Font Awesome CDN-->
+            <link
+            rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous"/>
+            <!--Materialize CDN-->
+            <link
+            rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+            <!--Custom Stylesheet-->
+            <link
+            rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+            <!--Favicon -->
+            <link rel="shortcut icon" href="static/images/favicon.ico" type="image/x-icon">
         {% endblock %}
-    </main>
-    <!--./main-content-->
-
-    <!-- Footer-->
-    <footer class="page-footer fixed light-green lighten-1">
-        <div class="container" id="footer">
-            <div class="row">
-                <div class="col s12 center">
-                    <h4 class="white-text"><i class="fas fa-utensils prefix"></i> Dash</h4>
-                    <p class="white-text">Recipe crowdsourcing</p>
-                </div>
-                <div class="col s12 center">
-                    <ul class="pagination">
-                        <li class="waves-effect">
+        <title>Dash</title>
+    </head>
+    <!--./end-head-->
+    <body>
+        <!--Header Starts Here-->
+        <header>
+            <!--Top Navbar-->
+            <nav class="nav-extended text-shadow light-green lighten-1">
+                <div class="nav-wrapper">
+                    <a href="{{ url_for('get_recipes') }}" class="brand-logo center">
+                        <i class="fas fa-utensils prefix" style="float: none;"></i>
+                        Dash
+                    </a>
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger right">
+                        <i class="fas fa-bars"></i>
+                    </a>
+                    <ul class="right hide-on-med-and-down">
+                        <li>
                             <a href="{{ url_for('get_recipes') }}">Home</a>
                         </li>
                         {% if session.user %}
-                        <li class="waves-effect">
-                            <a href="{{ url_for('profile', username=session['user']) }}">Profile</a>
-                        </li>
-                        <li class="waves-effect">
-                            <a href="{{ url_for('add_recipe') }}">Add Recipe</a>
-                        </li>
-                        <li class="waves-effect">
-                            <a href="{{ url_for('logout') }}">Logout</a>
-                        </li>
+                            <li>
+                                <a href="{{ url_for('profile', username=session['user']) }}">Profile</a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('add_recipe') }}">Add Recipe</a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('logout') }}">Logout</a>
+                            </li>
                         {% else %}
-                        <li class="waves-effect">
-                            <a href="{{ url_for('login') }}">Login</a>
-                        </li>
-                        <li class="waves-effect">
-                            <a href="{{ url_for('signup') }}">Sign Up</a>
-                        </li>
+                            <li>
+                                <a href="{{ url_for('login') }}">Login</a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('signup') }}">Sign Up</a>
+                            </li>
                         {% endif %}
                     </ul>
                 </div>
-            </div>
-        </div>
-        <div class="footer-copyright">
-            <div class="container">
-                © 2020 Dash App
-            </div>
-        </div>
-    </footer>
-   
-    {% block scripts %}
-    <!--Load Scripts-->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
-        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-    <!--./end-scripts-->
-    {% endblock %}
+            </nav>
+            <!--Mobile Sidenav-->
+            <ul class="sidenav" id="mobile-demo">
+                <h3 class="light-green-text darken-2 text-shadow center-align">Dash</h3>
+                <li>
+                    <a href="{{ url_for('get_recipes') }}">Home</a>
+                </li>
+                {% if session.user %}
+                    <li>
+                        <a href="{{ url_for('profile', username=session['user']) }}">Profile</a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('add_recipe') }}">Add Recipe</a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('logout') }}">Logout</a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{{ url_for('login') }}">Login</a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('signup') }}">Sign Up</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </header>
+        <!--./end-header-->
+        <section>
+            <!-- Flash messages -->
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="row flashes">
+                        <h4 class="light-green lighten-4 center-align">{{ message }}</h4>
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </section>
+        <!--Main Content-->
+        <main class="container"> {% block content %}{% endblock %}
+            </main>
+            <!--./main-content-->
+            <!-- Footer-->
+            <footer class="page-footer fixed light-green lighten-1">
+                <div class="container" id="footer">
+                    <div class="row">
+                        <div class="col s12 center">
+                            <h4 class="white-text">
+                                <i class="fas fa-utensils prefix"></i>
+                                Dash</h4>
+                            <p class="white-text">Recipe crowdsourcing</p>
+                        </div>
+                        <div class="col s12 center">
+                            <ul class="pagination">
+                                <li class="waves-effect">
+                                    <a href="{{ url_for('get_recipes') }}">Home</a>
+                                </li>
+                                {% if session.user %}
+                                    <li class="waves-effect">
+                                        <a href="{{ url_for('profile', username=session['user']) }}">Profile</a>
+                                    </li>
+                                    <li class="waves-effect">
+                                        <a href="{{ url_for('add_recipe') }}">Add Recipe</a>
+                                    </li>
+                                    <li class="waves-effect">
+                                        <a href="{{ url_for('logout') }}">Logout</a>
+                                    </li>
+                                {% else %}
+                                    <li class="waves-effect">
+                                        <a href="{{ url_for('login') }}">Login</a>
+                                    </li>
+                                    <li class="waves-effect">
+                                        <a href="{{ url_for('signup') }}">Sign Up</a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-copyright">
+                    <div class="container">
+                        © 2020 Dash App
+                    </div>
+                </div>
+            </footer>
+            <!--Scripts-->
+            {% block scripts %}
+                <!--Load Scripts-->
+                <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+                <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+                <!--./end-scripts-->
+            {% endblock %}
 
-</body>
-</html>
+        </body>
+    </html>
