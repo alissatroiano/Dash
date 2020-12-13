@@ -96,6 +96,27 @@ def login():
     return render_template("login.html")
 
 
+@app.route("/edit_credentials/<user_id>", methods=["GET", "POST"])
+def edit_credentials(user_id):
+    if request.method == "POST":
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
+        edit = {
+            "recipe_name": request.form.get("recipe_name"),
+            "prep_time": request.form.get("prep_time"),
+            "recipe_description": request.form.get("recipe_description"),
+            "recipe_ingredients": request.form.get("recipe_ingredients"),
+            "file": edit_path,
+            "tools_needed": request.form.get("tools_needed"),
+            "recipe_instructions": request.form.get("recipe_instructions")
+        }
+        mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, edit)
+        flash("Recipe edited!")
+
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    return render_template("edit_recipe.html", recipe=recipe)
+
+
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     # Fetch session username from databases
@@ -111,7 +132,7 @@ def profile(username):
 
 @app.route("/logout")
 def logout():
-    # Create logout functionality here
+    # Remove user from session cookie and redirect user to login function
     flash("You have been logged out")
     session.pop("user")
     return redirect(url_for("login"))
@@ -188,6 +209,7 @@ def edit_recipe(recipe_id):
         }
         mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, edit)
         flash("Recipe edited!")
+        return redirect(url_for('get_recipes'))
 
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     return render_template("edit_recipe.html", recipe=recipe)
