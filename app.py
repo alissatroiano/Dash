@@ -129,7 +129,7 @@ def add_recipe():
             "file": image_path,
             "tools_needed": request.form.get("tools_needed"),
             "recipe_instructions": request.form.get("recipe_instructions"),
-            "created_by": request.form.get("created_by")
+            "created_by": session["user"]
         }
         mongo.db.recipes.insert_one(recipe)
         flash("Recipe successfully added")
@@ -177,7 +177,7 @@ def upload_file_to_s3(file):
 def edit_recipe(recipe_id):
     edit_path = upload_file()
     if request.method == "POST":
-        submit = {
+        edit = {
             "recipe_name": request.form.get("recipe_name"),
             "prep_time": request.form.get("prep_time"),
             "recipe_description": request.form.get("recipe_description"),
@@ -186,7 +186,7 @@ def edit_recipe(recipe_id):
             "tools_needed": request.form.get("tools_needed"),
             "recipe_instructions": request.form.get("recipe_instructions")
         }
-        mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, submit)
+        mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, edit)
         flash("Recipe edited!")
 
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})

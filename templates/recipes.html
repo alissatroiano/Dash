@@ -2,6 +2,7 @@
 {% block content %}
 
 <h3 class="brown-text text-darken-4 center-align">All Recipes</h3>
+
 <!--Row for Search-->
 <div class="row">
     <div class="col s12">
@@ -78,8 +79,8 @@
                     {% if session["user"] %}
                     <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn light-green lighten-1" id="edit-recipe"><i class="fas fa-pen-fancy white-text"></i> Edit</a>
                     {% endif %}
-                    <!-- Provide 'Delete' option for recipe authors -->
-                    {% if session["user"] == recipe.created_by|lower %}
+                    <!-- Provide 'Delete' option for admin -->
+                    {% if recipe.created_by|lower == session.user|lower %}
                     <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="btn red accent-2" id="delete-recipe"><i class="fas fa-trash-alt white-text"></i> Delete</a>
                     {% endif %}
                 </div>
