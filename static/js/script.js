@@ -6,5 +6,4 @@
      $('.fixed-action-btn').floatingActionButton();
      $('.waves-effect.waves-light').floatingActionButton();
      $('.tooltipped').tooltip();
-     $('.modal').modal();
  });
