@@ -111,7 +111,7 @@ def profile(username):
 
 @app.route("/logout")
 def logout():
-    # Create logout functionality here
+    # Remove user from session cookie and redirect user to login function
     flash("You have been logged out")
     session.pop("user")
     return redirect(url_for("login"))
@@ -188,6 +188,7 @@ def edit_recipe(recipe_id):
         }
         mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, edit)
         flash("Recipe edited!")
+        return redirect(url_for('get_recipes'))
 
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     return render_template("edit_recipe.html", recipe=recipe)
