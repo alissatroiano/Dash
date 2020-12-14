@@ -2,7 +2,7 @@
 
 ![responsive](/wireframes/amiresponsive.jpg)
 
-Dash is a recipe sharing application for men & women, (ages 24 - 39), who want to find and share recipes.
+Dash is a recipe crowdsourcing application for men & women, (ages 24 - 39), who want to find and share recipes. To become a contributor or an editor for Dash, all you need to do is sign up for a free account, login and start creating/editing recipes! Dash's administrator account manages the application and may delete inappropriate or offensive content.
 
 ## UX
 
@@ -10,7 +10,7 @@ To make for a more organized development process, the developer used [GitHub Pro
 
 As the Milestone 3 Project for [Code Institute's](https://codeinstitute.net/) Data-Centric Development portion of the Full Stack Developer Program, this project was built with HTML, CSS, JavaScript, jQuery, Python, Flask, and MongoDB.
 
-Dash's target market is comprised of men & women, ages 24 - 39, that wish to find and share recipes. To become a contributor on Dash, a user must create an account. Creating an account is quick, easy and free. Once an account has been created, a user may login to create new recipes or edit any of the recipes on Dash.
+Dash's target market is comprised of men & women, ages 24 - 39, that wish to find and share recipes. To become a contributor or editor on Dash, a user must first create an account. Creating an account is quick, easy and free. Once an account has been created, a user may login to create new recipes or edit any of the recipes on Dash.
 
 ### User Stories
 
@@ -18,27 +18,27 @@ User stories were created first during the Strategy Plane phase of this mileston
 
 User Story 1:
 
-> *"As a daily Dash user, I want to be able to search, so that I can find the recipes I actually want to use!"*
+> *"As a Dash user, I want to be able to search for recipes, so that I can find what I actually want to make!"*
 >> -Jane Marino, Homemaker
 
 User Story 2:
 
-> *"As a new user, I want to find the 'Sign Up' page right away, so I can create and update recipes."*
+> *"As a new user, I want to find the 'Sign Up' form right away, so I can create and update recipes."*
 >> -Michael Corona, Yoga Teacher
 
 User Story 3:
 
-> *"As a user, I want to be able to post my own recipes, so I can share them with like-minded individuals."*
+> *"As a contributor, I want to be able to post new recipes, so I can share my creations with like-minded individuals."*
 >> -Danielle Greenstein, Food Blogger
 
 User Story 4:
 
-> *"As a member, I want to be able to edit any of the recipes on the page, so I can use my expertise to contribute to the Dash community."*
+> *"As an editor, I want the option to edit any of the recipes on the page, so I can use my expertise to contribute to the Dash community."*
 >> -Andy Fjordane, Chef
 
 User Story 5:
 
-> *"As a Dash member, I want other members to edit my recipes, so I can learn new ways to prepare dishes."*
+> *"As a Dash contributor, I want other members to edit my recipes, so I can learn new ways to prepare dishes."*
 >> -Michelle Greene, Cafe Owner
 
 The user story worksheet that was completed during the Strategy Plane portion of this project can be viewed here:
@@ -75,9 +75,9 @@ To properly develop this full-stack application, the following features were inc
 
 - Login - Allows users to log in to their Dash account, by inputting the correct user and password keys.
 
-- Create Recipe - Allows **existing** users to share original content with the Dash community, by granting them write access to the database and having them fill out a form.
+- Create Recipe - Allows **existing** users to share original content with the Dash community, by granting them write access to the database and having them submit a form with new recipe name, description, image, prep time, tools needed, ingredients and instructions.
 
-- Edit Recipe - Allows users to edit any recipe, by including a functional, 'Edit' button with each recipe.
+- Edit Recipe - Allows **existing** users (or 'editors') to edit recipes, by providing an, 'Edit' button that displays when users are logged in and sends an updated dictionary of values to MongoDB upon submission.
 
 - Search - Allows users to search for specific recipes, by providing them with a search bar that fetches and displays relevant data.
 
@@ -210,7 +210,7 @@ Thorough testing was conducted by the developer for this project and can be view
 
 ### Heroku
 
-This project was deployed by Heroku. 
+This project uses **Heroku** for deloyment. 
 
 In order to successfully deploy the app, the following steps were taken:
 
