@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<!--Head Starts Here-->
 
 <head>
     <meta charset="UTF-8">
@@ -34,24 +33,24 @@
                     <i class="fas fa-bars"></i></a>
                 <ul class="right hide-on-med-and-down">
                     <li>
-                        <a href="{{ url_for('get_recipes') }}">Home</a>
+                        <a href="{{ url_for('get_recipes') }}" target="_blank">Home</a>
                     </li>
                     {% if session.user %}
                     <li>
-                        <a href="{{ url_for('profile', username=session['user']) }}">Profile</a>
+                        <a href="{{ url_for('profile', username=session['user']) }}" target="_blank">Profile</a>
                     </li>
                     <li>
-                        <a href="{{ url_for('add_recipe') }}">Add Recipe</a>
+                        <a href="{{ url_for('add_recipe') }}" target="_blank">Add Recipe</a>
                     </li>
                     <li>
-                        <a href="{{ url_for('logout') }}">Logout</a>
+                        <a href="{{ url_for('logout') }}" target="_blank">Logout</a>
                     </li>
                     {% else %}
                     <li>
-                        <a href="{{ url_for('login') }}">Login</a>
+                        <a href="{{ url_for('login') }}" target="_blank">Login</a>
                     </li>
                     <li>
-                        <a href="{{ url_for('signup') }}">Sign Up</a>
+                        <a href="{{ url_for('signup') }}" target="_blank">Sign Up</a>
                     </li>
                     {% endif %}
                 </ul>
@@ -61,24 +60,24 @@
         <ul class="sidenav" id="mobile-demo">
             <h3 class="light-green-text darken-2 text-shadow center-align"> <i class="fas fa-utensils prefix" style="float: none;"></i> Dash</h3>
             <li>
-                <a href="{{ url_for('get_recipes') }}">Home</a>
+                <a href="{{ url_for('get_recipes') }}" target="_blank">Home</a>
             </li>
             {% if session.user %}
             <li>
-                <a href="{{ url_for('profile', username=session['user']) }}">Profile</a>
+                <a href="{{ url_for('profile', username=session['user']) }}" target="_blank">Profile</a>
             </li>
             <li>
-                <a href="{{ url_for('add_recipe') }}">Add Recipe</a>
+                <a href="{{ url_for('add_recipe') }}" target="_blank">Add Recipe</a>
             </li>
             <li>
-                <a href="{{ url_for('logout') }}">Logout</a>
+                <a href="{{ url_for('logout') }}" target="_blank">Logout</a>
             </li>
             {% else %}
             <li>
-                <a href="{{ url_for('login') }}">Login</a>
+                <a href="{{ url_for('login') }}" target="_blank">Login</a>
             </li>
             <li>
-                <a href="{{ url_for('signup') }}">Sign Up</a>
+                <a href="{{ url_for('signup') }}" target="_blank">Sign Up</a>
             </li>
             {% endif %}
         </ul>
@@ -113,24 +112,24 @@
                 <div class="col s12 center">
                     <ul class="pagination">
                         <li class="waves-effect">
-                            <a href="{{ url_for('get_recipes') }}">Home</a>
+                            <a href="{{ url_for('get_recipes') }}" target="_blank">Home</a>
                         </li>
                         {% if session.user %}
                         <li class="waves-effect">
-                            <a href="{{ url_for('profile', username=session['user']) }}">Profile</a>
+                            <a href="{{ url_for('profile', username=session['user']) }}" target="_blank">Profile</a>
                         </li>
                         <li class="waves-effect">
-                            <a href="{{ url_for('add_recipe') }}">Add Recipe</a>
+                            <a href="{{ url_for('add_recipe') }}" target="_blank">Add Recipe</a>
                         </li>
                         <li class="waves-effect">
                             <a href="{{ url_for('logout') }}">Logout</a>
                         </li>
                         {% else %}
                         <li class="waves-effect">
-                            <a href="{{ url_for('login') }}">Login</a>
+                            <a href="{{ url_for('login') }}" target="_blank">Login</a>
                         </li>
                         <li class="waves-effect">
-                            <a href="{{ url_for('signup') }}">Sign Up</a>
+                            <a href="{{ url_for('signup') }}" target="_blank">Sign Up</a>
                         </li>
                         {% endif %}
                     </ul>
