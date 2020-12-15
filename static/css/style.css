@@ -1,5 +1,7 @@
+/*-----------------------------------  Google Fonts Import */
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Pacifico&display=swap');
 
+/*-----------------------------------  Headings and Special Text */
 h1,
 h2,
 h3 {
@@ -11,14 +13,12 @@ h4 {
     font-family: 'Pacifico', cursive;
     font-size: 1.4rem;
     color: #011408;
-    font-weight: 300;
     text-shadow: 1px 1px 2px #4444447a;
 }
 
 h5,
 h6 {
     font-family: 'Pacifico', cursive;
-    font-weight: 300;
     font-size: 1.35rem;
     text-shadow: 1px 1px 2px #4444447a;
     color: #011408;
@@ -28,10 +28,11 @@ h6 {
 p,
 body {
     font-family: 'Josefin Sans', sans-serif;
+    font-weight: 300;
     font-size: 1rem;
 }
 
-/*----------------------------------- Top Navbar */
+/*----------------------------------- Top Navigation */
 .brand-logo.center {
     font-family: 'Pacifico', cursive;
     text-shadow: 2px 0px 3px #022d0c;
@@ -47,7 +48,7 @@ i.fas.fa-utensils.prefix {
     margin-right: 5px;
 }
 
-/*---------------------------------- Sidebar Nav */
+/*---------------------------------- Side Navigation */
 h3.light-green-text.darken-2.text-shadow.center-align {
     text-shadow: 1px 1px 4px #022d0c;
 }
@@ -100,6 +101,8 @@ label {
 .flashes h4 {
     line-height: 2;
     font-family: 'Pacifico', cursive;
+    background-color: transparent;
+    color: #24380e;
 }
 
 /*--------------------------------------------- Recipe Page */
