@@ -22,7 +22,7 @@ The following tests have been conducted by the developer. The tests were accompa
 - Observe that links now open in a new tab to satisfy grading criteria.
 - Declare test 'passed'.
 
-### Side Navigation Test #1:
+### Materialize Side Navigation Test #1:
 - Visit the app in web browser.
 - Resize browser tab to make, `fas fa-bars` icon visible.
 - Click the icon.
@@ -42,7 +42,7 @@ The following tests have been conducted by the developer. The tests were accompa
 - Ensure each link works (by clicking each link).
 - Declare test 'passed'.
 
-### Mobile Side Navigation Test #1:
+### Materialize Mobile Side Navigation Test #1:
 - Visit the app in mobile web browser.
 - Click on 'fas fa-bars' icon.
 - Verify side nav opens properly.
@@ -177,8 +177,8 @@ The following tests have been conducted by the developer. The tests were accompa
 - Submit the form.
 - Observe that a Jinja, error log renders after clicking, `submit.`
 - Review the contents of the error report. 
-- Diagnose the problem: Line 125, `app.py` (`add_recipe` function).
-- Visit the workspace and scroll down to line 125.
+- Diagnose the problem: Line 123, `app.py` (`add_recipe` function).
+- Visit the workspace and scroll down to line 123.
 - Inspect the `recipe` dictionary that is sent to MongoDB upon creating a new recipe.
 - Scroll to the `edit_recipe` function and notice conflicting key-value pairs. 
  - Rename and repair.

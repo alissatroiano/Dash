@@ -78,7 +78,7 @@ To properly develop this full-stack application, the following features were inc
 
 ### Features Left to Implement
 
-- A 'Profile' page - Allows users to upload an image, view content they have created, and change their username and/or password.
+- Edit Credentials Feature - Allows users to upload a profile picture, view content they have created, and change their username and/or password.
 
 ### Database Design
 
