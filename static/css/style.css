@@ -121,21 +121,32 @@ hr#divider {
     font-size: 1.4rem;
 }
 
+#welcome-row {
+    margin: 20px 60px;
+    margin-left: 60px;
+}
+
+/*------------------------------------------ Profile */
 #find-icon,
 #share-icon,
 #edit-icon {
-    font-size: 40px;
+    font-size: 1.4rem;
     text-shadow: 1px 1px 2px #3e2723;
 }
 
 #feature {
-    margin-right: 60px;
-    margin-left: 60px;
+    margin: 30px 30px;
 }
 
-#welcome-row {
-    margin: 20px 60px;
-    margin-left: 60px;
+#welcome-user {
+    font-size: 1.5rem;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.responsive-img {
+    max-width: 100%;
+    height: auto;
 }
 
 /*------------------------------------------- Add Recipe */
