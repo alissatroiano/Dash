@@ -36,14 +36,9 @@ User Story 4:
 > *"As an editor, I want the option to edit any of the recipes on the page, so I can use my expertise to contribute to the Dash community."*
 >> -Andy Fjordane, Chef
 
-User Story 5:
+The user story worksheet and journal exercise that were completed during the Strategy Plane portion of this project can be viewed here:
 
-> *"As a Dash contributor, I want other members to edit my recipes, so I can learn new ways to prepare dishes."*
->> -Michelle Greene, Cafe Owner
-
-The user story worksheet that was completed during the Strategy Plane portion of this project can be viewed here:
-
-![userstories](/wireframes/userstories.jpg)
+[userjournal](/wireframes/userjournal.pdf)
 
 ### Trade-Off Exercise
 
