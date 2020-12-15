@@ -2,7 +2,7 @@
 
 ![responsive](/wireframes/amiresponsive.jpg)
 
-Dash is a recipe crowdsourcing application for men & women, (ages 24 - 39), who want to find and share recipes. To become a contributor or an editor for Dash, all you need to do is sign up for a free account, login and start creating/editing recipes! Dash's administrator account manages the application and may delete inappropriate or offensive content.
+Dash is a recipe crowdsourcing application for men & women, (ages 24 - 39), who want to find and share recipes. To become a contributor or an editor for Dash, all you need to do is sign up for a free account, log in, and start creating/editing recipes! Dash's administrator account manages the application and may delete inappropriate or offensive content.
 
 ## UX
 
@@ -10,7 +10,7 @@ To make for a more organized development process, the developer used [GitHub Pro
 
 As the Milestone 3 Project for [Code Institute's](https://codeinstitute.net/) Data-Centric Development portion of the Full Stack Developer Program, this project was built with HTML, CSS, JavaScript, jQuery, Python, Flask, and MongoDB.
 
-Dash's target market is comprised of men & women, ages 24 - 39, that wish to find and share recipes. To become a contributor or editor on Dash, a user must first create an account. Creating an account is quick, easy and free. Once an account has been created, a user may login to create new recipes or edit any of the recipes on Dash.
+Dash's target market is comprised of men & women, ages 24 - 39, that wish to find and share recipes. To become a contributor or editor on Dash, a user must first create an account. Creating an account is quick, easy, and free. Once an account has been created, a user may log in to create new recipes or edit any of the recipes on Dash.
 
 ### User Stories
 
@@ -36,7 +36,7 @@ User Story 4:
 > *"As an editor, I want the option to edit any of the recipes on the page, so I can use my expertise to contribute to the Dash community."*
 >> -Andy Fjordane, Chef
 
-The user story worksheet and journal exercise that were completed during the Strategy Plane portion of this project can be viewed here:
+The user story worksheet and journal exercise that was completed during the Strategy Plane portion of this project can be viewed here:
 
 [userjournal](/wireframes/userjournal.pdf)
 
@@ -70,15 +70,15 @@ To properly develop this full-stack application, the following features were inc
 
 - Login - Allows users to log in to their Dash account, by inputting the correct user and password keys.
 
-- Create Recipe - Allows **existing** users to share original content with the Dash community, by granting them write access to the database and having them submit a form with new recipe name, description, image, prep time, tools needed, ingredients and instructions.
+- Create Recipe - Allows **existing** users to create new recipes, by providing an 'Add Recipe' form that lets users insert 'recipe' records to MongoDB and upload an image to the project's Amazon S3 Photo Bucket.
 
-- Edit Recipe - Allows **existing** users (or 'editors') to edit recipes, by providing an, 'Edit' button that displays when users are logged in and sends an updated dictionary of values to MongoDB upon submission.
+- Edit Recipe - Allows **existing** users (aka 'editors') to edit recipes, by providing an 'Edit' button that displays when users are logged in and sends an updated dictionary of values to MongoDB upon submission.
 
 - Search - Allows users to search for specific recipes, by providing them with a search bar that fetches and displays relevant data.
 
 ### Features Left to Implement
 
-- A 'Profile' page - Allows users to upload an imnage, view content they have created and change their username and/or password.
+- A 'Profile' page - Allows users to upload an image, view content they have created, and change their username and/or password.
 
 ### Database Design
 
@@ -205,13 +205,13 @@ Thorough testing was conducted by the developer for this project and can be view
 
 ### Heroku
 
-This project uses **Heroku** for deloyment. 
+This project uses **Heroku** for deployment. 
 
-In order to successfully deploy the app, the following steps were taken:
+To successfully deploy the app, the following steps were taken:
 
 - Visit GitPod workspace.
 - Create the Flask App.
-- Use the CLI to tell Heroku which applications and dependencies are rquired to run the application via the, `pip3 freeze --local > requirements.txt` command.
+- Use the CLI to tell Heroku which applications and dependencies are required to run the application via the `pip3 freeze --local > requirements.txt` command.
 - Create the Procfile via `echo web: python app.py > Procfile`.
 - Visit [Heroku](https://www.heroku.com).
 - Click, 'Create a New App'.
@@ -229,7 +229,7 @@ In order to successfully deploy the app, the following steps were taken:
 - Connect Heroku to deploy from the **master** branch of Dash's repository.
 - Successfully deploy the application.
 
-Once the application was deployed, I navigated back to my workspace and began to build out templating with Jinja. Upon testing my application, I discovered an issue regarding file storage and decided to use Amazon S3 Photo Bucket, a third party service, to store file uploads.
+Once the application was deployed, I navigated back to my workspace and began to build out templating with Jinja. Upon testing my application, I discovered an issue regarding file storage and decided to use Amazon S3 Photo Bucket, a third-party service, to store file uploads.
 
 I then had to add the following configuration vars to my Heroku app;
     - `S3_BUCKET_NAME`
@@ -259,9 +259,9 @@ To run the project from your local machine, follow these steps:
 
 ### Development Process
 
-- The steps taken to properly configure Flask and MongoDB were learned by following [Code Institute's](https://codeinstitute.net/) 'Data-Centric Development: Flask Mini Project' lesson.
+- The steps taken to configure Flask and MongoDB were learned by following [Code Institute's](https://codeinstitute.net/) 'Data-Centric Development: Flask Mini Project' lesson.
 
-- The steps taken to import the favicon into the head element of the base HTML page were copied from (Stack Overflow)(https://stackoverflow.com/questions/11893478/add-favicon-to-website) and [Hostinger](https://www.hostinger.com/tutorials/how-to-add-favicon-to-website).
+- The process I used to import the favicon was copied from (Stack Overflow)(https://stackoverflow.com/questions/11893478/add-favicon-to-website) and [Hostinger](https://www.hostinger.com/tutorials/how-to-add-favicon-to-website).
 
 - The developer made use of [GitHub Projects](https://github.com/users/alissatroiano/projects/4) to manage development and efficiently set sprints.
 
@@ -317,6 +317,6 @@ To run the project from your local machine, follow these steps:
 
 - I utilized the free web-tool provided by [Amiresponsive](http://ami.responsivedesign.is/) to get an idea of how my project looks on different screens.
 
-- I obtained information about project dependencies and what they actually do from, [Inserting and Reading MongoDB Documents from a Python Flask API](https://medium.com/swlh/inserting-and-reading-mongodb-documents-from-a-python-flask-api-4fa7be61e45).
+- I obtained information about project dependencies and what they do from, [Inserting and Reading MongoDB Documents from a Python Flask API](https://medium.com/swlh/inserting-and-reading-mongodb-documents-from-a-python-flask-api-4fa7be61e45).
 
 - I proofread and corrected this documentation with [Grammarly]([grammarly](https://app.grammarly.com/).
