@@ -121,11 +121,6 @@ hr#divider {
     font-size: 1.4rem;
 }
 
-#welcome-row {
-    margin: 20px 60px;
-    margin-left: 60px;
-}
-
 /*------------------------------------------ Profile */
 #find-icon,
 #share-icon,
@@ -149,7 +144,7 @@ hr#divider {
     height: auto;
 }
 
-.card-image {
+#welcome-image {
     background-image: url('/static/images/ingredients.jpg');
     background-repeat: no-repeat;
     background-position: center;
