@@ -60,7 +60,7 @@ To view a PDF version of this exercise, please refer to [this document](wirefram
 
 ![wireframes](wireframes/mobile.jpg)
 
-These [wireframes](wireframes/dash.pdf) can also be viewed in the attached PDF. 
+These [wireframes](wireframes/dash.pdf) can also be viewed in the attached PDF.
 
 ## Features
 
@@ -90,11 +90,11 @@ In order to build the most optimal CRUD application, I began my process by creat
 
 To create a functional CRUD application, I took the following steps when creating my database:
 
-1. Choose a datastore: **MongoDB**.
+1. Choose a database management system: **MongoDB**.
 
 I chose to use MongoDB to store Dash's data. Dash is a crowdsourcing app, so it involves obtaining information, or data, from a large group of people. Because of this, it was determined crucial that Dash be connected to a database that can handle a lot of data and send/receive data requests to and from the application.
 
-2. Design the Datastore:
+2. Design the Database:
 
     - Though my initial plans were a bit more complex, I decided to make the database as simple and efficient as possible. To do this, I took the following steps:
         - Create a new database named, 'Dash'.
@@ -124,7 +124,7 @@ I chose to use MongoDB to store Dash's data. Dash is a crowdsourcing app, so it 
 
 3. Add some data:
 
-    - When building a C.R.U.D application, it makes it easier for the developer to build out the backend when there is already some data in place. Because of this, I added some data to each of the collections in my datastore. Once I had some data to work with, I created the Flask App, deployed it to **Heroku**, connected it to my database, and constructed the frontend.
+    - When building a C.R.U.D application, it makes it easier for the developer to build out the backend when there is already some data in place. Because of this, I added some data to each of the collections in my database. Once I had some data to work with, I created the Flask App, deployed it to **Heroku**, connected it to my database, and constructed the frontend.
 
 To read more about my process, visit the Deployment section of this documentation.
 
