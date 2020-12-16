@@ -167,11 +167,9 @@ The following tests have been conducted by the developer. The tests were accompa
 - Save code.
 - Run the application.
 - Notice a PyMongo error, reading:
+`pymongo.errors.OperationFailure: "$search" had the wrong type.`
 
-    `pymongo.errors.OperationFailure: "$search" had the wrong type.`
-
-    ![PyMongo Error](testing/searcherror.png)
-
+![PyMongo Error](testing/searcherror.png)
 
 ### 'Search' - Query Test **Solution**:
 - Visit `app.py` and scroll to line 46 to inspect the search function.
