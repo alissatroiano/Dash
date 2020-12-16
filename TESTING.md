@@ -1,5 +1,4 @@
 # Testing
-
 The following tests have been conducted by the developer. The tests were accompanied by the steps outlined below to ensure each test passed.
 
 ## Navigation
@@ -69,6 +68,27 @@ The following tests have been conducted by the developer. The tests were accompa
 - Declare test, 'passed'.
 
 ## Signup
+
+### Signup - Frontend Test:
+- Visit app in a web browser.
+- Click, [Signup](https://dash-ms3.herokuapp.com/signup).
+- Enter a new username.
+- Enter a new password. 
+- Submit form.
+- Observe, 'success!' flash message displays and confirm success on frontend.
+- Declare test, 'passed'.
+
+### Signup Form - POST Request Test:
+- Visit app in a web browser.
+- Click, [Signup](https://dash-ms3.herokuapp.com/signup).
+- Enter a new username and password then click `submit`.
+- Observe, 'success!' flash message displays and confirm success on frontend.
+- Navigate to **MongoDB** recipes database.
+- Click on the, `users` collection.
+- Ensure a new record has been created.
+- Inspect the document and verify the username in the db matches the username created in step 3.
+- Confirm that the `signup` function in `app.py` is properly wired to MongoDB.
+- Declare test, 'passed'. 
 
 ## Login
 
@@ -190,8 +210,6 @@ The following tests have been conducted by the developer. The tests were accompa
 - Click on the, 'Search' button.
 - Verify that search returns .
 - Declare test, 'passed'.
-
-
 
 ## CREATE (C.R.U.D Testing)
 

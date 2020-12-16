@@ -276,6 +276,8 @@ To run the project from your local machine, follow these steps:
 
 - I learned about **request.args.get** by reading [this article](https://stackoverflow.com/questions/34671217/in-flask-what-is-request-args-and-how-is-it-used).
 
+- I referenced [these examples](https://www.programcreek.com/python/example/51530/flask.request.args) when learning about `request.args.get` and building the search function.
+
 ### Content
 
 - The grid layout and responsive design were made possible by importing [Materialize](https://materializecss.com/) front-end framework and using the built-in classes.
