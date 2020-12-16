@@ -84,6 +84,10 @@ To properly develop this full-stack application, the following features were inc
 
 ### Database Design
 
+In order to build the most optimal CRUD application, I began my process by creating this Use Case flowchart:
+
+![use case](wireframes/usecase.jpg)
+
 To create a functional CRUD application, I took the following steps when creating my database:
 
 1. Choose a datastore: **MongoDB**.
@@ -198,6 +202,10 @@ To read more about my process, visit the Deployment section of this documentatio
 - [Werkzeug.security](https://werkzeug.palletsprojects.com/en/1.0.x/utils/)
 
 - This application uses **Werkzeug.security** to create secure, reliable user authentication.
+
+- [Werkzeug.utils](https://werkzeug.palletsprojects.com/en/1.0.x/utils/)
+
+- This application used Werkzeug.utils to import, configure and use the `secure_filename` function.
 
 ## Testing
 
