@@ -229,7 +229,7 @@ To successfully deploy the app, the following steps were taken:
 - Connect Heroku to deploy from the **master** branch of Dash's repository.
 - Successfully deploy the application.
 
-Once the application was deployed, I navigated back to my workspace and began to build out templating with Jinja. Upon testing my application, I discovered an issue regarding file storage and decided to use Amazon S3 Photo Bucket, a third-party service, to store file uploads.
+Once the application was deployed, I navigated back to my workspace and began to build out templating with Jinja. Upon testing my application, I discovered an issue regarding file storage and decided to use [Amazon S3]() Photo Bucket, a third-party service, to store file uploads.
 
 I then had to add the following configuration vars to my Heroku app;
     - `S3_BUCKET_NAME`
@@ -268,6 +268,10 @@ To run the project from your local machine, follow these steps:
 
 - I followed the steps provided by this article, [How to use Flask to upload files to Amazon s3](https://www.zabana.me/notes/flask-tutorial-upload-files-amazon-s3) to understand and implement uploading files to an Amazon S3 bucket using the Flask web framework for Python.
 
+    - I aquired information about the difference between boto3 and botocore from this [Reddit post](https://www.reddit.com/r/aws/comments/apdaoo/boto3_vs_botocore/).
+
+- I read [this article](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/migrations3.html) to learn more about working with Amazon S3 buckets. 
+
 - I used [JSHint](https://jshint.com/) to validate, `static/js/script.js`.
 
 - I used [W3C HTML Validator](https://validator.w3.org/) to validate every file in `/templates`.
@@ -277,6 +281,14 @@ To run the project from your local machine, follow these steps:
 - I learned about **request.args.get** by reading [this article](https://stackoverflow.com/questions/34671217/in-flask-what-is-request-args-and-how-is-it-used).
 
 - I referenced [these examples](https://www.programcreek.com/python/example/51530/flask.request.args) when learning about `request.args.get` and building the search function.
+
+- I utilized the [DiffChecker](https://www.diffchecker.com/) to find typos, bugs and differences in updated syntax.
+
+- I tested my JavaScript with [JSHint](https://jshint.com/).
+
+- I used [pep8online](http://pep8online.com/checkresult) to ensure Python code is PEP8 compliant.
+
+- I used the [CSS Autoprefixer](https://autoprefixer.github.io/) to parse my CSS and add vendor prefixes. 
 
 ### Content
 
