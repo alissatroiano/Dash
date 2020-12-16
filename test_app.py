@@ -2,7 +2,7 @@ import app
 
 
 def test_search_results_empty():
-    search_query = 'test recipe'
+    search_query = 'chicken'
     search_results_count = app.mongo.db.recipes.count_documents(
         {'$text': {'$search': search_query}})
 
