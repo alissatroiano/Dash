@@ -1,3 +1,5 @@
+/* This stylesheet has been prefixed with https://autoprefixer.github.io/ */
+
 /*-----------------------------------  Google Fonts Import */
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Pacifico&display=swap');
 
@@ -65,7 +67,28 @@ input:focus,
 input#username:focus,
 input#password:focus {
     border-bottom: 1px solid #a1887f;
+    -webkit-box-shadow: 0 1px 0 0 #a1887f;
     box-shadow: 0 1px 0 0 #a1887f;
+}
+
+::-webkit-input-placeholder {
+    color: #a1887f;
+    font-size: 1rem;
+}
+
+::-moz-placeholder {
+    color: #a1887f;
+    font-size: 1rem;
+}
+
+:-ms-input-placeholder {
+    color: #a1887f;
+    font-size: 1rem;
+}
+
+::-ms-input-placeholder {
+    color: #a1887f;
+    font-size: 1rem;
 }
 
 label:focus,
@@ -208,7 +231,7 @@ i.fas.fa-user-circle.light-green-text.text-shadow.center-align {
 .card-image,
 #card-image {
     max-width: 100%;
-    height: auto;
+    /*! min-height: 200px; */
     overflow: hidden;
 }
 
@@ -219,6 +242,7 @@ i.fas.fa-user-circle.light-green-text.text-shadow.center-align {
     background-size: cover;
     max-width: 100%;
     overflow: hidden;
+    height: auto;
 }
 
 /*--------------------------------------- Footer */
@@ -235,6 +259,7 @@ footer {
 @media only screen and (min-width: 600px) {
     #cards {
         min-height: 30vh;
+        overflow-y: hidden;
     }
 
     .card-image,
@@ -250,7 +275,7 @@ footer {
         position: relative;
         background-size: cover;
         max-width: 100%;
-        height: 250px;
+        height: 200px;
         overflow: hidden;
     }
 
@@ -267,13 +292,12 @@ footer {
     }
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1024px) {
     #cards {
-        min-height: 50vh;
+        min-height: 40vh;
         overflow: hidden;
     }
 
-    .card-image,
     #card-image {
         max-width: 100%;
         height: auto;
@@ -285,13 +309,16 @@ footer {
         background-position: center;
         position: relative;
         background-size: cover;
-        max-width: 100%;
-        height: 250px;
+        min-width: 100%;
+        height: 150px;
         overflow: hidden;
     }
 
-
     footer {
-        margin-top: 200px;
+        margin-top: 20px;
+    }
+
+    body {
+        min-height: 100vh;
     }
 }
