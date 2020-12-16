@@ -103,7 +103,7 @@ The following tests have been conducted by the developer. The tests were accompa
 
 ## Search 
 
-### Create Index Test 1:
+### 'Search' - Index Test 1:
 - Visit GitPod workspace
 - Type `python3` to activate the Python interpreter
 - Type, `from app import mongo` to connect to MongoDB
@@ -111,7 +111,7 @@ The following tests have been conducted by the developer. The tests were accompa
 - Verify the following text printed after creating the index, `recipe_name_text_recipe_description_text`
 - Declare Test, 'passed'.
 
-### Create Index Test 2:
+### 'Search' - Index Test 2:
 - Visit [MongoDB Cloud Atlas](https://cloud.mongodb.com/)
 - Visit the 'Dash' database that was created for this application.
 - Click on the 'recipes' collection.
@@ -119,19 +119,19 @@ The following tests have been conducted by the developer. The tests were accompa
 - Verify that the newly created index appears on the page.
 - Declare test, 'passed'.
 
-![index](wireframes/index.png)
+![index](testing/index.png)
 
-### Searchbar Not Case-Sensitive Test 1:
+### 'Search' - Case Insensitive Test #1:
 - Open the deployed project in a web browser.
 - Visit the search bar.
 - Enter the word, 'tomato' in all lowercase letters in the search bar.
-- Ensure that all recipes including the word, 'tomato' in the name and/or description are displayed.
+- Ensure that all recipes containing the word, 'tomato' in the name and/or description are displayed.
 - Repeat the above steps, but with all capital letters.
 - Repeat the above steps, using a mixture of lowercase and uppercase letters.
 - Verify that all relevant recipes display in search results regardless of letter case.
 - Declare test, 'passed'.
 
-### Searchbar Not Case-Sensitive Test 2:
+### Search - Case Insensitive Test #2:
 - Open the deployed project in my mobile web browser.
 - Visit the search-bar.
 - Enter the word, 'chicken' in all lowercase letters in the search bar.
@@ -141,7 +141,7 @@ The following tests have been conducted by the developer. The tests were accompa
 - Verify that all relevant recipes display in search results.
 - Declare test, 'passed'.
 
-### 'Reset' Search Button Test #1:
+### 'Reset' Button Test #1:
 - Open the deployed project in a web browser.
 - Visit the search bar.
 - Enter the word, "GitHub" to ensure no results are generated.
@@ -149,13 +149,51 @@ The following tests have been conducted by the developer. The tests were accompa
 - Verify that search resets.
 - Declare test, 'passed'.
 
-### 'Reset' Search Button Test #2:
+### 'Reset' Button Test #2:
 - Open the deployed project in a mobile browser.
 - Visit the search bar.
 - Enter the word, "GitHub" to ensure no results are generated.
 - Click on the, 'Reset' button.
 - Verify that search resets.
 - Declare test, 'passed'.
+
+### 'Search' - Query Test:
+- Visit the project in browser during mentor session.
+- Demonstrate newly added search functionality to mentor.
+- Discuss search function with mentor.
+- Decide to refactor `search` function, using the HTTP 'GET' method.
+- Add new function to, `app.py`.
+- Update `templates/recipes.html` with `method="GET"`.
+- Save code.
+- Run the application.
+- Notice a PyMongo error, reading:
+
+    `pymongo.errors.OperationFailure: "$search" had the wrong type.`
+
+    ![PyMongo Error](testing/searcherror.png)
+
+
+### 'Search' - Query Test **Solution**:
+- Visit `app.py` and scroll to line 46 to inspect the search function.
+- Discuss problem with mentor.
+- Scroll to line 45, `query = request.form.get("query")`. 
+- Conclude that 'form' must be replaced with, **'args'** because **request.args** is used to return values of a query string.
+- Edit line 45 to read, `query = request.args.get("query")`.
+- Hard reload the live preview.
+- Observe the page now load correctly. 
+- Test that the query is still displayed in the search-bar after submitting search request. 
+- Test that search-bar returns recipes that contain the query phrase in their title or description.
+- Declare test, 'passed'.
+
+### 'Search' Button Test #1:
+- Open the deployed project in a mobile browser.
+- Visit the search bar.
+- Enter the word, "chicken" to ensure recipe result is generated.
+- Click on the, 'Search' button.
+- Verify that search returns .
+- Declare test, 'passed'.
+
+
 
 ## CREATE (C.R.U.D Testing)
 
