@@ -254,7 +254,6 @@ To run the project from your local machine, follow these steps:
 
     - `gh repo clone alissatroiano/Dash`
 
-
 ## Credits
 
 ### Development Process
@@ -275,6 +274,8 @@ To run the project from your local machine, follow these steps:
 
 - I used [W3C Jigsaw](https://jigsaw.w3.org/css-validator/) to validate my stylesheet, `static/css/style.css`.
 
+- I learned about **request.args.get** by reading [this article](https://stackoverflow.com/questions/34671217/in-flask-what-is-request-args-and-how-is-it-used).
+
 ### Content
 
 - The grid layout and responsive design were made possible by importing [Materialize](https://materializecss.com/) front-end framework and using the built-in classes.
@@ -282,6 +283,16 @@ To run the project from your local machine, follow these steps:
 - The 'Cauliflower Grilled Cheese' recipe was copied from [delish](https://www.delish.com/cooking/recipe-ideas/g3733/healthy-dinner-recipes/).
 
 - Text shadow styles were copied from [CSS Tricks](https://css-tricks.com/almanac/properties/t/text-shadow/).
+
+- The recipes the developer posted to provide placeholder content were copied from:
+
+    - Broccoli Quinoa Cakes - [Feasting at Home](https://www.feastingathome.com/broccoli-cakes/).
+
+    - Tomato Garlic Chicken - [I Food Real](https://ifoodreal.com/chicken-breast-with-tomatoes/).
+
+    - Cauliflower Grilled Cheese - [Tasty](https://tasty.co/recipe/cauliflower-grilled-cheese).
+
+    - California Burger Wraps - [Taste Of Home](https://www.tasteofhome.com/recipes/california-burger-wraps/).
 
 ### Media
 
@@ -291,15 +302,15 @@ To run the project from your local machine, follow these steps:
 
 - The icon in the branded navigation menu, responsive sidebar, and footer was copied from [Font Awesome](http://fontawesome.com/)
 
-- The footer styles were copied from [Materialize]() and altered via copying [W3 Schools](https://www.w3schools.com/howto/howto_css_fixed_footer.asp).
+- The footer styles were copied from [Materialize](https://materializecss.com/footer.html) and altered via copying [W3 Schools](https://www.w3schools.com/howto/howto_css_fixed_footer.asp).
 
 - The stock images used to create the recipes were copied from:
 
-    - Cauliflower Grilled Cheese; [Unsplash](https://unsplash.com/photos/SqYmTDQYMjo)
+    - [Unsplash](https://unsplash.com/photos/SqYmTDQYMjo) - Cauliflower Grilled Cheese
 
-    - Tomato Chicken Garlic [Unsplash](https://unsplash.com/photos/9WfO94SjhmE)
+    - [Unsplash](https://unsplash.com/photos/9WfO94SjhmE) - Tomato Chicken Garlic 
 
-    - Broccoli Quinoa Cakes - [Feasting at Home](https://www.feastingathome.com/broccoli-cakes/)
+    - [Feasting at Home](https://www.feastingathome.com/broccoli-cakes/)
 
     - [ifoodreal.com](https://ifoodreal.com/clean-eating-recipes-dinners/)
 
@@ -319,4 +330,4 @@ To run the project from your local machine, follow these steps:
 
 - I obtained information about project dependencies and what they do from, [Inserting and Reading MongoDB Documents from a Python Flask API](https://medium.com/swlh/inserting-and-reading-mongodb-documents-from-a-python-flask-api-4fa7be61e45).
 
-- I proofread and corrected this documentation with [Grammarly]([grammarly](https://app.grammarly.com/).
+- I proofread and corrected this documentation with [Grammarly]((https://app.grammarly.com/).
