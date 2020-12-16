@@ -25,7 +25,6 @@
     "emmet.extensionsPath": ".theia",
     "yaml.format.enable": false,
     "editor.formatOnPaste": true,
-    "editor.formatOnSave": false,
     "pretty-formatter.braces": true,
     "pretty-formatter.commentLine": true,
     "pretty-formatter.cssInsertLines": true,
@@ -53,5 +52,7 @@
         "cfml",
         "plist"
     ],
-    "files.enableTrash": true
+    "files.enableTrash": true,
+    "go.useLanguageServer": false,
+    "emmet.showAbbreviationSuggestions": true
 }
