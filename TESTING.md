@@ -55,7 +55,7 @@ The following tests have been conducted by the developer. The tests were accompa
 - Visit the app in web browser.
 - Observe navbar links read, 'Recipes', 'Signup' and 'Login'.
 - **[Login](https://dash-ms3.herokuapp.com/login)**.
-- Observe changed state in navbar once a user is logged in.
+- Observe state change in navbar once a user is logged in.
 - Verify navbar links read, 'Home', 'Add Recipe', 'Profile', and, 'Logout' while a user is logged in.
 - **Log Out** of the application.
 - Verify navbar links return to the original state (Home', 'Signup', and 'Login') once a user is logged out.
@@ -74,11 +74,11 @@ The following tests have been conducted by the developer. The tests were accompa
 ## Signup 
 
 ### Signup - Frontend Test:
-- Visit app in a web browser.
+- Visit the app in a web browser.
 - Click, [Signup](https://dash-ms3.herokuapp.com/signup).
 - Enter a new username.
 - Enter a new password. 
-- Submit form.
+- Submit the form.
 - Observe, 'success!' flash message.
 - Confirm HTML is rendering properly on the frontend.
 - Declare test, 'passed'.
@@ -88,11 +88,11 @@ The following tests have been conducted by the developer. The tests were accompa
 - Click, [Signup](https://dash-ms3.herokuapp.com/signup).
 - Enter a new username and password.
 - Click `submit`.
-- Observe, 'success!' flash message displays and confirm success on frontend.
+- Observe, 'success!' flash message displays and confirm success on the frontend.
 - Navigate to **MongoDB** recipes database.
-- Click on the, `users` collection.
+- Click on the `users` collection.
 - Ensure a new record has been created.
-- Inspect the document and verify the username in the db matches the username created in step 3.
+- Inspect the document and verify the username in the DB matches the username created in step 3.
 - Confirm that the `signup` function in `app.py` is properly wired to MongoDB.
 - Declare test, 'passed'. 
 
@@ -201,30 +201,30 @@ The following tests have been conducted by the developer. The tests were accompa
 
 ### 'Search' - Query Test **Solution**:
 - Visit `app.py` and scroll to line 46 to inspect the search function.
-- Discuss problem with mentor.
+- Discuss the problem with my mentor.
 - Scroll to line 45, `query = request.form.get("query")`. 
-- Conclude that 'form' must be replaced with, **'args'** because **request.args** is used to return values of a query string.
+- Conclude that 'form' must be replaced with, **args** because **request.args** is used to return values of a query string.
 - Edit line 45 to read, `query = request.args.get("query")`.
 - Hard reload the live preview.
 - Notice the error log no longer generates.
 - Observe rendered HTML. 
 - Open the console and ensure there are no errors.
 - Conclude that the PyMongo $search error has been repaired.
-- Visit the search from to continue tests.
+- Visit the search form to continue tests.
 
 ### Updated 'Search' Function Tests:
-- Open the app in browser.
+- Open the app in Chrome browser.
 - Test search function by querying the word, 'tomato'.
 - Ensure the query remains in search form after form submission.
 - Ensure query stays in search form after results have been fetched. 
 - Click on recipe activator to reveal content.
-- Ensure query stays in search form while user interacts with content.
+- Ensure query stays in search form while a user interacts with content.
 - Declare test, 'passed'.
 
 ### 'Search' Button Test #1:
 - Open the deployed project in a mobile browser.
 - Visit the search bar.
-- Enter the word, "chicken" to ensure recipe result is generated.
+- Enter the word, "chicken" to ensure the recipe result is generated.
 - Click on the, 'Search' button.
 - Verify search form returns recipes that include, 'chicken' in the name or description.
 - Enter 5 unique queries to prove search form returns results that contain the query phrase in their title or description.
@@ -278,7 +278,7 @@ The following tests have been conducted by the developer. The tests were accompa
 
 ## W3C Testing
 
-### Jigsaw Test:
+### W3C Jigsaw CSS Test:
 - Visit W3C Jigsaw Validator.
 - Copy `style.css` and paste via 'direct upload'.
 - Observe one `Parse Error`
@@ -289,6 +289,27 @@ The following tests have been conducted by the developer. The tests were accompa
 - Observe that there are zero errors remaining.
 - Declare test, 'passed'.
 
-### HTML Validator Tests:
+### W3C HTML Validator Tests:
 - Visit [W3C HTML Validator](http://validator.w3.org/)
-- 
+- Visit workspace.
+- Navigate to /templates.
+- Copy the entire contents of 'recipes.html' and paste into HTML validator.
+- Inspect results.
+- Repair all possible errors:
+    - Mixed <div> tag: 
+        - Scroll to line where error appeared. 
+        - Add closing </div>
+    - Missing <alt> tags:
+        - Scroll to line 35:
+        `  <img src="{{ recipe.file }}" class="responsive-img activator" id="card-image" />`
+        - Attempt to repair alt tags by adding a default alt tag.
+        - Reload browser and inspect.
+        - Obseve all images now have the same alt tag.
+        - Add the following alt tag:
+          `<img src="{{ recipe.file }}" class="responsive-img activator" id="card-image" alt="{{ recipe.recipe_name }}" />`
+        - Save code and reload page.
+        - Inspect images using Chrome Dev Tools.
+        - Observe that each image now has a unique alt tag (the recipe name).
+- Repeat steps 1 - 5 for every .html file in /templates.
+- Remove all errors (except those made by Jinja template inheritance).
+- Declare test, 'passed'.
