@@ -5,10 +5,14 @@ The following tests have been conducted by the developer. The tests were accompa
 
 ### Navbar Test #1:
 - Visit the app in web browser.
-- Observe the navigation bar.
-- Click on each link.
-- Verify each link directs the user to the correct HTML template.
-- Repeat steps 1-4 on a tablet.
+- Visit the navigation menu.
+- Click on each link that is currently displayed.
+- Verify each link directs the user to the correct HTML template:
+    - Login
+    - Signup
+    - Home
+- Repeat steps 1-4 on mobile.
+- Repeat steps 1-4 on tablet.
 - Declare test 'passed'.
 
 ### Navbar Test #2 - `target=_blank`
@@ -24,7 +28,7 @@ The following tests have been conducted by the developer. The tests were accompa
 ### Materialize Side Navigation Test #1:
 - Visit the app in web browser.
 - Resize browser tab to make, `fas fa-bars` icon visible.
-- Click the icon.
+- Click the `fas fa-bars` icon.
 - Observe that the side nav is not opening on click.
 - Navigate to `static/js/script.js`.
 - Ispect the jQuery code.
@@ -41,7 +45,7 @@ The following tests have been conducted by the developer. The tests were accompa
 - Ensure each link works (by clicking each link).
 - Declare test 'passed'.
 
-### Materialize Mobile Side Navigation Test #1:
+### Materialize Mobile Side Navigation Test #2:
 - Visit the app in mobile web browser.
 - Click on 'fas fa-bars' icon.
 - Verify side nav opens properly.
@@ -51,23 +55,23 @@ The following tests have been conducted by the developer. The tests were accompa
 - Visit the app in web browser.
 - Observe navbar links read, 'Recipes', 'Signup' and 'Login'.
 - **[Login](https://dash-ms3.herokuapp.com/login)**.
-- Observe changed state in the navbar once a user is signed in.
-- Verify navbar links read, 'Recipes', 'Add Recipe', 'Profile', and, 'Logout' while a user is logged in.
+- Observe changed state in navbar once a user is logged in.
+- Verify navbar links read, 'Home', 'Add Recipe', 'Profile', and, 'Logout' while a user is logged in.
 - **Log Out** of the application.
-- Verify navbar links return to the original state (Recipes', 'Signup', and 'Login') once a user is logged out.
+- Verify navbar links return to the original state (Home', 'Signup', and 'Login') once a user is logged out.
 - Declare test, 'passed'.
 
 ### Navbar State Change Mobile Test:
 - Visit the app on a mobile web browser.
-- Observe navbar links ('Recipes', 'Signup' and 'Login').
+- Observe navbar links ('Home', 'Signup' and 'Login').
 - **[Login](https://dash-ms3.herokuapp.com/login)**.
 - Observe changes in navbar links once a user is signed in.
-- Verify navbar reads, 'Recipes', 'Add Recipe', 'Profile', and, 'Logout' while a user is logged in.
+- Verify navbar reads, 'Home', 'Add Recipe', 'Profile', and, 'Logout' while a user is logged in.
 - **Log Out** of the application.
-- Verify navbar links return to the original state (Recipes', 'Signup', and 'Login') once a user is logged out.
+- Verify navbar links return to the original state (Home', 'Signup', and 'Login') once a user is logged out.
 - Declare test, 'passed'.
 
-## Signup
+## Signup 
 
 ### Signup - Frontend Test:
 - Visit app in a web browser.
@@ -75,13 +79,15 @@ The following tests have been conducted by the developer. The tests were accompa
 - Enter a new username.
 - Enter a new password. 
 - Submit form.
-- Observe, 'success!' flash message displays and confirm success on frontend.
+- Observe, 'success!' flash message.
+- Confirm HTML is rendering properly on the frontend.
 - Declare test, 'passed'.
 
 ### Signup Form - POST Request Test:
-- Visit app in a web browser.
+- Visit app in web browser.
 - Click, [Signup](https://dash-ms3.herokuapp.com/signup).
-- Enter a new username and password then click `submit`.
+- Enter a new username and password.
+- Click `submit`.
 - Observe, 'success!' flash message displays and confirm success on frontend.
 - Navigate to **MongoDB** recipes database.
 - Click on the, `users` collection.
@@ -143,7 +149,7 @@ The following tests have been conducted by the developer. The tests were accompa
 
 ### 'Search' - Case Insensitive Test #1:
 - Open the deployed project in a web browser.
-- Visit the search bar.
+- Visit the search form.
 - Enter the word, 'tomato' in all lowercase letters in the search bar.
 - Ensure that all recipes containing the word, 'tomato' in the name and/or description are displayed.
 - Repeat the above steps, but with all capital letters.
@@ -153,7 +159,7 @@ The following tests have been conducted by the developer. The tests were accompa
 
 ### Search - Case Insensitive Test #2:
 - Open the deployed project in my mobile web browser.
-- Visit the search-bar.
+- Visit the search form.
 - Enter the word, 'chicken' in all lowercase letters in the search bar.
 - Ensure that all recipes including the word, 'chicken' in the name and/or description are displayed.
 - Repeat the above steps, but with all capital letters.
@@ -182,12 +188,14 @@ The following tests have been conducted by the developer. The tests were accompa
 - Demonstrate newly added search functionality to mentor.
 - Discuss search function with mentor.
 - Decide to refactor `search` function, using the HTTP 'GET' method.
-- Add new function to, `app.py`.
+- Refactor function in, `app.py`.
 - Update `templates/recipes.html` with `method="GET"`.
 - Save code.
 - Run the application.
 - Notice a PyMongo error, reading:
 `pymongo.errors.OperationFailure: "$search" had the wrong type.`
+- Inspect the error log.
+- Discover the problem:
 
 ![PyMongo Error](testing/searcherror.png)
 
@@ -198,9 +206,19 @@ The following tests have been conducted by the developer. The tests were accompa
 - Conclude that 'form' must be replaced with, **'args'** because **request.args** is used to return values of a query string.
 - Edit line 45 to read, `query = request.args.get("query")`.
 - Hard reload the live preview.
-- Observe the page now load correctly. 
-- Test that the query is still displayed in the search-bar after submitting search request. 
-- Test that search-bar returns recipes that contain the query phrase in their title or description.
+- Notice the error log no longer generates.
+- Observe rendered HTML. 
+- Open the console and ensure there are no errors.
+- Conclude that the PyMongo $search error has been repaired.
+- Visit the search from to continue tests.
+
+### Updated 'Search' Function Tests:
+- Open the app in browser.
+- Test search function by querying the word, 'tomato'.
+- Ensure the query remains in search form after form submission.
+- Ensure query stays in search form after results have been fetched. 
+- Click on recipe activator to reveal content.
+- Ensure query stays in search form while user interacts with content.
 - Declare test, 'passed'.
 
 ### 'Search' Button Test #1:
@@ -208,10 +226,9 @@ The following tests have been conducted by the developer. The tests were accompa
 - Visit the search bar.
 - Enter the word, "chicken" to ensure recipe result is generated.
 - Click on the, 'Search' button.
-- Verify that search returns .
+- Verify search form returns recipes that include, 'chicken' in the name or description.
+- Enter 5 unique queries to prove search form returns results that contain the query phrase in their title or description.
 - Declare test, 'passed'.
-
-## CREATE (C.R.U.D Testing)
 
 ### Add Recipe W3C Test 1:
 - Copy all of `add_recipe.html`
@@ -261,7 +278,7 @@ The following tests have been conducted by the developer. The tests were accompa
 
 ## W3C Testing
 
-### Jigsaw Test One:
+### Jigsaw Test:
 - Visit W3C Jigsaw Validator.
 - Copy `style.css` and paste via 'direct upload'.
 - Observe one `Parse Error`
@@ -271,3 +288,7 @@ The following tests have been conducted by the developer. The tests were accompa
 - Test CSS again via direct upload.
 - Observe that there are zero errors remaining.
 - Declare test, 'passed'.
+
+### HTML Validator Tests:
+- Visit [W3C HTML Validator](http://validator.w3.org/)
+- 
