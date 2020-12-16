@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--Materialize CDN-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap');
+
+        body {
+            background: linear-gradient(rgba(51, 105, 30, 0.8),
+                    rgba(0, 0, 0, 0.7)), url('https://media.giphy.com/media/mr6ekP4GzTzxkCyJ2j/giphy.gif') no-repeat center center fixed;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            font-family: 'Josefin Sans', sans-serif;
+        }
+
+        h1 {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 15rem;
+            color: rgba(51, 105, 30, 0.7);
+        }
+
+        h2 {
+            font-size: 5em;
+            font-family: 'Josefin Sans', sans-serif;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        div.error {
+            position: fixed;
+            top: 40%;
+            margin-top: -10em;
+            width: 100%;
+            text-align: center;
+        }
+
+        a {
+            color: white;
+        }
+
+        button {
+            margin: .2em .5em;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- 404 Error Page Copied from https://colorlib.com/wp/free-error-page-templates/-->
+    <div class="error">
+        <h1>404 </h1>
+        <h2>Page not found</h2>
+        <br>
+        <a class="waves-effect waves-light btn-large light-green" href="https://dash-ms3.herokuapp.com" target="_blank">Home</a>
+    </div>
+</body>
+
+</html>
