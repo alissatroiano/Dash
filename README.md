@@ -68,7 +68,7 @@ To properly develop this full-stack application, the following features were inc
 
 - Sign Up - allows users to create an account, by inputting an original username and a password.
 
-- Login - Allows users to log in to their Dash account, by inputting the correct user and password keys.
+- Login - Allows users to log in to their Dash account, by inputting the correct user and password values.
 
 - Create Recipe - Allows **existing** users to create new recipes, by providing an 'Add Recipe' form that lets users insert 'recipe' records to MongoDB and upload an image to the project's Amazon S3 Photo Bucket.
 
@@ -82,9 +82,9 @@ To properly develop this full-stack application, the following features were inc
 
 ### Database Design
 
-To create a functional CRUD application, I took the following steps when creating my datastore:
+To create a functional CRUD application, I took the following steps when creating my database:
 
-1. Choose a database: **MongoDB**.
+1. Choose a datastore: **MongoDB**.
 
 I chose to use MongoDB to store Dash's data. Dash is a crowdsourcing app, so it involves obtaining information, or data, from a large group of people. Because of this, it was determined crucial that Dash be connected to a database that can handle a lot of data and send/receive data requests to and from the application.
 
@@ -308,6 +308,8 @@ To run the project from your local machine, follow these steps:
 
     - California Burger Wraps - [Taste Of Home](https://www.tasteofhome.com/recipes/california-burger-wraps/).
 
+    - Salmon Garlic Lemon - [Eat Well 101](https://www.eatwell101.com/baked-salmon-asparagus-foil-packs-recipe)
+
 ### Media
 
 - Dash's favicon was copied from [Openclipart.org](https://openclipart.org/detail/321362/kitchen-utensils) and is licensed under Creative Commons.
@@ -328,7 +330,11 @@ To run the project from your local machine, follow these steps:
 
     - [ifoodreal.com](https://ifoodreal.com/clean-eating-recipes-dinners/)
 
-- The responsive view image at the top of this documentation was created with [AmIResposnive](http://ami.responsivedesign.is/).
+    - [unsplash](https://unsplash.com/) - Salmon
+
+- The responsive view image at the top of this README.md documentation was created with [AmIResposnive](http://ami.responsivedesign.is/).
+
+- The hero image on the Profile/welcome page was copies from [Unsplash](https://unsplash.com/).
 
 ### Acknowledgements
 

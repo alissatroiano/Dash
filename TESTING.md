@@ -230,7 +230,9 @@ The following tests have been conducted by the developer. The tests were accompa
 - Enter 5 unique queries to prove search form returns results that contain the query phrase in their title or description.
 - Declare test, 'passed'.
 
-### Add Recipe W3C Test 1:
+## Add Recipe Tests
+
+### Add Recipe W3C Test #1:
 - Copy all of `add_recipe.html`
 - Paste code in [W3C HTML Validator](https://validator.w3.org/)
 - Observe **textarea** errors, `Attribute type not allowed on element textarea at this point.`.
@@ -240,7 +242,7 @@ The following tests have been conducted by the developer. The tests were accompa
 - Ensure all textarea related errors are no longer present.
 - Declare test, 'passed'.
 
-### Add Recipe Mobile Test:
+### Add Recipe Mobile Test #1:
 - Open the deployed project in a mobile web browser.
 - Login to the application.
 - Visit the 'Add Recipe' page.
@@ -258,8 +260,6 @@ The following tests have been conducted by the developer. The tests were accompa
 - Observe flash notification, `Recipe successfully added.`
 - Declare test, `passed`.
 
-## File Upload Tests
-
 ### Mobile File Upload Test #1:
 - Open the deployed project in a mobile web browser.
 - Login to the application.
@@ -275,6 +275,24 @@ The following tests have been conducted by the developer. The tests were accompa
 - Open Dev Tools.
 - Observe all mobile uploaded images are now rendering as, `image/jpeg`, `image/png`, etc.
 - Declare test, 'passed'.
+
+## Admin Tests 
+
+### Admin Test #1
+- Visit app on mobile browser.
+- Observe the delete button visible on 2 recipe cards prior to admin login.
+- Visit workspace and view source code.
+- Visit database.
+- Notice 2 recipe records with identical JSON string values do not contain the  row: 'created_by'.
+- Visit workspace.
+- Refactor the 'add_recipe' function and route.
+- Visit 'recipes' collection of 'Dash' database on MongoDB.
+- Manually add, 'created_by' field with corresponding values to the 2 identified MongoDB records.
+- Navigate back to application on mobile.
+- Reload the page.
+- Login as low-level user.
+- Observe the delete button is no longer prior to login. 
+- Declare test, "passed".
 
 ## W3C Testing
 
