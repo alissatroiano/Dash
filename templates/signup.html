@@ -12,7 +12,7 @@
                 <div class="input-field col s12">
                     <i class="fas fa-user-plus prefix light-green-text text-lighten-1"></i>
                     <!--Username Input -->
-                    <input id="username" name="username" type="text" class="validate">
+                    <input id="username" name="username" type="text" class="validate" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
                     <label for="username" id="user-label">Username</label>
                 </div>
             </div>
@@ -22,7 +22,7 @@
                 <div class="input-field col s12">
                     <i class="fas fa-user-lock prefix light-green-text text-lighten-1"></i>
                     <!-- Passowrd Input -->
-                    <input id="password" name="password" type="password" class="validate">
+                    <input id="password" name="password" type="password" class="validate" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
                     <label for="password" id="password-label">Password</label>
                 </div>
             </div>
