@@ -207,6 +207,10 @@ To read more about my process, visit the Deployment section of this documentatio
 
 - This application used Werkzeug.utils to import, configure and use the `secure_filename` function.
 
+- [Pytest](https://docs.pytest.org/en/latest/)
+
+- This project used testing framework **Pytest** to write and execute database tests in Python.
+
 ## Testing
 
 Thorough testing was conducted by the developer for this project and can be viewed in [TESTING.md](TESTING.md)
@@ -300,6 +304,15 @@ To run the project from your local machine, follow these steps:
 
 - I used the [CSS Autoprefixer](https://autoprefixer.github.io/) to parse my CSS and add vendor prefixes. 
 
+### TESTING
+- I used [Pytest](https://docs.pytest.org/en/latest/) for automated testing.
+
+- I followed [Tutorialspoint]() to learn more about Pytest and speed up the testing process. 
+
+- I referenced this [GitHub repository](https://github.com/Code-Institute-Submissions/STEPLADD3R-data-centric-development-project/blob/master/test_app.py) as a starting point for automated testing with Python.
+
+- I 
+
 ### Content
 
 - The grid layout and responsive design were made possible by importing [Materialize](https://materializecss.com/) front-end framework and using the built-in classes.
@@ -361,3 +374,5 @@ To run the project from your local machine, follow these steps:
 - I obtained information about project dependencies and what they do from, [Inserting and Reading MongoDB Documents from a Python Flask API](https://medium.com/swlh/inserting-and-reading-mongodb-documents-from-a-python-flask-api-4fa7be61e45).
 
 - I proofread and corrected this documentation with [Grammarly]((https://app.grammarly.com/).
+
+- I referenced this [GitHub repository](https://github.com/Code-Institute-Submissions/STEPLADD3R-data-centric-development-project/blob/master/test_app.py) as a starting point for automated testing with Python.

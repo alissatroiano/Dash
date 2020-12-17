@@ -358,8 +358,38 @@ The following **manual** tests have been conducted by the developer. The tests w
 
 As can be seen above, a very thorough amount of manual testing was conducted and documented by the developer during the testing phase of this milestone project.
 
-While these manual tests were good and 
-When the time designated for 'Testing' sprint `
+While these manual tests were a good learning experience, they were also quite time consuming. Towards the end of my manual testing, I thought back to a conversation I had with my mentor during Milestone 2. When discussing tests, I was informed that the most important tests for a game would answer the following questions:
+    - Does it start?
+    - Does it end?
+    - Can you win?
 
+After reflecting on that, I decided the most effectice automated test suite for this application would be able to answer the following questions:
 
-the end of this milestone project. T it came time to conduct final tests, I used **Pytest**. 
+    - Does it create?
+    - Does it read?
+    - Does it update?
+    - Does it delete?
+
+With this structure, I knew I would be writing tests that prove the application:
+
+    - Performs 
+
+I used **Pytest** for my automated tests because it is a simple, yet powerful testing framework for Python. My automated test suite can be viewed in its' entirety via [test_app.py](test_app.py).
+
+Each of the tests in `test_app.py` have been documented below:
+
+1.  def test_search_results_empty():
+
+                def test_search_results_empty():
+                test_query = '10 minutes'
+                search_results_count = app.mongo.db.recipes.count_documents(
+                {'$text': {'$search': test_query}})
+
+                if search_results_count < 1:
+                search_results = 'None'
+                else:
+                search_results = app.mongo.db.recipes.find(
+                {"$text": {"$search": test_query}})
+                assert search_results == 'None' 
+
+    - This test defines a variable ('search_)

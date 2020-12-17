@@ -1,18 +1,26 @@
-from flask import Flask
-from src.controllers import ArticleController
-import src.database
+import unittest
+import os
+
+import app
+
+from mockupdb import MockupDB, go, Command
+from pymongo import MongoClient
+from mockupdb._bson import ObjectId as mockup_oid
+from json import dumps
 
 
-def create_app(db_uri: str) -> Flask:
-    app = Flask(__name__)
-    app.config["MONGO_URI"] = db_uri
-    src.database.mongo.init_app(app)
+class GetDataSourceTestCase(unittest.TestCase):
 
-    # Add the articles collection if it doesn't already exist
-    if not 'recipes' in src.database.mongo.db.list_collection_names():
-       recipes_collection = src.database.mongo.db['recipes']
+    @classmethod
+    def setUpClass(self):
+        self.server = MockupDB(auto_ismaster=True, verbose=True)
+        self.server.run()
+        # create mongo connection to mock server
 
-    # Register the article routes
-    ...
+        app.testing = True
+        app.config['MONGO_URI'] = self.server.uri
+        self.app = app.test_client()
 
-    return app
+    @classmethod
+    def tearDownClass(self):
+        self.server.stop()
