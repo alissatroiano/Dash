@@ -3,7 +3,7 @@ import app
 
 def test_search_results_empty():
     # If the test_query string = search index the test fails.
-    query = 'Pickle'
+    query = 'Test Recipe'
     get_recipes_count = app.mongo.db.recipes.count_documents(
         {'$text': {'$search': query}})
 
