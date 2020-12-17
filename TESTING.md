@@ -1,5 +1,8 @@
 # Testing
-The following tests have been conducted by the developer. The tests were accompanied by the steps outlined below to ensure each test passed.
+
+## **MANUAL TESTING**
+
+The following **manual** tests have been conducted by the developer. The tests were accompanied by the steps outlined below to ensure each test passed.
 
 ## Navigation
 
@@ -242,7 +245,7 @@ The following tests have been conducted by the developer. The tests were accompa
 - Ensure all textarea related errors are no longer present.
 - Declare test, 'passed'.
 
-### Add Recipe Mobile Test #1:
+### Add Recipe Test
 - Open the deployed project in a mobile web browser.
 - Login to the application.
 - Visit the 'Add Recipe' page.
@@ -331,3 +334,32 @@ The following tests have been conducted by the developer. The tests were accompa
 - Repeat steps 1 - 5 for every .html file in /templates.
 - Remove all errors (except those made by Jinja template inheritance).
 - Declare test, 'passed'.
+
+### Peer Review Tests
+- Visit Slack.
+- Visit #peer-code-review channel.
+- Click lightning bolt icon.
+- Fill out peer-code-review request form.
+- Submit form. 
+- Observe new recipe cards created shortly after.
+- View new recipe record on the front-end (HTML in the browser).
+- Navigate to MongoDB.
+- Visit 'users' collection.
+- Scroll to most recent document.
+- Observe a new user has been created.
+- Visit 'recipes' collection.
+- Scroll to newly added recipes document.
+- Notice an anomaly in the database.
+`created by: null`.
+- Research this issue.
+- Repair the error; see [Add Recipe Test](#add-recipe-test) above.
+
+## **AUTOMATED TESTING**
+
+As can be seen above, a very thorough amount of manual testing was conducted and documented by the developer during the testing phase of this milestone project.
+
+While these manual tests were good and 
+When the time designated for 'Testing' sprint `
+
+
+the end of this milestone project. T it came time to conduct final tests, I used **Pytest**. 

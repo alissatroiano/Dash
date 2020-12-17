@@ -34,52 +34,54 @@
                 <!--Tools Needed Input -->
                 <div class="input-field col s6">
                     <i class="fas fa-blender prefix light-green-text text-darken-1"></i>
-                    <input id="tools_needed" name="tools_needed" minlength="5" maxlength="100" type="text" class="validate"> <label for="tools_needed">Tools Needed</label>
+                    <input id="tools_needed" name="tools_needed" minlength="5" maxlength="100" type="text" class="validate">
+                    <label for="tools_needed">Tools Needed</label>
                 </div>
             </div>
-            <!-- Ingredients Row -->
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-seedling prefix light-green-text text-darken-1"></i>
-                    <!-- Ingredients Textarea -->
-                    <textarea id="recipe_ingredients" name="recipe_ingredients" minlength="5" maxlength="500" class="materialize-textarea validate" required>{{ recipe.recipe_ingredients }}</textarea>
-                    <label for="recipe_ingredients">Ingredients</label>
+        </div>
+        <!-- Ingredients Row -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-seedling prefix light-green-text text-darken-1"></i>
+                <!-- Ingredients Textarea -->
+                <textarea id="recipe_ingredients" name="recipe_ingredients" minlength="5" maxlength="500" class="materialize-textarea validate" required>{{ recipe.recipe_ingredients }}</textarea>
+                <label for="recipe_ingredients">Ingredients</label>
+            </div>
+        </div>
+        <!-- Instructions Row -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-tasks prefix light-green-text text-darken-1"></i>
+                <!-- Instructions Textarea -->
+                <textarea id="recipe_instructions" name="recipe_instructions" minlength="5" maxlength="500" class="materialize-textarea validate" required>{{ recipe.recipe_instructions }}</textarea>
+                <label for="recipe_instructions">Instructions </label>
+            </div>
+        </div>
+        <!--Upload an Image -->
+        <div class="row">
+            <!-- File Input -->
+            <div class="file-field input-field col s12">
+                <div class="btn light-green darken-1">
+                    <i class="fas fa-file-upload white-text"></i>
+                    <input type="file" name="file" id="edit_image" />
+                    <label for="edit_image" class="white-text" style=" line-height: inherit;">Upload File</label>
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path" type="text" value="Upload a new photo for this recipe!" />
                 </div>
             </div>
-            <!-- Instructions Row -->
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-tasks prefix light-green-text text-darken-1"></i>
-                    <!-- Instructions Textarea -->
-                    <textarea id="recipe_instructions" name="recipe_instructions" minlength="5" maxlength="500" class="materialize-textarea validate" required>{{ recipe.recipe_instructions }}</textarea>
-                    <label for="recipe_instructions">Instructions </label>
-                </div>
+        </div>
+        <!-- Button Row-->
+        <div class="row">
+            <div class="col s12 center-align">
+                <a href="{{ url_for('get_recipes') }}" class="btn light-green text-shadow" id="cancel" style="font-size:1.2rem;">
+                    Cancel <i class="fas fa-times-circle right"></i>
+                </a>
+                <!-- Submit Button -->
+                <button class="red accent-2 waves-effect waves-light btn" type="submit" name="edit" id="edit">Edit<i class="fas fa-edit right"></i>
+                </button>
             </div>
-            <!--Upload an Image -->
-            <div class="row">
-                <!-- File Input -->
-                <div class="file-field input-field col s12">
-                    <div class="btn light-green darken-1">
-                        <i class="fas fa-file-upload white-text"></i>
-                        <input type="file" name="file" id="edit_image" />
-                        <label for="edit_image" class="white-text" style=" line-height: inherit;">Upload File</label>
-                    </div>
-                    <div class="file-path-wrapper">
-                        <input class="file-path" type="text" value="Upload a new photo for this recipe!" />
-                    </div>
-                </div>
-            </div>
-            <!-- Button Row-->
-            <div class="row">
-                <div class="col s12 center-align">
-                    <a href="{{ url_for('get_recipes') }}" class="btn light-green text-shadow" id="cancel" style="font-size:1.2rem;">
-                        Cancel <i class="fas fa-times-circle right"></i>
-                    </a>
-                    <!-- Submit Button -->
-                    <button class="red accent-2 waves-effect waves-light btn" type="submit" name="edit" id="edit">Edit<i class="fas fa-edit right"></i>
-                    </button>
-                </div>
-            </div>
+        </div>
     </form>
 </div>
 
