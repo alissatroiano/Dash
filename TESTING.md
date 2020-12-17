@@ -376,19 +376,28 @@ With this structure, I knew I would be writing tests that prove the application:
 
 I used **Pytest** for my automated tests because it is a simple, yet powerful testing framework for Python. My automated test suite can be viewed in its' entirety via [test_app.py](test_app.py).
 
-Each of the tests in `test_app.py` have been documented below:
+## read
 
-1.  def test_search_results_empty():
-
+-  def test_search_results_empty():
 ERRORS:
-
     - Prior to refacorting, I received an Assertion Error. In programming,  assertion means declareing a condition to be true using an assert statement. If the condition is false, the program stops running and an assertion error is generated. 
     - This told me I needed to refactor.
-    - 
+    - TypeError (fixed)
     
      which occurs when an assert statement is False the program stops running and returns AssertionError
-
+ABOUT:
     - This test does the following:
         - Defines a variable ('test_query')
         - Uses the 'count_documents' method to return the total number of documents in a collection that match the query.
-        -  in a set or group (in this case ) 
+
+# Create
+
+-  def [test_add_recipe()](test_app.py):
+
+# Update
+
+-  def [test_edit_recipe()](test_app.py):
+
+# Delete
+
+-  def [test_delete_recipe()](test_app.py):

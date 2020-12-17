@@ -45,7 +45,7 @@ def test_recipes_not_empty():
 
 
 def test_edit_recipe():
-    recipe = app.mongo.db.recipes.find_one({"recipe_name": 'New Test'})
+    recipe = app.mongo.db.recipes.find_one({"recipe_name": 'Edit Recipe Test'})
     recipe_id = recipe['_id']
     recipes = app.mongo.db.recipes
     recipes.update_one(
@@ -63,3 +63,15 @@ def test_edit_recipe():
     edit_test = app.mongo.db.recipes.find_one(
         {'recipe_name': 'Edit Recipe Test'})
     assert edit_test['recipe_name'] == 'Edit Recipe Test'
+
+
+def test_delete_recipe():
+    recipe = app.mongo.db.recipes.find_one({"recipe_name": 'Edit Recipe Test'})
+    recipe_id = recipe['_id']
+    app.mongo.db.recipes.delete_one({'_id': app.ObjectId(recipe_id)})
+    recipe_query = app.mongo.db.recipes.find_one(
+        {'recipe_name': 'Edit Recipe Test'})
+    if recipe_query is None:
+        assert 'Empty'
+    else:
+        assert 'Empty'
