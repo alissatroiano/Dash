@@ -67,7 +67,7 @@ def signup():
         # create session cookies
         session["user"] = request.form.get("username").lower()
         flash("Success!")
-        return redirect(url_for("profile", username=session["user"]))
+        return redirect(url_for("get_recipes", username=session["user"]))
     return render_template("signup.html")
 
 
@@ -84,7 +84,7 @@ def login():
                 flash("Welcome, {}".format(
                     request.form.get("username")))
                 return redirect(url_for(
-                    "profile", username=session["user"]))
+                    "get_recipes", username=session["user"]))
             else:
                 flash("Incorrect username and/or password")
                 return redirect(url_for("login"))
@@ -95,15 +95,12 @@ def login():
 
     return render_template("login.html")
 
-
-@app.route("/profile/<username>", methods=["GET", "POST"])
-def profile(username):
     # Fetch session username from databases
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
     if session["user"]:
-        return render_template("profile.html", username=username)
+        return render_template("recipes.html", username=username)
 
     return redirect(url_for("login"))
 
