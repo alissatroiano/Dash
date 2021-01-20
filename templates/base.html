@@ -112,7 +112,7 @@
                 <div class="col s12 center">
                     <ul class="pagination">
                         <li class="waves-effect">
-                            <a href="{{ url_for('home', username=session['user']) }}">Home</a>
+                            <a href="{{ url_for('get_recipes') }}">Home</a>
                         </li>
                         {% if session.user %}
                         <li class="waves-effect">
