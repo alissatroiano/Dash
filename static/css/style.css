@@ -247,8 +247,8 @@ i.fas.fa-user-circle.light-green-text.text-shadow.center-align {
 
 /*--------------------------------------- Footer */
 footer {
-    padding-top: 50px;
-    position: absolute;
+    margin-top: 50px;
+    position: relative;
     left: 0;
     bottom: 0;
     width: 100%;
