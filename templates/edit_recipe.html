@@ -11,7 +11,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-pen prefix light-green-text text-darken-1"></i>
-                <input id="recipe_name" name="recipe_name" type="text" minlength="5" maxlength="100" class=" validate" value="{{ recipe.recipe_name }}">
+                <input id="recipe_name" name="recipe_name" type="text" minlength="1" maxlength="600" class=" validate" value="{{ recipe.recipe_name }}">
                 <label for="recipe_name">Recipe Name</label>
             </div>
         </div>
@@ -20,7 +20,7 @@
             <div class="input-field col s12">
                 <i class="fas fa-edit prefix light-green-text text-darken-1"></i>
                 <!-- Recipe Description Textarea -->
-                <textarea id="recipe_description" name="recipe_description" minlength="5" maxlength="200" class="materialize-textarea validate" value="{{ recipe.recipe_description }}"></textarea>
+                <textarea id="recipe_description" name="recipe_description" minlength="1" maxlength="600" class="materialize-textarea validate" value="{{ recipe.recipe_description }}"></textarea>
                 <label for="recipe_description">Description</label>
             </div>
         </div>
@@ -29,12 +29,12 @@
             <!--Prep Time Input -->
             <div class="input-field col s6">
                 <i class="fas fa-clock prefix light-green-text text-darken-1"></i>
-                 <input id="prep_time" name="prep_time" type="text" minlength="5" maxlength="100" class="validate" value="{{ recipe.prep_time }}">
+                 <input id="prep_time" name="prep_time" type="text" minlength="1" maxlength="500" class="validate" value="{{ recipe.prep_time }}">
                 <label for="prep_time">Prep Time</label>
                 <!--Tools Needed Input -->
                 <div class="input-field col s12">
                     <i class="fas fa-blender prefix light-green-text text-darken-1"></i>
-                    <input id="tools_needed" name="tools_needed" minlength="5" maxlength="100" type="text" class="validate" value="{{ recipe. tools_needed }}">
+                    <input id="tools_needed" name="tools_needed" minlength="1" maxlength="500" type="text" class="validate" value="{{ recipe. tools_needed }}">
                     <label for="tools_needed">Tools Needed</label>
                 </div>
             </div>
@@ -44,7 +44,7 @@
             <div class="input-field col s12">
                 <i class="fas fa-seedling prefix light-green-text text-darken-1"></i>
                 <!-- Ingredients Textarea -->
-                <textarea id="recipe_ingredients" name="recipe_ingredients" minlength="5" maxlength="500" class="materialize-textarea validate" value="{{ recipe.recipe_ingredients }}" required></textarea>
+                <textarea id="recipe_ingredients" name="recipe_ingredients" minlength="1" maxlength="800" class="materialize-textarea validate">{{ recipe.recipe_ingredients }}</textarea>
                 <label for="recipe_ingredients">Ingredients</label>
             </div>
         </div>
@@ -53,8 +53,8 @@
             <div class="input-field col s12">
                 <i class="fas fa-tasks prefix light-green-text text-darken-1"></i>
                 <!-- Instructions Textarea -->
-                  <textarea id="recipe_instructions" name="recipe_instructions" minlength="5" maxlength="500" class="materialize-textarea validate" value="{{ recipe.recipe_instructions }}" required></textarea>
-                <label for="recipe_instructions">{{ recipe.recipe_instructions }}</label>
+                  <textarea id="recipe_instructions" name="recipe_instructions" minlength="1" maxlength="800" class="materialize-textarea validate">{{ recipe.recipe_instructions }}</textarea>
+                <label for="recipe_instructions">Instructions</label>
             </div>
         </div>
         <!--Upload an Image -->
