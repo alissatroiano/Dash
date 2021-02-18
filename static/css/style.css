@@ -246,8 +246,8 @@ i.fas.fa-user-circle.light-green-text.text-shadow.center-align {
 }
 
 /*--------------------------------------- Footer */
-footer {
-    position: relative;
+footer, .page-footer {
+    position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -285,6 +285,7 @@ footer {
 
     footer {
         margin-top: 60px;
+        position: absolute;
     }
 
     body {
@@ -314,8 +315,9 @@ footer {
         overflow: hidden;
     }
 
-    footer {
+    .page-footer, footer {
         margin-top: 20px;
+        position: absolute;
     }
 
     body {
