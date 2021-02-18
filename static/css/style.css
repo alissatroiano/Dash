@@ -294,7 +294,7 @@ footer {
 
 @media only screen and (min-width: 1024px) {
     #cards {
-        min-height: 40vh;
+        min-height: 25vh;
         overflow: hidden;
     }
 
