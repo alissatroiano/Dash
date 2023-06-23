@@ -7,3 +7,4 @@ __pycache__/
 .gitpod.dockerfile
 .gitpod.yml
 .DS_Store
+settings.py

@@ -1,41 +1,33 @@
 import os
-import boto3
+import requests
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
-from flask_pymongo import PyMongo
+from pymongo import MongoClient
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
+import urllib.parse
+
 if os.path.exists("env.py"):
     import env
 
-
-UPLOAD_FOLDER = './static/uploads'
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
-S3_BUCKET_NAME = os.environ.get("S3_BUCKET_NAME")
-S3_KEY = os.environ.get("S3_KEY")
-S3_SECRET = os.environ.get("S3_SECRET")
-S3_LOCATION = os.environ.get("S3_LOCATION")
+from settings import *
+from config import Config
 
 app = Flask(__name__)
-
-app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
-app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
-app.secret_key = os.environ.get("SECRET_KEY")
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
-
-s3 = boto3.client("s3", aws_access_key_id=S3_KEY,
-                  aws_secret_access_key=S3_SECRET)
-
-mongo = PyMongo(app)
-
+app.config.from_object(Config)
+username = username
+password = password
+mongo = MongoClient('mongodb+srv://%s:%s@myfirstcluster.shvov.mongodb.net/' % (username, password))
+db = mongo['Dash']
+recipes = db['recipes']
+users = db['users']
 
 @app.route("/")
 @app.route("/get_recipes")
 def get_recipes():
-    recipes = list(mongo.db.recipes.find().sort(
+    recipes = list(db.recipes.find().sort(
         "_id", -1))
     return render_template("recipes.html", recipes=recipes)
 
@@ -43,7 +35,7 @@ def get_recipes():
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.args.get("query")
-    recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
+    recipes = list(db.recipes.find({"$text": {"$search": query}}))
     return render_template("recipes.html", recipes=recipes)
 
 
@@ -51,7 +43,7 @@ def search():
 def signup():
     if request.method == "POST":
         # check if username  already exists in db
-        existing_user = mongo.db.users.find_one(
+        existing_user = db.users.find_one(
             {"username": request.form.get("username").lower()})
 
         if existing_user:
@@ -74,7 +66,7 @@ def signup():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-        existing_user = mongo.db.users.find_one(
+        existing_user = db.users.find_one(
             {"username": request.form.get("username").lower()})
 
         if existing_user:
@@ -127,7 +119,7 @@ def add_recipe():
             "recipe_instructions": request.form.get("recipe_instructions"),
             "created_by": session["user"]
         }
-        mongo.db.recipes.insert_one(recipe)
+        db.recipes.insert_one(recipe)
         flash("Recipe successfully added")
         return redirect(url_for("get_recipes"))
 
@@ -149,26 +141,9 @@ def upload_file():
         return path
     if file and allowed_file(file.filename):
         file.filename = secure_filename(file.filename)
-        path = upload_file_to_s3(file)
     return path
 
-
-def upload_file_to_s3(file):
-    """
-    Amazon S3 Photo Bucket Configuration:
-    Docs: http://boto3.readthedocs.io/en/latest/guide/s3.html
-    """
-    try:
-        s3.upload_fileobj(file, S3_BUCKET_NAME, file.filename, ExtraArgs={
-                          "ACL": "public-read", "ContentType":
-                          file.content_type})
-    except Exception as e:
-        print("Something Happened: ", e)
-        return e
-
-    return "{}{}".format(S3_LOCATION, file.filename)
-
-
+ 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
     edit_path = upload_file()
@@ -198,6 +173,4 @@ def delete_recipe(recipe_id):
 
 
 if __name__ == "__main__":
-    app.run(host=os.environ.get("IP"),
-            port=int(os.environ.get("PORT")),
-            debug=False)
+    app.run(debug=True)
