@@ -1,15 +1,27 @@
 import os
+import sys
 import boto3
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
-from flask_pymongo import PyMongo
+import pymongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 if os.path.exists("env.py"):
     import env
 
+# Replace 'YOUR_MONGO_URI' with your actual MongoDB URI
+mongo_uri = os.environ.get("MONGO_URI")
+myDatabase = 'Dash'
+
+try:
+  client = pymongo.MongoClient(mongo_uri)
+  
+# return a friendly error if a URI error is thrown 
+except pymongo.errors.ConfigurationError:
+  print("An Invalid URI host error was received. Is your Atlas host name correct in your connection string?")
+  sys.exit(1)
 
 UPLOAD_FOLDER = './static/uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
@@ -29,13 +41,12 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 s3 = boto3.client("s3", aws_access_key_id=S3_KEY,
                   aws_secret_access_key=S3_SECRET)
 
-mongo = PyMongo(app)
-
+mongo = client.Dash
 
 @app.route("/")
 @app.route("/get_recipes")
 def get_recipes():
-    recipes = list(mongo.db.recipes.find().sort(
+    recipes = list(mongo.recipes.find().sort(
         "_id", -1))
     return render_template("recipes.html", recipes=recipes)
 
@@ -43,7 +54,7 @@ def get_recipes():
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.args.get("query")
-    recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
+    recipes = list(mongo.recipes.find({"$text": {"$search": query}}))
     return render_template("recipes.html", recipes=recipes)
 
 
@@ -51,7 +62,7 @@ def search():
 def signup():
     if request.method == "POST":
         # check if username  already exists in db
-        existing_user = mongo.db.users.find_one(
+        existing_user = mongo.users.find_one(
             {"username": request.form.get("username").lower()})
 
         if existing_user:
@@ -62,7 +73,7 @@ def signup():
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password"))
         }
-        mongo.db.users.insert_one(signup)
+        mongo.users.insert_one(signup)
 
         # create session cookies
         session["user"] = request.form.get("username").lower()
@@ -74,7 +85,7 @@ def signup():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-        existing_user = mongo.db.users.find_one(
+        existing_user = mongo.users.find_one(
             {"username": request.form.get("username").lower()})
 
         if existing_user:
@@ -96,7 +107,7 @@ def login():
     return render_template("login.html")
 
     # Fetch session username from databases
-    username = mongo.db.users.find_one(
+    username = mongo.users.find_one(
         {"username": session["user"]})["username"]
 
     if session["user"]:
@@ -127,7 +138,7 @@ def add_recipe():
             "recipe_instructions": request.form.get("recipe_instructions"),
             "created_by": session["user"]
         }
-        mongo.db.recipes.insert_one(recipe)
+        mongo.recipes.insert_one(recipe)
         flash("Recipe successfully added")
         return redirect(url_for("get_recipes"))
 
@@ -182,17 +193,17 @@ def edit_recipe(recipe_id):
             "tools_needed": request.form.get("tools_needed"),
             "recipe_instructions": request.form.get("recipe_instructions")
         }
-        mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, edit)
+        mongo.recipes.update({"_id": ObjectId(recipe_id)}, edit)
         flash("Recipe edited!")
         return redirect(url_for('get_recipes'))
 
-    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    recipe = mongo.recipes.find_one({"_id": ObjectId(recipe_id)})
     return render_template("edit_recipe.html", recipe=recipe)
 
 
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
-    mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
+    mongo.recipes.remove({"_id": ObjectId(recipe_id)})
     flash("Recipe Successfully Deleted")
     return redirect(url_for("get_recipes"))
 
