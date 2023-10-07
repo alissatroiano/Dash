@@ -7,5 +7,3 @@ __pycache__/
 .gitpod.dockerfile
 .gitpod.yml
 .DS_Store
-dash/
-/dash
