@@ -9,7 +9,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 if os.path.exists("env.py"):
     import env
-
+    print("env.py loaded successfully")
 
 UPLOAD_FOLDER = './static/uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
@@ -25,12 +25,12 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-
 s3 = boto3.client("s3", aws_access_key_id=S3_KEY,
                   aws_secret_access_key=S3_SECRET)
 
 mongo = PyMongo(app)
-
+mongo.db = mongo.cx[app.config["MONGO_DBNAME"]]
+print(mongo.db)
 
 @app.route("/")
 @app.route("/get_recipes")
