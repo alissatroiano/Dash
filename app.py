@@ -31,12 +31,15 @@ s3 = boto3.client("s3", aws_access_key_id=S3_KEY,
 mongo = PyMongo(app)
 mongo.db = mongo.cx[app.config["MONGO_DBNAME"]]
 print(mongo.db)
+print(mongo.db.list_collection_names())
+print("Mongo URI:", os.environ.get("MONGO_URI"))
+print("Mongo DB Name:", os.environ.get("MONGO_DBNAME"))
 
 @app.route("/")
 @app.route("/get_recipes")
 def get_recipes():
-    recipes = list(mongo.db.recipes.find().sort(
-        "_id", -1))
+    recipes = list(mongo.db.recipes.find().sort("_id", -1))
+    print("Fetched recipes:", recipes)  # Add this line for debugging
     return render_template("recipes.html", recipes=recipes)
 
 
