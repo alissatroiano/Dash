@@ -8,7 +8,7 @@ main.container {
     min-width: 80vw;
 }
 
-/*-----------------------------------  Headings and Special Text */
+/*----------- Headings and Special Text */
 h1,
 h2,
 h3 {
@@ -37,6 +37,13 @@ body {
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 300;
     font-size: 1rem;
+}
+
+.brown-text.text-darken-4 {
+    color: #9ccc65 !important;
+    text-shadow: 1px 1px 3px #34691f;
+    font-size: 3rem;
+    font-weight: 200;
 }
 
 /*----------------------------------- Top Navigation */
@@ -286,6 +293,14 @@ footer {
         overflow: hidden;
     }
 
+    .brown-text.text-darken-4 {
+        color: #9ccc65 !important;
+        text-shadow: 4px 4px 3px #34691f;
+        font-size: 5rem;
+        font-weight: 200;
+    }
+
+
     main.container {
         margin-top: 60px;
     }
@@ -321,7 +336,8 @@ footer {
         min-width: 100%;
         height: 150px;
         overflow: hidden;
-    } 
+    }
+
     footer {
         margin-top: 20px;
         position: relative;
