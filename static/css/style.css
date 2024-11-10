@@ -1,7 +1,12 @@
-/* This stylesheet has been prefixed with https://autoprefixer.github.io/ */
-
-/*-----------------------------------  Google Fonts Import */
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Pacifico&display=swap');
+
+/*---------------------Main Container  */
+main.container {
+    padding: 0;
+    margin: 0 auto;
+    max-width: 100%;
+    min-width: 80vw;
+}
 
 /*-----------------------------------  Headings and Special Text */
 h1,
@@ -259,8 +264,9 @@ footer {
 /*------------------------------------- Media Queries */
 @media only screen and (min-width: 600px) {
     #cards {
-        min-height: 30vh;
+        height: 40vh;
         overflow-y: hidden;
+        margin: 20px;
     }
 
     .card-image,
@@ -296,7 +302,8 @@ footer {
 
 @media only screen and (min-width: 1024px) {
     #cards {
-        min-height: 25vh;
+        height: 40vh;
+        max-width: 450px;
         overflow: hidden;
     }
 
