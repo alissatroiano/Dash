@@ -10,7 +10,8 @@
             <div class="row align-wrapper center-align">
                 <div class="input-field col s12">
                     <i class="fas fa-search prefix light-green-text text-darken-1"> </i>
-                    <input type="text" name="query" id="query" class="validate" minlength="3" value="{{ request.args['query'] }}" required>
+                    <input type="text" name="query" id="query" class="validate" minlength="3"
+                        value="{{ request.args['query'] }}" required>
                     <label for="query">Search Recipes</label>
                 </div>
                 <div class="col s12">
@@ -36,7 +37,8 @@
         <div class="card" id="cards">
             <!-- Card Image with Waves Effect-->
             <div class="card-image waves-effect waves-block waves-light" id="recipe-image">
-                <img src="{{ recipe.file }}" class="responsive-img activator" id="card-image" alt="{{ recipe.recipe_name }}" />
+                <img src="{{ recipe.file }}" class="responsive-img activator" id="card-image"
+                    alt="{{ recipe.recipe_name }}" />
             </div>
             <!--./end-card-image-->
             <!--Card Content Starts Here-->
@@ -47,15 +49,19 @@
                 <p>{{ recipe.recipe_description }}</p>
                 <p class="activator" style="margin-top: 10px;">
                     <i class="fas fa-clock light-green-text text-darken-2 prefix"></i>
-                    Prep Time: {{ recipe.prep_time }} </p>
+                    Prep Time: {{ recipe.prep_time }}
+                </p>
             </div>
             <!--./end-card-content-->
             <!--Floating Action Button with Link to Add Recipe Page (initialized in `script.js`) - copied from <https://materializecss.com/floating-action-button.html>  -->
             <div class="fixed-action-btn">
                 {% if session["user"] %}
-                <a class="btn-floating btn-large light-green darken-4 waves-effect waves-light pulse text-shadow" href="{{ url_for('add_recipe') }}"><i class="fas fa-plus"></i></a>
+                <a class="btn-floating btn-large light-green darken-4 waves-effect waves-light pulse text-shadow"
+                    href="{{ url_for('add_recipe') }}"><i class="fas fa-plus"></i></a>
                 {% else %}
-                <a class="btn-floating btn-large light-green darken-4 waves-effect waves-light pulse text-shadow tooltipped" href="{{ url_for('login') }}" data-position="left" data-tooltip="Add a recipe"><i class="fas fa-plus"></i></a>
+                <a class="btn-floating btn-large light-green darken-4 waves-effect waves-light pulse text-shadow tooltipped"
+                    href="{{ url_for('login') }}" data-position="left" data-tooltip="Add a recipe"><i
+                        class="fas fa-plus"></i></a>
                 {% endif %}
             </div>
             <!--Card Reveal Starts Here-->
@@ -74,15 +80,24 @@
                 <p>{{ recipe.recipe_instructions }}</p>
                 <!-- Submit, Delete, and Edit Buttons go here-->
                 <div class="card-action center-align">
-                    <!-- Any user may edit a recipe as long as they are logged in-->
                     {% if session["user"] == recipe.created_by %}
-                    <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn light-green lighten-1" id="edit-recipe"><i class="fas fa-pen-fancy white-text"></i> Edit</a>
+                    <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn light-green lighten-1"
+                        id="edit-recipe">
+                        <i class="fas fa-pen-fancy white-text"></i> Edit
+                    </a>
                     {% endif %}
-                    <!-- Provide 'Delete' option for admin -->
+
                     {% if session["user"] == recipe.created_by %}
-                    <a class="btn red accent-2" href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" id="delete-recipe"><i class="fas fa-trash-alt white-text"></i>Delete</a>
+                    <!-- Form for delete button to ensure POST method -->
+                    <form action="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" method="POST"
+                        style="display:inline;">
+                        <button type="submit" class="btn red accent-2" id="delete-recipe">
+                            <i class="fas fa-trash-alt white-text"></i> Delete
+                        </button>
+                    </form>
                     {% endif %}
                 </div>
+
             </div>
             <!--./end-card-reveal-->
         </div>

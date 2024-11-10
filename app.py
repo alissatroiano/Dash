@@ -265,17 +265,17 @@ def edit_recipe(recipe_id):
 
     return render_template("edit_recipe.html", recipe=recipe)
 
-
 @app.route('/delete_recipe/<recipe_id>', methods=['POST'])
 def delete_recipe(recipe_id):
-    recipe = Recipe.objects(id=recipe_id).first()  # Fetch the recipe by ID
-    if recipe and recipe.created_by == session.get("user"):
-        recipe.delete()  # Delete the recipe from MongoDB
+    # Use mongo.db.recipes to fetch the recipe by ID
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    if recipe and recipe["created_by"] == session.get("user"):
+        # Delete the recipe from MongoDB
+        mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
         flash("Recipe deleted successfully!", "success")
     else:
         flash("You are not authorized to delete this recipe.", "danger")
     return redirect(url_for('get_recipes'))
-
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
