@@ -2,6 +2,19 @@
 {% block content %}
 
 <!-- <h3 class="brown-text text-darken-4 center-align">Dash Recipes</h3> -->
+<div class="row left-align main-heading">
+<div class="col s12">
+    <h1 class="text-plain">Dash recipes are
+        <span
+           class="txt-rotate green-text darken-1"
+           data-period="2000"
+           data-rotate='[ "Healthy.", "Nutritious.", "Delicious.", "Creative" ]'></span>
+      </h1>
+      <p class="flow-text main">Click on the recipe name to reveal its' secrets</p>
+</div>
+</div>
+
+
 <!--Row for Search-->
 <div class="row">
     <div class="col s12" id="searchRow">
@@ -25,6 +38,7 @@
     <!--./end-searchbar-->
 </div>
 <!--./end-row-for-search-->
+
 <!-- All Recipes Section Starts Here-->
 <!--If Statement for Search function starts here-->
 {% if recipes|length > 0 %}
