@@ -17,8 +17,8 @@ S3_BUCKET_NAME = os.environ.get("S3_BUCKET_NAME")
 S3_KEY = os.environ.get("S3_KEY")
 S3_SECRET = os.environ.get("S3_SECRET")
 S3_LOCATION = os.environ.get("S3_LOCATION")
-USE_LOCAL_STORAGE = os.environ.get("USE_LOCAL_STORAGE")
-print(USE_LOCAL_STORAGE)
+USE_LOCAL_STORAGE = os.environ.get(
+    "USE_LOCAL_STORAGE", "False").lower() == "true"
 FLASK_ENV = os.environ.get("FLASK_ENV")
 print(FLASK_ENV)
 
@@ -39,6 +39,14 @@ app.config["S3_BUCKET_NAME"] = os.environ.get("S3_BUCKET_NAME")
 app.config["S3_KEY"] = os.environ.get("S3_KEY")
 app.config["S3_SECRET"] = os.environ.get("S3_SECRET")
 app.config["S3_LOCATION"] = os.environ.get("S3_LOCATION")
+if USE_LOCAL_STORAGE:
+    # Create upload folder only if using local storage
+    upload_folder = os.path.join(app.root_path, 'static', 'uploads')
+    os.makedirs(upload_folder, exist_ok=True)
+    app.config['UPLOAD_FOLDER'] = upload_folder
+else:
+    # Use a temporary directory for transient files (Heroku safe)
+    app.config['UPLOAD_FOLDER'] = "/tmp/uploads"
 
 mongo = PyMongo(app)
 mongo.db = mongo.cx[app.config["MONGO_DBNAME"]]
@@ -156,85 +164,72 @@ def allowed_file(filename):
 
 
 def upload_file():
-    # Default path in case of no file or error
-    path = '/static/uploads/dash.jpg'
+    path = '/static/uploads/dash.jpg'  # Default image in case of error
 
     if 'file' not in request.files:
-        print("No file part")
+        print("No file part in request.")
         return path
 
     file = request.files['file']
 
     if file.filename == '':
-        print("No filename")
+        print("No filename provided.")
         return path
 
-    # Check allowed file types
+    # Validate file extension
     if file and allowed_file(file.filename):
-        file.filename = secure_filename(file.filename)
-        print(f"Secure filename for upload: {file.filename}")
-        print(f"Content type for upload: {file.content_type}")
+        try:
+            file.filename = secure_filename(file.filename)
 
-        # Local storage mode
-        if os.environ.get("USE_LOCAL_STORAGE") == "True":
-            # Ensure the upload directory exists
-            upload_folder = os.path.join(app.root_path, 'static', 'uploads')
-            os.makedirs(upload_folder, exist_ok=True)
-
-            file_path = os.path.join(upload_folder, file.filename)
-            print(f"Saving file locally to: {file_path}")
-            file.save(file_path)
-            path = f"/static/uploads/{file.filename}"
-            print(f"File saved successfully at {file_path}")
-
-        # S3 upload mode
-        else:
-            try:
+            # Local storage
+            if USE_LOCAL_STORAGE:
+                file_path = os.path.join(
+                    app.config['UPLOAD_FOLDER'], file.filename)
+                print(f"Saving file locally to: {file_path}")
+                file.save(file_path)
+                path = f"/static/uploads/{file.filename}"
+            else:
+                # Upload to S3
                 path = upload_file_to_s3(file)
                 if not path:
-                    print("Error: Failed to upload file to S3.")
-                    path = "/static/uploads/dash.jpg"
-            except Exception as e:
-                print(f"S3 Upload Error: {str(e)}")
-                path = "/static/uploads/dash.jpg"
-
+                    print("Error: S3 upload failed, using default path.")
+                    path = '/static/uploads/dash.jpg'
+        except Exception as e:
+            print(f"Error during file upload: {str(e)}")
+            path = '/static/uploads/dash.jpg'
     else:
-        print("Invalid file type")
+        print("Invalid file type.")
 
     print(f"Final image path: {path}")
     return path
 
 
 def upload_file_to_s3(file):
-    if not file or not file.filename:
-        print("Error: No file or filename provided for upload.")
-        return None
-
-    secure_filename_str = secure_filename(file.filename)
-    print(f"Secure filename for upload: {secure_filename_str}")
-
     try:
-        # Ensure ContentType is correctly set based on the file's actual type
-        content_type = file.content_type if file.content_type else "application/octet-stream"
-        print(f"Content type for upload: {content_type}")
+        if not file or not file.filename:
+            print("Error: No file or filename provided for S3 upload.")
+            return None
 
-        # Upload the file to S3
+        secure_filename_str = secure_filename(file.filename)
+        print(f"Uploading file to S3 with secure filename: {secure_filename_str}")
+
+        content_type = file.content_type or "application/octet-stream"
+        print(f"Content type: {content_type}")
+
+        # Upload file
         s3.upload_fileobj(
             file,
             S3_BUCKET_NAME,
             secure_filename_str,
-            ExtraArgs={
-                "ACL": "public-read",
-                "ContentType": content_type
-            }
+            ExtraArgs={"ACL": "public-read", "ContentType": content_type},
         )
-        print(
-            f"File successfully uploaded to S3 at {S3_LOCATION}{secure_filename_str}")
-        return f"{S3_LOCATION}{secure_filename_str}"
+        s3_url = f"{S3_LOCATION}{secure_filename_str}"
+        print(f"File uploaded successfully to S3: {s3_url}")
+        return s3_url
 
     except Exception as e:
-        print(f"S3 Upload Error: {str(e)}")  # More explicit error message
-        return None  # Handle None gracefully elsewhere
+        print(f"S3 Upload Error: {str(e)}")
+        return None
 
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
