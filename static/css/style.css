@@ -1,14 +1,31 @@
-/* This stylesheet has been prefixed with https://autoprefixer.github.io/ */
-
-/*-----------------------------------  Google Fonts Import */
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Pacifico&display=swap');
 
-/*-----------------------------------  Headings and Special Text */
+/*---------------------Main Container  */
+main.container {
+    padding: 0;
+    margin: 0 auto;
+    max-width: 100%;
+    min-width: 80vw;
+}
+
+/*----------- Headings and Special Text */
 h1,
 h2,
 h3 {
     font-family: 'Pacifico', cursive;
     padding: 10px 0px;
+}
+
+h1.text-plain {
+    padding-top: 20px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 2.5rem;
+    margin-left: 15px;
+}
+
+p.flow-text.main {
+    margin-left: 15px;
+
 }
 
 h4 {
@@ -34,10 +51,22 @@ body {
     font-size: 1rem;
 }
 
+.brown-text.text-darken-4 {
+    color: #9ccc65 !important;
+    text-shadow: 1px 1px 3px #34691f;
+    font-size: 3rem;
+    font-weight: 200;
+}
+
 /*----------------------------------- Top Navigation */
 .brand-logo.center {
     font-family: 'Pacifico', cursive;
-    text-shadow: 2px 0px 3px #022d0c;
+    text-shadow: 2px 0px 3px #2d670f;
+}
+
+a.brand-logo.center {
+    margin: 0 auto;
+    font-size: 2.5rem;
 }
 
 .brand-logo i {
@@ -48,6 +77,12 @@ body {
 
 i.fas.fa-utensils.prefix {
     margin-right: 5px;
+}
+
+/*---------------------------------- Header */
+.txt-rotate {
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
 /*---------------------------------- Side Navigation */
@@ -213,6 +248,10 @@ a#cancel,
 }
 
 /*--------------------------------------- Search Recipes */
+#searchRow {
+    margin-top: 30px;
+}
+
 button.submit.btn.light-green.lighten-1 {
     border: none;
     text-transform: none;
@@ -257,10 +296,18 @@ footer {
 }
 
 /*------------------------------------- Media Queries */
+
+
 @media only screen and (min-width: 600px) {
     #cards {
-        min-height: 30vh;
+        height: 40vh;
         overflow-y: hidden;
+        margin: 20px;
+    }
+
+    h1.text-plain {
+        font-family: 'Josefin Sans', sans-serif;
+        font-size: 3.5rem;
     }
 
     .card-image,
@@ -280,6 +327,14 @@ footer {
         overflow: hidden;
     }
 
+    .brown-text.text-darken-4 {
+        color: #9ccc65 !important;
+        text-shadow: 4px 4px 3px #34691f;
+        font-size: 5rem;
+        font-weight: 200;
+    }
+
+
     main.container {
         margin-top: 60px;
     }
@@ -296,8 +351,14 @@ footer {
 
 @media only screen and (min-width: 1024px) {
     #cards {
-        min-height: 25vh;
+        height: 40vh;
+        max-width: 450px;
         overflow: hidden;
+    }
+
+    h1.text-plain {
+        font-family: 'Josefin Sans', sans-serif;
+        font-size: 4rem;
     }
 
     #card-image {
@@ -314,7 +375,8 @@ footer {
         min-width: 100%;
         height: 150px;
         overflow: hidden;
-    } 
+    }
+
     footer {
         margin-top: 20px;
         position: relative;

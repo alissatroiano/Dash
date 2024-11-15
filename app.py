@@ -9,34 +9,50 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 if os.path.exists("env.py"):
     import env
+    print("env.py loaded successfully")
 
-
-UPLOAD_FOLDER = './static/uploads'
+UPLOAD_FOLDER = '/static/uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 S3_BUCKET_NAME = os.environ.get("S3_BUCKET_NAME")
 S3_KEY = os.environ.get("S3_KEY")
 S3_SECRET = os.environ.get("S3_SECRET")
 S3_LOCATION = os.environ.get("S3_LOCATION")
+USE_LOCAL_STORAGE = os.environ.get("USE_LOCAL_STORAGE")
+print(USE_LOCAL_STORAGE)
+FLASK_ENV = os.environ.get("FLASK_ENV")
+print(FLASK_ENV)
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['UPLOAD_FOLDER'] = os.environ.get("UPLOAD_FOLDER", "/tmp/uploads")
 
+# Ensure the upload directory exists
+upload_folder = os.path.join(app.root_path, app.config['UPLOAD_FOLDER'])
+os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 s3 = boto3.client("s3", aws_access_key_id=S3_KEY,
                   aws_secret_access_key=S3_SECRET)
+app.config["S3_BUCKET_NAME"] = os.environ.get("S3_BUCKET_NAME")
+app.config["S3_KEY"] = os.environ.get("S3_KEY")
+app.config["S3_SECRET"] = os.environ.get("S3_SECRET")
+app.config["S3_LOCATION"] = os.environ.get("S3_LOCATION")
 
 mongo = PyMongo(app)
+mongo.db = mongo.cx[app.config["MONGO_DBNAME"]]
+# print(mongo.db)
+# print(mongo.db.list_collection_names())
+print("Mongo URI:", os.environ.get("MONGO_URI"))
+print("Mongo DB Name:", os.environ.get("MONGO_DBNAME"))
 
 
 @app.route("/")
 @app.route("/get_recipes")
 def get_recipes():
-    recipes = list(mongo.db.recipes.find().sort(
-        "_id", -1))
+    recipes = list(mongo.db.recipes.find().sort("_id", -1))
+    # print("Fetched recipes:", recipes)  # Add this line for debugging
     return render_template("recipes.html", recipes=recipes)
 
 
@@ -140,39 +156,99 @@ def allowed_file(filename):
 
 
 def upload_file():
-    path = url_for('static', filename='uploads/dash.jpg')
-    # if user does not select file, stock photo will be used
+    # Default path in case of no file or error
+    path = '/static/uploads/dash.jpg'
+
     if 'file' not in request.files:
+        print("No file part")
         return path
+
     file = request.files['file']
+
     if file.filename == '':
+        print("No filename")
         return path
+
+    # Check allowed file types
     if file and allowed_file(file.filename):
         file.filename = secure_filename(file.filename)
-        path = upload_file_to_s3(file)
+        print(f"Secure filename for upload: {file.filename}")
+        print(f"Content type for upload: {file.content_type}")
+
+        # Local storage mode
+        if os.environ.get("USE_LOCAL_STORAGE") == "True":
+            # Ensure the upload directory exists
+            upload_folder = os.path.join(app.root_path, 'static', 'uploads')
+            os.makedirs(upload_folder, exist_ok=True)
+
+            file_path = os.path.join(upload_folder, file.filename)
+            print(f"Saving file locally to: {file_path}")
+            file.save(file_path)
+            path = f"/static/uploads/{file.filename}"
+            print(f"File saved successfully at {file_path}")
+
+        # S3 upload mode
+        else:
+            try:
+                path = upload_file_to_s3(file)
+                if not path:
+                    print("Error: Failed to upload file to S3.")
+                    path = "/static/uploads/dash.jpg"
+            except Exception as e:
+                print(f"S3 Upload Error: {str(e)}")
+                path = "/static/uploads/dash.jpg"
+
+    else:
+        print("Invalid file type")
+
+    print(f"Final image path: {path}")
     return path
 
 
 def upload_file_to_s3(file):
-    """
-    Amazon S3 Photo Bucket Configuration:
-    Docs: http://boto3.readthedocs.io/en/latest/guide/s3.html
-    """
-    try:
-        s3.upload_fileobj(file, S3_BUCKET_NAME, file.filename, ExtraArgs={
-                          "ACL": "public-read", "ContentType":
-                          file.content_type})
-    except Exception as e:
-        print("Something Happened: ", e)
-        return e
+    if not file or not file.filename:
+        print("Error: No file or filename provided for upload.")
+        return None
 
-    return "{}{}".format(S3_LOCATION, file.filename)
+    secure_filename_str = secure_filename(file.filename)
+    print(f"Secure filename for upload: {secure_filename_str}")
+
+    try:
+        # Ensure ContentType is correctly set based on the file's actual type
+        content_type = file.content_type if file.content_type else "application/octet-stream"
+        print(f"Content type for upload: {content_type}")
+
+        # Upload the file to S3
+        s3.upload_fileobj(
+            file,
+            S3_BUCKET_NAME,
+            secure_filename_str,
+            ExtraArgs={
+                "ACL": "public-read",
+                "ContentType": content_type
+            }
+        )
+        print(
+            f"File successfully uploaded to S3 at {S3_LOCATION}{secure_filename_str}")
+        return f"{S3_LOCATION}{secure_filename_str}"
+
+    except Exception as e:
+        print(f"S3 Upload Error: {str(e)}")  # More explicit error message
+        return None  # Handle None gracefully elsewhere
 
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
-    edit_path = upload_file()
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    if not recipe or recipe["created_by"] != session.get("user"):
+        flash("You are not authorized to edit this recipe.")
+        return redirect(url_for("get_recipes"))
+
     if request.method == "POST":
+        # Call upload_file only if a new file is uploaded
+        edit_path = upload_file(
+        ) if 'file' in request.files and request.files['file'].filename else recipe.get("file")
+
         edit = {
             "recipe_name": request.form.get("recipe_name"),
             "prep_time": request.form.get("prep_time"),
@@ -182,20 +258,24 @@ def edit_recipe(recipe_id):
             "tools_needed": request.form.get("tools_needed"),
             "recipe_instructions": request.form.get("recipe_instructions")
         }
-        mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, edit)
+        mongo.db.recipes.update_one(
+            {"_id": ObjectId(recipe_id)}, {"$set": edit})
         flash("Recipe edited!")
         return redirect(url_for('get_recipes'))
 
-    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     return render_template("edit_recipe.html", recipe=recipe)
 
-
-@app.route("/delete_recipe/<recipe_id>")
+@app.route('/delete_recipe/<recipe_id>', methods=['POST'])
 def delete_recipe(recipe_id):
-    mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
-    flash("Recipe Successfully Deleted")
-    return redirect(url_for("get_recipes"))
-
+    # Use mongo.db.recipes to fetch the recipe by ID
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    if recipe and recipe["created_by"] == session.get("user"):
+        # Delete the recipe from MongoDB
+        mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
+        flash("Recipe deleted successfully!", "success")
+    else:
+        flash("You are not authorized to delete this recipe.", "danger")
+    return redirect(url_for('get_recipes'))
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
