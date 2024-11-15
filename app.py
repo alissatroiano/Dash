@@ -39,14 +39,14 @@ app.config["S3_BUCKET_NAME"] = os.environ.get("S3_BUCKET_NAME")
 app.config["S3_KEY"] = os.environ.get("S3_KEY")
 app.config["S3_SECRET"] = os.environ.get("S3_SECRET")
 app.config["S3_LOCATION"] = os.environ.get("S3_LOCATION")
+# Define upload folder logic
 if USE_LOCAL_STORAGE:
-    # Create upload folder only if using local storage
-    upload_folder = os.path.join(app.root_path, 'static', 'uploads')
+    upload_folder = os.path.join(app.root_path, 'static', 'uploads')  # Local uploads
     os.makedirs(upload_folder, exist_ok=True)
     app.config['UPLOAD_FOLDER'] = upload_folder
 else:
-    # Use a temporary directory for transient files (Heroku safe)
-    app.config['UPLOAD_FOLDER'] = "/tmp/uploads"
+    app.config['UPLOAD_FOLDER'] = "/tmp/uploads"  # Temporary storage for Heroku
+    os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 mongo = PyMongo(app)
 mongo.db = mongo.cx[app.config["MONGO_DBNAME"]]
@@ -164,7 +164,8 @@ def allowed_file(filename):
 
 
 def upload_file():
-    path = '/static/uploads/dash.jpg'  # Default image in case of error
+    # Default fallback image
+    path = '/static/uploads/dash.jpg'
 
     if 'file' not in request.files:
         print("No file part in request.")
@@ -181,19 +182,18 @@ def upload_file():
         try:
             file.filename = secure_filename(file.filename)
 
-            # Local storage
-            if USE_LOCAL_STORAGE:
-                file_path = os.path.join(
-                    app.config['UPLOAD_FOLDER'], file.filename)
-                print(f"Saving file locally to: {file_path}")
-                file.save(file_path)
-                path = f"/static/uploads/{file.filename}"
-            else:
+            if not USE_LOCAL_STORAGE:
                 # Upload to S3
                 path = upload_file_to_s3(file)
                 if not path:
                     print("Error: S3 upload failed, using default path.")
                     path = '/static/uploads/dash.jpg'
+            else:
+                # Save locally
+                file_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
+                print(f"Saving file locally to: {file_path}")
+                file.save(file_path)
+                path = f"/static/uploads/{file.filename}"
         except Exception as e:
             print(f"Error during file upload: {str(e)}")
             path = '/static/uploads/dash.jpg'
@@ -202,7 +202,6 @@ def upload_file():
 
     print(f"Final image path: {path}")
     return path
-
 
 def upload_file_to_s3(file):
     try:
