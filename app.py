@@ -265,6 +265,7 @@ def edit_recipe(recipe_id):
 
     return render_template("edit_recipe.html", recipe=recipe)
 
+
 @app.route('/delete_recipe/<recipe_id>', methods=['POST'])
 def delete_recipe(recipe_id):
     # Use mongo.db.recipes to fetch the recipe by ID
@@ -277,7 +278,7 @@ def delete_recipe(recipe_id):
         flash("You are not authorized to delete this recipe.", "danger")
     return redirect(url_for('get_recipes'))
 
+
 if __name__ == "__main__":
-    app.run(host=os.environ.get("IP"),
-            port=int(os.environ.get("PORT")),
-            debug=False)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
