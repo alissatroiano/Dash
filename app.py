@@ -9,38 +9,29 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 if os.path.exists("env.py"):
     import env
-    print("env.py loaded successfully")
-
-UPLOAD_FOLDER = '/static/uploads'
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
-S3_BUCKET_NAME = os.environ.get("S3_BUCKET_NAME")
-S3_KEY = os.environ.get("S3_KEY")
-S3_SECRET = os.environ.get("S3_SECRET")
-S3_LOCATION = os.environ.get("S3_LOCATION")
-USE_LOCAL_STORAGE = os.environ.get(
-    "USE_LOCAL_STORAGE", "False").lower() == "true"
-FLASK_ENV = os.environ.get("FLASK_ENV")
-print(FLASK_ENV)
 
 app = Flask(__name__, static_url_path='/static')
-
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
-app.config['UPLOAD_FOLDER'] = os.environ.get("UPLOAD_FOLDER", "/tmp/uploads")
 
-# Ensure the upload directory exists
-upload_folder = os.path.join(app.root_path, app.config['UPLOAD_FOLDER'])
-os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
+UPLOAD_FOLDER = '/static/uploads'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+S3_BUCKET_NAME = os.environ.get("S3_BUCKET")  # Fixed naming
+S3_KEY = os.environ.get("S3_KEY")
+S3_SECRET = os.environ.get("S3_SECRET")
+S3_LOCATION = os.environ.get("S3_LOCATION")
+print("S3_BUCKET:", os.environ.get("S3_BUCKET"))
+print("S3_KEY:", os.environ.get("S3_KEY"))
+print("S3_SECRET:", os.environ.get("S3_SECRET"))
+print("S3_LOCATION:", os.environ.get("S3_LOCATION"))
 
-s3 = boto3.client("s3", aws_access_key_id=S3_KEY,
-                  aws_secret_access_key=S3_SECRET)
-app.config["S3_BUCKET_NAME"] = os.environ.get("S3_BUCKET_NAME")
-app.config["S3_KEY"] = os.environ.get("S3_KEY")
-app.config["S3_SECRET"] = os.environ.get("S3_SECRET")
-app.config["S3_LOCATION"] = os.environ.get("S3_LOCATION")
-# Define upload folder logic
-
+s3 = boto3.client(
+    "s3",
+    aws_access_key_id=S3_KEY,
+    aws_secret_access_key=S3_SECRET,
+)
+# app.config['UPLOAD_FOLDER'] = os.environ.get("UPLOAD_FOLDER", "/tmp/uploads")
 mongo = PyMongo(app)
 mongo.db = mongo.cx[app.config["MONGO_DBNAME"]]
 # print(mongo.db)
@@ -197,6 +188,7 @@ def upload_file():
     print(f"Final image path: {path}")
     return path
 
+
 def upload_file_to_s3(file):
     try:
         if not file or not file.filename:
@@ -204,17 +196,13 @@ def upload_file_to_s3(file):
             return None
 
         secure_filename_str = secure_filename(file.filename)
-        print(f"Uploading file to S3 with secure filename: {secure_filename_str}")
-
-        # Ensure S3 environment variables are set
-        if not S3_BUCKET_NAME or not S3_LOCATION or not S3_KEY or not S3_SECRET:
-            print("Error: Missing required S3 environment variables.")
-            return None
+        print(
+            f"Uploading file to S3 with secure filename: {secure_filename_str}")
 
         content_type = file.content_type or "application/octet-stream"
         print(f"Content type: {content_type}")
 
-        # Upload file
+        # Upload file to S3 directly
         s3.upload_fileobj(
             file,
             S3_BUCKET_NAME,
@@ -228,6 +216,7 @@ def upload_file_to_s3(file):
     except Exception as e:
         print(f"S3 Upload Error: {str(e)}")
         return None
+
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
