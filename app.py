@@ -28,12 +28,16 @@ print("S3_KEY:", os.environ.get("S3_KEY"))
 print("S3_SECRET:", os.environ.get("S3_SECRET"))
 print("S3_LOCATION:", os.environ.get("S3_LOCATION"))
 
+import logging
+logging.basicConfig(level=logging.DEBUG)
 s3 = boto3.client(
     "s3",
     aws_access_key_id=S3_KEY,
     aws_secret_access_key=S3_SECRET,
+    region_name="us-east-2"
 )
-# app.config['UPLOAD_FOLDER'] = os.environ.get("UPLOAD_FOLDER", "/tmp/uploads")
+
+app.config['UPLOAD_FOLDER'] = os.environ.get("UPLOAD_FOLDER", "/tmp/uploads")
 mongo = PyMongo(app)
 mongo.db = mongo.cx[app.config["MONGO_DBNAME"]]
 # print(mongo.db)
@@ -191,33 +195,24 @@ def upload_file():
     return path
 
 
-def upload_file_to_s3(file):
+def upload_file_to_s3(file, bucket_name, secure_filename_str, content_type):
     try:
-        if not file or not file.filename:
-            print("Error: No file or filename provided for S3 upload.")
-            return None
-
-        secure_filename_str = secure_filename(file.filename)
-        print(
-            f"Uploading file to S3 with secure filename: {secure_filename_str}")
-
-        content_type = file.content_type or "application/octet-stream"
+        # Ensure the filename and content type are logged
+        print(f"Uploading file to S3 with secure filename: {secure_filename_str}")
         print(f"Content type: {content_type}")
 
-        # Upload file to S3 directly
+        # Upload to S3
         s3.upload_fileobj(
             file,
-            S3_BUCKET_NAME,
+            bucket_name,
             secure_filename_str,
-            ExtraArgs={"ContentType": content_type},
+            ExtraArgs={"ContentType": content_type}  # Removed ACL for non-public buckets
         )
-        s3_url = f"{S3_LOCATION}{secure_filename_str}"
-        print(f"Uploading file with secure filename: {secure_filename_str}")
-        return s3_url
-
+        return f"{S3_LOCATION}/{secure_filename_str}"
     except Exception as e:
-        print(f"S3 Upload Error: {str(e)}")
-        return None
+        print(f"S3 Upload Error: {e}")
+        # Fallback to local storage
+        return "/static/uploads/default.jpg"
 
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
