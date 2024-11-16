@@ -14,6 +14,7 @@ app = Flask(__name__, static_url_path='/static')
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
+
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 S3_BUCKET_NAME = os.environ.get("S3_BUCKET")  # Fixed naming
 S3_KEY = os.environ.get("S3_KEY")
@@ -26,6 +27,8 @@ print("S3_KEY:", os.environ.get("S3_KEY"))
 print("S3_SECRET:", os.environ.get("S3_SECRET"))
 print("S3_LOCATION:", os.environ.get("S3_LOCATION"))
 
+# import logging
+# logging.basicConfig(level=logging.DEBUG)
 s3 = boto3.client(
     "s3",
     aws_access_key_id=S3_KEY,
@@ -33,8 +36,7 @@ s3 = boto3.client(
     region_name="us-east-2"
 )
 
-app.config['UPLOAD_FOLDER'] = os.environ.get(
-    "UPLOAD_FOLDER", "/static/uploads")
+app.config['UPLOAD_FOLDER'] = os.environ.get("UPLOAD_FOLDER", "/static/uploads")
 mongo = PyMongo(app)
 mongo.db = mongo.cx[app.config["MONGO_DBNAME"]]
 # print(mongo.db)
@@ -178,6 +180,7 @@ def upload_file_to_s3(file):
         return e
 
     return "{}{}".format(S3_LOCATION, file.filename)
+
 
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
