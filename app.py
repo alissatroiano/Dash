@@ -15,6 +15,7 @@ app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
+UPLOAD_FOLDER = '/static/uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 S3_BUCKET_NAME = os.environ.get("S3_BUCKET")  # Fixed naming
 S3_KEY = os.environ.get("S3_KEY")
@@ -27,8 +28,8 @@ print("S3_KEY:", os.environ.get("S3_KEY"))
 print("S3_SECRET:", os.environ.get("S3_SECRET"))
 print("S3_LOCATION:", os.environ.get("S3_LOCATION"))
 
-# import logging
-# logging.basicConfig(level=logging.DEBUG)
+import logging
+logging.basicConfig(level=logging.DEBUG)
 s3 = boto3.client(
     "s3",
     aws_access_key_id=S3_KEY,
@@ -36,7 +37,7 @@ s3 = boto3.client(
     region_name="us-east-2"
 )
 
-app.config['UPLOAD_FOLDER'] = os.environ.get("UPLOAD_FOLDER", "/static/uploads")
+app.config['UPLOAD_FOLDER'] = os.environ.get("UPLOAD_FOLDER", "/tmp/uploads")
 mongo = PyMongo(app)
 mongo.db = mongo.cx[app.config["MONGO_DBNAME"]]
 # print(mongo.db)
@@ -153,34 +154,74 @@ def allowed_file(filename):
 
 
 def upload_file():
-    path = url_for('static', filename='uploads/dash.jpg')
-    # if user does not select file, stock photo will be used
+    # Default fallback image
+    path = '/static/uploads/dash.jpg'
+
     if 'file' not in request.files:
+        print("No file part in request.")
         return path
+
     file = request.files['file']
+
     if file.filename == '':
+        print("No filename provided.")
         return path
+
+    # Validate file extension
     if file and allowed_file(file.filename):
-        file.filename = secure_filename(file.filename)
-        path = upload_file_to_s3(file)
+        try:
+            file.filename = secure_filename(file.filename)
+
+            if not USE_LOCAL_STORAGE:
+                # Upload to S3
+                path = upload_file_to_s3(file)
+                if not path:
+                    print("Error: S3 upload failed, using default path.")
+                    path = '/static/uploads/dash.jpg'
+            else:
+                # Save locally
+                file_path = os.path.join(
+                    app.config['UPLOAD_FOLDER'], file.filename)
+                print(f"Saving file locally to: {file_path}")
+                file.save(file_path)
+                path = f"/static/uploads/{file.filename}"
+        except Exception as e:
+            print(f"Error during file upload: {str(e)}")
+            path = '/static/uploads/dash.jpg'
+    else:
+        print("Invalid file type.")
+
+    print(f"Final image path: {path}")
     return path
 
 
 def upload_file_to_s3(file):
-    """
-    Amazon S3 Photo Bucket Configuration:
-    Docs: http://boto3.readthedocs.io/en/latest/guide/s3.html
-    """
     try:
-        s3.upload_fileobj(file, S3_BUCKET_NAME, file.filename, ExtraArgs={
-                          "ACL": "public-read", "ContentType":
-                          file.content_type})
+        if not file or not file.filename:
+            print("Error: No file or filename provided for S3 upload.")
+            return None
+
+        secure_filename_str = secure_filename(file.filename)
+        print(
+            f"Uploading file to S3 with secure filename: {secure_filename_str}")
+
+        content_type = file.content_type or "application/octet-stream"
+        print(f"Content type: {content_type}")
+
+        # Upload file to S3 directly
+        s3.upload_fileobj(
+            file,
+            S3_BUCKET_NAME,
+            secure_filename_str,
+            ExtraArgs={"ContentType": content_type},
+        )
+        s3_url = f"{S3_LOCATION}{secure_filename_str}"
+        print(f"Uploading file with secure filename: {secure_filename_str}")
+        return s3_url
+
     except Exception as e:
-        print("Something Happened: ", e)
-        return e
-
-    return "{}{}".format(S3_LOCATION, file.filename)
-
+        print(f"S3 Upload Error: {str(e)}")
+        return None
 
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
