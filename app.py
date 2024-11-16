@@ -41,11 +41,13 @@ app.config["S3_SECRET"] = os.environ.get("S3_SECRET")
 app.config["S3_LOCATION"] = os.environ.get("S3_LOCATION")
 # Define upload folder logic
 if USE_LOCAL_STORAGE:
-    upload_folder = os.path.join(app.root_path, 'static', 'uploads')  # Local uploads
+    upload_folder = os.path.join(
+        app.root_path, 'static', 'uploads')  # Local uploads
     os.makedirs(upload_folder, exist_ok=True)
     app.config['UPLOAD_FOLDER'] = upload_folder
 else:
-    app.config['UPLOAD_FOLDER'] = "/tmp/uploads"  # Temporary storage for Heroku
+    # Temporary storage for Heroku
+    app.config['UPLOAD_FOLDER'] = "/static/uploads"
     os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 mongo = PyMongo(app)
@@ -190,7 +192,8 @@ def upload_file():
                     path = '/static/uploads/dash.jpg'
             else:
                 # Save locally
-                file_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
+                file_path = os.path.join(
+                    app.config['UPLOAD_FOLDER'], file.filename)
                 print(f"Saving file locally to: {file_path}")
                 file.save(file_path)
                 path = f"/static/uploads/{file.filename}"
@@ -212,6 +215,11 @@ def upload_file_to_s3(file):
         secure_filename_str = secure_filename(file.filename)
         print(f"Uploading file to S3 with secure filename: {secure_filename_str}")
 
+        # Ensure S3 environment variables are set
+        if not S3_BUCKET_NAME or not S3_LOCATION or not S3_KEY or not S3_SECRET:
+            print("Error: Missing required S3 environment variables.")
+            return None
+
         content_type = file.content_type or "application/octet-stream"
         print(f"Content type: {content_type}")
 
@@ -229,7 +237,6 @@ def upload_file_to_s3(file):
     except Exception as e:
         print(f"S3 Upload Error: {str(e)}")
         return None
-
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
