@@ -209,10 +209,10 @@ def upload_file_to_s3(file):
             file,
             S3_BUCKET_NAME,
             secure_filename_str,
-            ExtraArgs={"ACL": "public-read", "ContentType": content_type},
+            ExtraArgs={"ContentType": content_type},
         )
         s3_url = f"{S3_LOCATION}{secure_filename_str}"
-        print(f"File uploaded successfully to S3: {s3_url}")
+        print(f"Uploading file with secure filename: {secure_filename_str}")
         return s3_url
 
     except Exception as e:
