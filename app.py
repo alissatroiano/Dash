@@ -21,7 +21,8 @@ S3_BUCKET_NAME = os.environ.get("S3_BUCKET")  # Fixed naming
 S3_KEY = os.environ.get("S3_KEY")
 S3_SECRET = os.environ.get("S3_SECRET")
 S3_LOCATION = os.environ.get("S3_LOCATION")
-USE_LOCAL_STORAGE = os.environ.get("USE_LOCAL_STORAGE", "False").lower() == "true"
+USE_LOCAL_STORAGE = os.environ.get(
+    "USE_LOCAL_STORAGE", "False").lower() == "true"
 print("S3_BUCKET:", os.environ.get("S3_BUCKET"))
 print("S3_KEY:", os.environ.get("S3_KEY"))
 print("S3_SECRET:", os.environ.get("S3_SECRET"))
