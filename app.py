@@ -40,15 +40,6 @@ app.config["S3_KEY"] = os.environ.get("S3_KEY")
 app.config["S3_SECRET"] = os.environ.get("S3_SECRET")
 app.config["S3_LOCATION"] = os.environ.get("S3_LOCATION")
 # Define upload folder logic
-if USE_LOCAL_STORAGE:
-    upload_folder = os.path.join(
-        app.root_path, 'static', 'uploads')  # Local uploads
-    os.makedirs(upload_folder, exist_ok=True)
-    app.config['UPLOAD_FOLDER'] = upload_folder
-else:
-    # Temporary storage for Heroku
-    app.config['UPLOAD_FOLDER'] = "/static/uploads"
-    os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 mongo = PyMongo(app)
 mongo.db = mongo.cx[app.config["MONGO_DBNAME"]]
