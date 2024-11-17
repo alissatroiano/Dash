@@ -28,8 +28,6 @@ print("S3_KEY:", os.environ.get("S3_KEY"))
 print("S3_SECRET:", os.environ.get("S3_SECRET"))
 print("S3_LOCATION:", os.environ.get("S3_LOCATION"))
 
-import logging
-logging.basicConfig(level=logging.DEBUG)
 s3 = boto3.client(
     "s3",
     aws_access_key_id=S3_KEY,
